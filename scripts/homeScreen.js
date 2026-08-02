@@ -5824,6 +5824,10 @@
             
             cardContainer.setAttribute('data-custom-section-id', sectionId);
             cardContainer.setAttribute('data-custom-section-name', sectionConfig.name);
+            if (sectionId === 'custom-section-0') {
+                cardContainer.classList.add('pyra-main-hero');
+                cardContainer.classList.remove('padded-left');
+            }
             if (sectionConfig.type) {
                 cardContainer.setAttribute('data-custom-section-type', sectionConfig.type);
             }

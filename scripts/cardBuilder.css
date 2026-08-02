@@ -255,33 +255,6 @@
     font-size: 28px;
 }
 
-.spotlight-overview-tooltip {
-    position: absolute;
-    text-align: left;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 12px;
-    padding: 16px;
-    background: rgba(0,0,0,0.95);
-    color: white;
-    border-radius: 8px;
-    font-size: 14px;
-    line-height: 1.6;
-    max-width: 400px;
-    min-width: 300px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    word-wrap: break-word;
-}
-
-.spotlight-info-button:hover .spotlight-overview-tooltip {
-    opacity: 1;
-}
-
 .spotlight-nav-container {
     position: absolute;
     top: 20px;

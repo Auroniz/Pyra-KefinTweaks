@@ -1075,21 +1075,13 @@
                 }
             });
             
-            // Info button (shows overview on hover)
+            // Info button
             const infoButton = document.createElement('button');
             infoButton.className = 'spotlight-info-button emby-button';
             const infoIcon = document.createElement('span');
             infoIcon.className = 'material-icons';
             infoIcon.textContent = 'info';
             infoButton.appendChild(infoIcon);
-            
-            // Overview tooltip (hidden by default, shown on hover)
-            if (item.Overview) {
-                const overviewTooltip = document.createElement('div');
-                overviewTooltip.className = 'spotlight-overview-tooltip';
-                overviewTooltip.textContent = item.Overview;
-                infoButton.appendChild(overviewTooltip);
-            }
             
             buttonsContainer.appendChild(playButton);
             buttonsContainer.appendChild(watchlistButton);
