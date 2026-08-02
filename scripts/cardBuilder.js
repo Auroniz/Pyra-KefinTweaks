@@ -758,78 +758,33 @@
                 titleEl.textContent = item.Name || 'Unknown';
             }
             
-            // Combined: Year + Time + Ends At + Genres (all on one line)
+            // Combined: Year + Runtime + Rating (all on one line)
             const metadataRow = document.createElement('div');
             metadataRow.className = 'spotlight-metadata-row';
+            const metadataParts = [];
             
-            // Year
             const year = item.ProductionYear || (item.PremiereDate ? new Date(item.PremiereDate).getFullYear() : null);
             if (year) {
-                const yearEl = document.createElement('span');
-                yearEl.textContent = year;
-                metadataRow.appendChild(yearEl);
+                metadataParts.push(year);
             }
             
-            // Runtime
             if (item.RunTimeTicks) {
                 const runtimeMinutes = Math.round(item.RunTimeTicks / 10000000 / 60);
                 const hours = Math.floor(runtimeMinutes / 60);
                 const minutes = runtimeMinutes % 60;
-                let runtimeText = '';
-                if (hours > 0) {
-                    runtimeText = `${hours}h ${minutes > 0 ? minutes + 'm' : ''}`.trim();
-                } else {
-                    runtimeText = `${minutes}m`;
-                }
-                
-                const runtimeEl = document.createElement('span');
-                runtimeEl.textContent = runtimeText;
-                metadataRow.appendChild(runtimeEl);
-                
-                // End time (when it would end if started now)
-                const now = new Date();
-                // RunTimeTicks is in 100-nanosecond intervals, convert to milliseconds
-                const runtimeMs = item.RunTimeTicks / 10000;
-                const endTime = new Date(now.getTime() + runtimeMs);
-                const endTimeEl = document.createElement('span');
-                endTimeEl.className = 'spotlight-end-time';
-                endTimeEl.textContent = `Ends at ${endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-                metadataRow.appendChild(endTimeEl);
+                const runtimeText = hours > 0
+                    ? `${hours} h${minutes > 0 ? ` ${minutes} min` : ''}`
+                    : `${minutes} min`;
+                metadataParts.push(runtimeText);
             }
             
-            // Genres (on same line) - make clickable if IDs are available
-            if (item.Genres && item.Genres.length > 0) {
-                const genresContainer = document.createElement('span');
-
-                if (item.GenreItems && item.GenreItems.length > 0) {
-                    item.GenreItems.forEach((genreItem, index) => {
-                        const genreName = genreItem.Name;
-                        const genreId = genreItem.Id;
-                        
-                        if (genreName) {
-                            const genreLink = document.createElement('a');
-                            genreLink.className = 'spotlight-genre-link';
-                            genreLink.href = `${serverAddress}/web/#/list.html?genreId=${genreId}&serverId=${serverId}`;
-                            genreLink.textContent = genreName;
-                            genreLink.addEventListener('click', (e) => {
-                                e.stopPropagation();
-                            });
-                            if (index > 0) {
-                                const comma = document.createElement('span');
-                                comma.textContent = ', ';
-                                genresContainer.appendChild(comma);
-                            }
-
-                            genresContainer.appendChild(genreLink);
-                        }
-                    });
-                }
-                
-                if (genresContainer.children.length > 0) {
-                    metadataRow.appendChild(genresContainer);
-                }
+            const rating = item.CommunityRating ?? item.CriticRating;
+            if (typeof rating === 'number' && Number.isFinite(rating)) {
+                metadataParts.push(`★ ${rating.toFixed(1).replace('.', ',')}`);
             }
             
+            metadataRow.textContent = metadataParts.join(' • ');
+
             // Helper function to create truncated list that expands on ellipsis hover
             // items can be array of strings (names) or array of objects with Name and Id
             function createTruncatedList(label, items, maxItems = 3, isPeople = false) {                
@@ -1140,38 +1095,13 @@
             buttonsContainer.appendChild(watchlistButton);
             buttonsContainer.appendChild(infoButton);
             
-            // Rating with star icon
-            const rating = item.CommunityRating || item.CriticRating;
-
-            if (rating && typeof rating === 'number') {
-                const ratingContainer = document.createElement('div');
-                ratingContainer.className = 'spotlight-rating-container';
-                
-                const starIcon = document.createElement('span');
-                starIcon.className = 'material-icons spotlight-rating-star';
-                starIcon.textContent = 'star';
-                
-                const ratingValue = document.createElement('span');
-                ratingValue.className = 'spotlight-rating-value';
-                if (rating && typeof rating === 'number') {
-                    ratingValue.textContent = rating.toFixed(1);
-                } else {
-                    ratingValue.textContent = 'N/A';
-                    ratingValue.classList.add('na');
-                }
-                
-                ratingContainer.appendChild(starIcon);
-                ratingContainer.appendChild(ratingValue);
-                buttonsContainer.appendChild(ratingContainer);
-            }
-            
-            // Build overlay content in order: Name, Rating, Year+Time+EndsAt+Genres, Directed by, Written by, Taglines, Buttons
+            // Build overlay content in order: Name, Metadata, Directed by, Written by, Taglines, Buttons
             overlay.appendChild(titleEl);
 
             const metadataContainer = document.createElement('div');
             metadataContainer.className = 'metadata-container';
 
-            if (metadataRow.children.length > 0) {
+            if (metadataRow.textContent) {
                 metadataContainer.appendChild(metadataRow);
             }
             // For Series, show seasons/episodes. For Movies, show director/writer
