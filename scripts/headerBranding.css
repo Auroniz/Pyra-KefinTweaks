@@ -1,0 +1,27 @@
+/* Global Pyra branding for the existing Jellyfin home button. */
+.skinHeader .headerHomeButton {
+    width: 91px !important;
+    min-width: 91px !important;
+    padding: 0 !important;
+    background-image: url('../assets/branding/pyra-header-logo-white.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: auto 34px !important;
+}
+
+.skinHeader .headerHomeButton > .material-icons.home {
+    visibility: hidden;
+}
+
+.skinHeader .pageTitleWithDefaultLogo {
+    background-image: none !important;
+}
+
+@media (max-width: 600px) {
+    .skinHeader .headerHomeButton {
+        width: 48px !important;
+        min-width: 48px !important;
+        background-image: url('../assets/branding/pyra-header-icon-white.png') !important;
+        background-size: 32px 32px !important;
+    }
+}

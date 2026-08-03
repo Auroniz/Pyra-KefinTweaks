@@ -82,6 +82,7 @@
         homeScreen: true,         // Custom home screen sections
         search: true,             // Enhanced search functionality
         headerTabs: true,         // Header tab enhancements
+        headerBranding: true,     // Global Pyra header branding
         customMenuLinks: true,    // Custom menu links functionality
         exclusiveElsewhere: true, // Exclusive elsewhere branding
         updoot: false,             // Upvote functionality
@@ -204,6 +205,14 @@
             css: null,
             dependencies: [],
             description: 'Header tab improvements'
+        },
+        {
+            name: 'headerBranding',
+            script: 'headerBranding.js',
+            css: 'headerBranding.css',
+            dependencies: [],
+            priority: true,
+            description: 'Replaces Jellyfin header branding with Pyra assets'
         },
         {
             name: 'customMenuLinks',
