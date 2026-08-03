@@ -146,36 +146,43 @@ div#discovery-loading-indicator:not(.show)::after {
     width: calc(100% - (2 * max(env(safe-area-inset-left),3.3%)));
 }
 
-.spotlight-section.pyra-main-hero {
+.spotlight-section.pyra-main-hero,
+.spotlight-section[data-custom-section-id="custom-custom-section-0"] {
     box-sizing: border-box;
+    align-self: stretch;
     width: 100% !important;
-    max-width: none;
-    margin-top: -4rem;
-    margin-right: 0;
-    margin-left: 0;
+    max-width: none !important;
+    margin-top: -4rem !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
     padding-right: 0 !important;
     padding-left: 0 !important;
     overflow-x: clip;
 }
 
-.spotlight-section.pyra-main-hero .spotlight-banner-container {
+.spotlight-section.pyra-main-hero .spotlight-banner-container,
+.spotlight-section[data-custom-section-id="custom-custom-section-0"] .spotlight-banner-container {
     border-radius: 0;
 }
 
-.spotlight-section.pyra-main-hero .spotlight-overlay {
+.spotlight-section.pyra-main-hero .spotlight-overlay,
+.spotlight-section[data-custom-section-id="custom-custom-section-0"] .spotlight-overlay {
     padding-left: max(40px, env(safe-area-inset-left));
 }
 
-.spotlight-section.pyra-main-hero .spotlight-section-title {
+.spotlight-section.pyra-main-hero .spotlight-section-title,
+.spotlight-section[data-custom-section-id="custom-custom-section-0"] .spotlight-section-title {
     left: max(20px, env(safe-area-inset-left));
 }
 
-.spotlight-section.pyra-main-hero .spotlight-nav-container {
+.spotlight-section.pyra-main-hero .spotlight-nav-container,
+.spotlight-section[data-custom-section-id="custom-custom-section-0"] .spotlight-nav-container {
     right: max(20px, env(safe-area-inset-right));
 }
 
 @media (max-width: 768px) {
-    .spotlight-section.pyra-main-hero .spotlight-overlay {
+    .spotlight-section.pyra-main-hero .spotlight-overlay,
+    .spotlight-section[data-custom-section-id="custom-custom-section-0"] .spotlight-overlay {
         padding-right: max(1rem, env(safe-area-inset-right)) !important;
         padding-left: max(1rem, env(safe-area-inset-left)) !important;
     }
