@@ -87,7 +87,7 @@ window.ModalSystem = (function() {
                 closeButton.setAttribute('is', 'paper-icon-button-light');
                 closeButton.className = 'btnCancel btnClose autoSize paper-icon-button-light';
                 closeButton.setAttribute('tabindex', '-1');
-                closeButton.title = 'Close';
+                closeButton.title = 'Fermer';
                 closeButton.onclick = () => closeModal(id);
 
                 const closeIcon = document.createElement('span');

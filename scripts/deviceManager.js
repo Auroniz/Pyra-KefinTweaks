@@ -167,7 +167,7 @@
             e.preventDefault();
             e.stopPropagation();
             
-            if (!confirm('Are you sure you want to remove this device?')) {
+            if (!confirm('Voulez-vous vraiment supprimer cet appareil ?')) {
                 return;
             }
             

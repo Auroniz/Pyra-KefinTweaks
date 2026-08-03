@@ -101,7 +101,7 @@
         removeButton.className = 'remove-continue-button';
         removeButton.setAttribute('data-action', 'none');
         removeButton.setAttribute('data-id', itemId);
-        removeButton.title = 'Remove from Continue Watching';
+        removeButton.title = 'Retirer de « Reprendre la lecture »';
         
         // Create the close icon
         const removeIcon = document.createElement('span');
@@ -137,7 +137,7 @@
                 removeButton.disabled = false;
                 
                 // Show error message to user
-                alert('Failed to remove from continue watching. Please try again.');
+                alert('Impossible de retirer cet élément. Veuillez réessayer.');
             }
         });
         

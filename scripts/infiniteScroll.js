@@ -74,7 +74,7 @@
         loadingDiv.id = 'infinite-scroll-loading-indicator';
         loadingDiv.innerHTML = `
             <div class="spinner"></div>
-            <span>Loading more content...</span>
+            <span>Chargement de contenu supplémentaire…</span>
         `;
         return loadingDiv;
     }
@@ -373,7 +373,7 @@
             const totalCount = totalRecordCount || '?';
             
             // Update the display to show current range
-            span.textContent = `1-${currentItemsCount} of ${totalCount}`;
+            span.textContent = `1–${currentItemsCount} sur ${totalCount}`;
             LOG('Updated pagination display:', { currentItemsCount, totalCount });
         });
     }

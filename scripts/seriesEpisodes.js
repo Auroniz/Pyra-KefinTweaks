@@ -222,7 +222,7 @@
         // Create select season button
         const selectButton = document.createElement('button');
         selectButton.className = 'emby-button raised season-selector-button';
-        selectButton.textContent = 'Select Season';
+        selectButton.textContent = 'Choisir une saison';
         selectButton.style.cssText = 'margin-left: 1em; padding: 0.5em 1em; font-size: 0.9em;';
         selectButton.setAttribute('aria-label', 'Select season');
 

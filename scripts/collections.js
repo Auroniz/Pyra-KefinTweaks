@@ -15,11 +15,11 @@
 
     // Sort options
     const SORT_OPTIONS = {
-        'sortTitle': { label: 'Sort Title', field: 'SortName', defaultDirection: 'asc' },
-        'releaseDate': { label: 'Release Date', field: 'PremiereDate', defaultDirection: 'asc' },
-        'dateAdded': { label: 'Date Added', field: 'DateCreated', defaultDirection: 'desc' },
-        'communityRating': { label: 'Community Rating', field: 'CommunityRating', defaultDirection: 'desc' },
-        'criticRating': { label: 'Critic Rating', field: 'CriticRating', defaultDirection: 'desc' }
+        'sortTitle': { label: 'Titre de tri', field: 'SortName', defaultDirection: 'asc' },
+        'releaseDate': { label: 'Date de sortie', field: 'PremiereDate', defaultDirection: 'asc' },
+        'dateAdded': { label: 'Date d’ajout', field: 'DateCreated', defaultDirection: 'desc' },
+        'communityRating': { label: 'Note des utilisateurs', field: 'CommunityRating', defaultDirection: 'desc' },
+        'criticRating': { label: 'Note de la critique', field: 'CriticRating', defaultDirection: 'desc' }
     };
 
     // Map DisplayOrder values to our sort keys
@@ -250,7 +250,7 @@
 
         // Build modal content matching watchlist sort modal structure
         const sortOptionsContent = `
-            <h2 style="margin: 0 0 .5em;">Sort By</h2>
+            <h2 style="margin: 0 0 .5em;">Trier par</h2>
             <div>
                 ${Object.entries(SORT_OPTIONS).map(([key, option]) => {
                     const checked = key === currentSort ? 'checked=""' : '';
@@ -274,7 +274,7 @@
                     `;
                 }).join('')}
             </div>
-            <h2 style="margin: 1em 0 .5em;">Sort Order</h2>
+            <h2 style="margin: 1em 0 .5em;">Ordre de tri</h2>
             <div>
                 <label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
                     <input type="radio" is="emby-radio" name="sortDirection" value="asc" class="menuSortOrder mdl-radio__button" data-radio="true" ${currentDirection === 'asc' ? 'checked=""' : ''}>
@@ -290,7 +290,7 @@
                         </svg>
                         <div class="mdl-radio__focus-circle"></div>
                     </div>
-                    <span class="radioButtonLabel mdl-radio__label">Ascending</span>
+                    <span class="radioButtonLabel mdl-radio__label">Croissant</span>
                 </label>
                 <label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
                     <input type="radio" is="emby-radio" name="sortDirection" value="desc" class="menuSortOrder mdl-radio__button" data-radio="true" ${currentDirection === 'desc' ? 'checked=""' : ''}>
@@ -306,7 +306,7 @@
                         </svg>
                         <div class="mdl-radio__focus-circle"></div>
                     </div>
-                    <span class="radioButtonLabel mdl-radio__label">Descending</span>
+                    <span class="radioButtonLabel mdl-radio__label">Décroissant</span>
                 </label>
             </div>
         `;
@@ -368,7 +368,7 @@
         const button = document.createElement('button');
         button.className = 'kt-collections-sort-btn paper-icon-button-light emby-button';
         button.setAttribute('is', 'paper-icon-button-light');
-        button.title = 'Sort Collection';
+        button.title = 'Trier la collection';
         button.style.cssText = 'margin-left: 0.5em; cursor: pointer; font-size: 0.7em; padding: 0;';
 
         // Create icon

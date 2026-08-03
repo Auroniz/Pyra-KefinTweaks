@@ -63,7 +63,7 @@
             recommendButton = document.createElement('button');
             recommendButton.setAttribute('is', 'paper-icon-button-light');
             recommendButton.className = 'btnRecommend detailButton emby-button paper-icon-button-light';
-            recommendButton.title = 'Recommend';
+            recommendButton.title = 'Recommander';
             recommendButton.innerHTML = '<span class="material-icons thumb_up" aria-hidden="true"></span>';
 			recommendButton.style.width = '43.64px';
 			recommendButton.style.height = '43.64px';
@@ -137,13 +137,13 @@
             `;
 
             const addCommentButton = document.createElement('button');
-            addCommentButton.textContent = '+ Add Comment';
+            addCommentButton.textContent = '+ Ajouter un commentaire';
             addCommentButton.className = "btnAddComment button-submit emby-button button-flat show-focus";
             addCommentButton.addEventListener('click', () => {
                 console.log('Add Comment button clicked');
                 if (!userId) {
                     console.log('No userId, cannot show comment form');
-                    alert('Please log in to add a comment');
+                    alert('Connectez-vous pour ajouter un commentaire.');
                     return;
                 }
                 commentForm.style.display = commentForm.style.display === 'none' ? 'block' : 'none';
@@ -152,8 +152,8 @@
             const commentForm = document.createElement('div');
             commentForm.style.display = 'none';
             commentForm.innerHTML = `
-                <textarea style="width: 100%; height: 60px; margin-bottom: 10px; border-radius: 4px; padding: 8px;" placeholder="Write your comment..."></textarea>
-                <button style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Send</button>
+                <textarea style="width: 100%; height: 60px; margin-bottom: 10px; border-radius: 4px; padding: 8px;" placeholder="Écrivez votre commentaire…"></textarea>
+                <button style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Envoyer</button>
             `;
             const sendButton = commentForm.querySelector('button');
             sendButton.addEventListener('click', () => {
@@ -168,7 +168,7 @@
                     });
                 } else {
                     console.log('Empty comment, not submitting');
-                    alert('Comment cannot be empty');
+                    alert('Le commentaire ne peut pas être vide.');
                 }
             });
 
@@ -201,12 +201,12 @@
             const itemId = getItemId();
             if (!itemId) {
                 console.log('No itemId found for comment');
-                alert('Cannot add comment: Item not found');
+                alert('Impossible d’ajouter le commentaire : élément introuvable.');
                 return;
             }
             if (!userId) {
                 console.log('No userId found for comment');
-                alert('Please log in to add a comment');
+                alert('Connectez-vous pour ajouter un commentaire.');
                 return;
             }
 
@@ -225,7 +225,7 @@
                 console.log('Comment submitted successfully');
             } catch (error) {
                 console.error('Error submitting comment:', error.message);
-                alert('Failed to submit comment: ' + error.message);
+                alert('Échec de l’envoi du commentaire : ' + error.message);
             }
         }
 
@@ -233,7 +233,7 @@
             console.log('Editing comment:', commentId);
             if (!userId) {
                 console.log('No userId found for editing comment');
-                alert('Please log in to edit comment');
+                alert('Connectez-vous pour modifier un commentaire.');
                 return;
             }
 
@@ -253,7 +253,7 @@
                 updateCommentsDisplay();
             } catch (error) {
                 console.error('Error editing comment:', error.message);
-                alert('Failed to edit comment: ' + error.message);
+                alert('Échec de la modification du commentaire : ' + error.message);
             }
         }
 
@@ -261,7 +261,7 @@
             console.log('Deleting comment:', commentId);
             if (!userId) {
                 console.log('No userId found for deleting comment');
-                alert('Please log in to delete comment');
+                alert('Connectez-vous pour supprimer un commentaire.');
                 return;
             }
 
@@ -281,7 +281,7 @@
                 updateCommentsDisplay();
             } catch (error) {
                 console.error('Error deleting comment:', error.message);
-                alert('Failed to delete comment: ' + error.message);
+                alert('Échec de la suppression du commentaire : ' + error.message);
             }
         }
 
@@ -319,7 +319,7 @@
                             const buttonGroup = document.createElement('div');
                             buttonGroup.style.cssText = 'margin-left: 10px; display: flex; flex-direction: column; gap: 4px;';
                             const editButton = document.createElement('button');
-                            editButton.textContent = 'Edit';
+                            editButton.textContent = 'Modifier';
                             editButton.style.cssText = `
                                 background: #2196F3;
                                 color: white;
@@ -330,13 +330,13 @@
                             `;
                             editButton.addEventListener('click', () => {
                                 console.log('Edit button clicked for comment:', comment.id);
-                                const newComment = prompt('Edit your comment:', comment.comment);
+                                const newComment = prompt('Modifiez votre commentaire :', comment.comment);
                                 if (newComment && newComment.trim()) {
                                     editComment(comment.id, newComment.trim());
                                 }
                             });
                             const deleteButton = document.createElement('button');
-                            deleteButton.textContent = 'Delete';
+                            deleteButton.textContent = 'Supprimer';
                             deleteButton.style.cssText = `
                                 background: #ff4444;
                                 color: white;
@@ -347,7 +347,7 @@
                             `;
                             deleteButton.addEventListener('click', () => {
                                 console.log('Delete button clicked for comment:', comment.id);
-                                if (confirm('Are you sure you want to delete this comment?')) {
+                                if (confirm('Voulez-vous vraiment supprimer ce commentaire ?')) {
                                     deleteComment(comment.id);
                                 }
                             });
@@ -359,11 +359,11 @@
                     });
                 } else {
                     console.log('No comments to display');
-                    commentsDisplay.innerHTML = '<p>No comments yet.</p>';
+                    commentsDisplay.innerHTML = '<p>Aucun commentaire pour le moment.</p>';
                 }
             } catch (error) {
                 console.error('Error fetching comments:', error.message);
-                commentsDisplay.innerHTML = '<p>Failed to load comments: ' + error.message + '</p>';
+                commentsDisplay.innerHTML = '<p>Échec du chargement des commentaires : ' + error.message + '</p>';
             }
         }
 
@@ -372,12 +372,12 @@
             const itemId = getItemId();
             if (!itemId) {
                 console.log('No itemId found');
-                alert('Cannot recommend: Item not found');
+                alert('Impossible de recommander : élément introuvable.');
                 return;
             }
             if (!userId) {
                 console.log('No userId found in credentials');
-                alert('Please log in to recommend');
+                alert('Connectez-vous pour recommander ce contenu.');
                 return;
             }
 
@@ -398,7 +398,7 @@
                 updateRecommendationDisplay();
             } catch (error) {
                 console.error('Error toggling recommendation:', error.message);
-                alert('Failed to toggle recommendation: ' + error.message);
+                alert('Échec de la modification de la recommandation : ' + error.message);
             }
         }
 
@@ -441,7 +441,7 @@
 					
 					// Add the "Recommended by:" heading to the flyout
 					const flyoutHeading = document.createElement('h4');
-					flyoutHeading.textContent = 'Recommended by:';
+                    flyoutHeading.textContent = 'Recommandé par :';
 					flyout.appendChild(flyoutHeading);
 
 					// Create the user list for the flyout
@@ -476,7 +476,7 @@
 				}
             } catch (error) {
                 console.error('Error fetching recommendations:', error.message);
-                displayArea.textContent = 'Failed to load recommendations: ' + error.message;
+                displayArea.textContent = 'Échec du chargement des recommandations : ' + error.message;
             }
         }
 
@@ -561,7 +561,7 @@
             recommendationsButton = document.createElement('button');
             recommendationsButton.setAttribute('is', 'paper-icon-button-light');
             recommendationsButton.className = 'headerButton btnRecommendations emby-button paper-icon-button-light';
-            recommendationsButton.title = 'Recommendations';
+            recommendationsButton.title = 'Recommandations';
             recommendationsButton.innerHTML = '<span class="material-icons star" aria-hidden="true"></span>'; // Fixed HTML syntax
             recommendationsButton.style.backgroundColor = '#00ff0000';
             try {
@@ -608,7 +608,7 @@
             adminButton = document.createElement('button');
             adminButton.setAttribute('is', 'paper-icon-button-light');
             adminButton.className = 'headerButton btnAdmin emby-button paper-icon-button-light';
-            adminButton.title = 'Admin Settings';
+            adminButton.title = 'Paramètres d’administration';
             adminButton.innerHTML = '<span class="material-icons settings" aria-hidden="true"></span>';
             adminButton.style.backgroundColor = '#00ff0000';
             try {
@@ -642,7 +642,7 @@
                     showAdminOverlay();
                 } catch (error) {
                     console.error('Error triggering showAdminOverlay:', error.message);
-                    alert('Failed to open admin settings: ' + error.message);
+                    alert('Échec de l’ouverture des paramètres d’administration : ' + error.message);
                 }
             });
         }
@@ -732,7 +732,7 @@
                 if (!Array.isArray(recommendations) || recommendations.length === 0) {
                     console.log('No recommendations available');
                     const noRecsMessage = document.createElement('p');
-                    noRecsMessage.textContent = 'No recommendations available yet.';
+                    noRecsMessage.textContent = 'Aucune recommandation pour le moment.';
                     noRecsMessage.style.cssText = 'width: 100%; text-align: center;';
                     overlay.appendChild(noRecsMessage);
                     overlay.style.display = 'flex';
@@ -785,8 +785,8 @@
                     card.innerHTML = `
                         ${imageUrl ? `<img src="${imageUrl}" style="width: 100%; border-radius: 4px;" alt="${itemDetails.Name || 'Item'}">` : ''}
                         ${logoUrl ? `<img src="${logoUrl}" style="max-width: 100%; margin-top: 5px;" alt="Logo">` : ''}
-                        ${!logoUrl ? `<h3 style="margin: 10px 0;">${itemDetails.Name || 'Unknown'}</h3>` : ''}
-                        <p style="font-size: 12px; font-style: italic;">Recommended by: ${usernames.join(', ')}</p>
+                        ${!logoUrl ? `<h3 style="margin: 10px 0;">${itemDetails.Name || 'Inconnu'}</h3>` : ''}
+                        <p style="font-size: 12px; font-style: italic;">Recommandé par : ${usernames.join(', ')}</p>
                     `;
 
                     overlay.appendChild(card);
@@ -798,7 +798,7 @@
             } catch (error) {
                 console.error('Error fetching recommendations:', error.message);
                 const errorMessage = document.createElement('p');
-                errorMessage.textContent = 'Failed to load recommendations: ' + error.message;
+                errorMessage.textContent = 'Échec du chargement des recommandations : ' + error.message;
                 errorMessage.style.cssText = 'width: 100%; text-align: center;';
                 overlay.appendChild(errorMessage);
                 overlay.style.display = 'flex';
@@ -810,7 +810,7 @@
             console.log('Attempting to open admin overlay for userId:', userId);
             if (!adminUserIds.includes(userId)) {
                 console.log('Access denied: User is not an admin');
-                alert('Access denied: Admin privileges required');
+                alert('Accès refusé : droits d’administration requis.');
                 return;
             }
 
@@ -911,17 +911,17 @@
                 const settingsForm = document.createElement('div');
                 settingsForm.style.cssText = 'margin-bottom: 20px;';
                 settingsForm.innerHTML = `
-                    <h2>Admin Settings</h2>
+                    <h2>Paramètres d’administration</h2>
                     <div style="margin-bottom: 10px;">
-                        <label>Global Recommendation Limit (0 for unlimited):</label>
+                        <label>Limite globale de recommandations (0 = illimité) :</label>
                         <input type="number" id="globalLimit" value="${settings.globalLimit || 0}" min="0" style="margin-left: 10px; padding: 5px;">
                     </div>
                     <div style="margin-bottom: 10px;">
-                        <label>User ID for Per-User Limit:</label>
-                        <input type="text" id="userIdLimit" placeholder="Enter User ID" style="margin-left: 10px; padding: 5px;">
+                        <label>Identifiant utilisateur pour une limite individuelle :</label>
+                        <input type="text" id="userIdLimit" placeholder="Saisir l’identifiant utilisateur" style="margin-left: 10px; padding: 5px;">
                         <input type="number" id="perUserLimit" value="0" min="0" style="margin-left: 10px; padding: 5px;">
                     </div>
-                    <button style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Save Settings</button>
+                    <button style="background: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Enregistrer les paramètres</button>
                 `;
                 const saveButton = settingsForm.querySelector('button');
                 saveButton.addEventListener('click', async () => {
@@ -940,10 +940,10 @@
                             throw new Error(`HTTP ${response.status}: ${await response.text()}`);
                         }
                         console.log('Settings saved');
-                        alert('Settings saved successfully');
+                        alert('Paramètres enregistrés.');
                     } catch (error) {
                         console.error('Error saving settings:', error.message);
-                        alert('Failed to save settings: ' + error.message);
+                        alert('Échec de l’enregistrement des paramètres : ' + error.message);
                     }
                 });
                 adminOverlay.appendChild(settingsForm);
@@ -960,10 +960,10 @@
 
                 const commentSection = document.createElement('div');
                 commentSection.innerHTML = `
-                    <h2>Manage Comments</h2>
+                    <h2>Gérer les commentaires</h2>
                     <div style="margin-bottom: 10px;">
-                        <label><input type="checkbox" id="selectAllComments"> Select All</label>
-                        <button id="deleteSelected" style="background: #ff4444; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Delete Selected</button>
+                        <label><input type="checkbox" id="selectAllComments"> Tout sélectionner</label>
+                        <button id="deleteSelected" style="background: #ff4444; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Supprimer la sélection</button>
                     </div>
                 `;
                 const selectAllCheckbox = commentSection.querySelector('#selectAllComments');
@@ -980,10 +980,10 @@
                     const selectedIds = Array.from(commentSection.querySelectorAll('.commentCheckbox:checked')).map(cb => cb.dataset.commentId);
                     if (selectedIds.length === 0) {
                         console.log('No comments selected for deletion');
-                        alert('No comments selected');
+                        alert('Aucun commentaire sélectionné.');
                         return;
                     }
-                    if (!confirm(`Are you sure you want to delete ${selectedIds.length} comment(s)?`)) {
+                    if (!confirm(`Voulez-vous vraiment supprimer ${selectedIds.length} commentaire${selectedIds.length > 1 ? 's' : ''} ?`)) {
                         console.log('Delete selected cancelled');
                         return;
                     }
@@ -1002,7 +1002,7 @@
                         showAdminOverlay(); // Refresh
                     } catch (error) {
                         console.error('Error deleting selected comments:', error.message);
-                        alert('Failed to delete some comments: ' + error.message);
+                        alert('Échec de la suppression de certains commentaires : ' + error.message);
                     }
                 });
 
@@ -1011,13 +1011,13 @@
                     commentDiv.style.cssText = 'margin-bottom: 10px; display: flex; align-items: center;';
                     commentDiv.innerHTML = `
                         <input type="checkbox" class="commentCheckbox" data-comment-id="${comment.id}" style="margin-right: 10px;">
-                        <p><strong>${comment.username}</strong> on Item ${comment.itemId}: ${comment.comment}</p>
-                        <button style="background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Delete</button>
+                        <p><strong>${comment.username}</strong> sur l’élément ${comment.itemId} : ${comment.comment}</p>
+                        <button style="background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 10px;">Supprimer</button>
                     `;
                     const deleteButton = commentDiv.querySelector('button');
                     deleteButton.addEventListener('click', async () => {
                         console.log('Delete button clicked for comment:', comment.id);
-                        if (!confirm('Are you sure you want to delete this comment?')) {
+                        if (!confirm('Voulez-vous vraiment supprimer ce commentaire ?')) {
                             console.log('Delete cancelled for comment:', comment.id);
                             return;
                         }
@@ -1033,7 +1033,7 @@
                             commentDiv.remove();
                         } catch (error) {
                             console.error('Error deleting comment:', error.message);
-                            alert('Failed to delete comment: ' + error.message);
+                            alert('Échec de la suppression du commentaire : ' + error.message);
                         }
                     });
                     commentSection.appendChild(commentDiv);
@@ -1045,9 +1045,9 @@
                 const bulkDeleteForm = document.createElement('div');
                 bulkDeleteForm.style.cssText = 'margin-top: 20px;';
                 bulkDeleteForm.innerHTML = `
-                    <h3>Bulk Delete Comments by User</h3>
-                    <input type="text" id="bulkUserId" placeholder="Enter User ID" style="margin-right: 10px; padding: 5px;">
-                    <button style="background: #ff4444; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Delete All Comments</button>
+                    <h3>Supprimer tous les commentaires d’un utilisateur</h3>
+                    <input type="text" id="bulkUserId" placeholder="Saisir l’identifiant utilisateur" style="margin-right: 10px; padding: 5px;">
+                    <button style="background: #ff4444; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Supprimer tous les commentaires</button>
                 `;
                 const bulkDeleteButton = bulkDeleteForm.querySelector('button');
                 bulkDeleteButton.addEventListener('click', async () => {
@@ -1055,10 +1055,10 @@
                     const bulkUserId = document.getElementById('bulkUserId').value.trim();
                     if (!bulkUserId) {
                         console.log('No userId provided for bulk delete');
-                        alert('Please enter a User ID');
+                        alert('Saisissez un identifiant utilisateur.');
                         return;
                     }
-                    if (!confirm(`Are you sure you want to delete all comments by user ${bulkUserId}?`)) {
+                    if (!confirm(`Voulez-vous vraiment supprimer tous les commentaires de l’utilisateur ${bulkUserId} ?`)) {
                         console.log('Bulk delete cancelled');
                         return;
                     }
@@ -1071,11 +1071,11 @@
                             throw new Error(`HTTP ${response.status}: ${await response.text()}`);
                         }
                         console.log('Bulk comments deleted for user:', bulkUserId);
-                        alert('Comments deleted successfully');
+                        alert('Commentaires supprimés.');
                         showAdminOverlay();
                     } catch (error) {
                         console.error('Error deleting bulk comments:', error.message);
-                        alert('Failed to delete comments: ' + error.message);
+                        alert('Échec de la suppression des commentaires : ' + error.message);
                     }
                 });
 
@@ -1087,7 +1087,7 @@
             } catch (error) {
                 console.error('Error loading admin overlay:', error.message);
                 const errorMessage = document.createElement('p');
-                errorMessage.textContent = 'Failed to load admin settings: ' + error.message;
+                errorMessage.textContent = 'Échec du chargement des paramètres d’administration : ' + error.message;
                 errorMessage.style.cssText = 'width: 100%; text-align: center;';
                 adminOverlay.appendChild(errorMessage);
                 adminOverlay.style.display = 'block';
@@ -1229,6 +1229,6 @@
         }
     } catch (error) {
         console.error('Critical error in script:', error.message);
-        alert('Script initialization failed: ' + error.message);
+        alert('Échec de l’initialisation du script : ' + error.message);
     }
 })();

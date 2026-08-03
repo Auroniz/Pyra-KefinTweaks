@@ -42,9 +42,9 @@
         const link = document.querySelector('.itemDetailPage:not(.hide) .streaming-lookup-container>div>div:first-child a');
         if (link && !link.classList.contains('exclusive')) {
             LOG('Modifying elsewhere link to show exclusive branding');
-            link.innerHTML = `Only available on ${serverName}`;
+            link.innerHTML = `Disponible uniquement sur ${serverName}`;
             link.classList.add("exclusive");
-            link.title = "Exclusive";
+            link.title = "Exclusivité";
             link.disable = true;
         }
     });

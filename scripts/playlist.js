@@ -22,12 +22,12 @@
 
     // Sort options
     const SORT_OPTIONS = {
-        'default': { label: 'Default', field: 'Default', defaultDirection: 'asc' },
-        'sortTitle': { label: 'Sort Title', field: 'SortName', defaultDirection: 'asc' },
-        'releaseDate': { label: 'Release Date', field: 'PremiereDate', defaultDirection: 'asc' },
-        'dateAdded': { label: 'Date Added', field: 'DateCreated', defaultDirection: 'desc' },
-        'communityRating': { label: 'Community Rating', field: 'CommunityRating', defaultDirection: 'desc' },
-        'criticRating': { label: 'Critic Rating', field: 'CriticRating', defaultDirection: 'desc' }
+        'default': { label: 'Par défaut', field: 'Default', defaultDirection: 'asc' },
+        'sortTitle': { label: 'Titre de tri', field: 'SortName', defaultDirection: 'asc' },
+        'releaseDate': { label: 'Date de sortie', field: 'PremiereDate', defaultDirection: 'asc' },
+        'dateAdded': { label: 'Date d’ajout', field: 'DateCreated', defaultDirection: 'desc' },
+        'communityRating': { label: 'Note des utilisateurs', field: 'CommunityRating', defaultDirection: 'desc' },
+        'criticRating': { label: 'Note de la critique', field: 'CriticRating', defaultDirection: 'desc' }
     };
 
     // Store playlist data per page
@@ -252,7 +252,7 @@
 
         // Build modal content matching collections sort modal structure
         const sortOptionsContent = `
-            <h2 style="margin: 0 0 .5em;">Sort By</h2>
+            <h2 style="margin: 0 0 .5em;">Trier par</h2>
             <div>
                 ${Object.entries(SORT_OPTIONS).map(([key, option]) => {
                     const checked = key === currentSort ? 'checked=""' : '';
@@ -276,7 +276,7 @@
                     `;
                 }).join('')}
             </div>
-            <h2 style="margin: 1em 0 .5em;">Sort Order</h2>
+            <h2 style="margin: 1em 0 .5em;">Ordre de tri</h2>
             <div>
                 <label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
                     <input type="radio" is="emby-radio" name="sortDirection" value="asc" class="menuSortOrder mdl-radio__button" data-radio="true" ${currentDirection === 'asc' ? 'checked=""' : ''}>
@@ -292,7 +292,7 @@
                         </svg>
                         <div class="mdl-radio__focus-circle"></div>
                     </div>
-                    <span class="radioButtonLabel mdl-radio__label">Ascending</span>
+                    <span class="radioButtonLabel mdl-radio__label">Croissant</span>
                 </label>
                 <label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
                     <input type="radio" is="emby-radio" name="sortDirection" value="desc" class="menuSortOrder mdl-radio__button" data-radio="true" ${currentDirection === 'desc' ? 'checked=""' : ''}>
@@ -308,7 +308,7 @@
                         </svg>
                         <div class="mdl-radio__focus-circle"></div>
                     </div>
-                    <span class="radioButtonLabel mdl-radio__label">Descending</span>
+                    <span class="radioButtonLabel mdl-radio__label">Décroissant</span>
                 </label>
             </div>
         `;
@@ -427,22 +427,22 @@
                 
                 if (isFirstItemPlayed) {
                     // Update button title/text to "Resume"
-                    playButton.title = 'Resume';
+                    playButton.title = 'Reprendre';
                     
                     // Also update any text content if present
                     const textSpan = playButton.querySelector('.detailButton-text, .buttonText');
                     if (textSpan) {
-                        textSpan.textContent = 'Resume';
+                        textSpan.textContent = 'Reprendre';
                     }
                     
                     LOG('First item is played, updated Play button to Resume');
                 } else {
                     // Ensure it says "Play"
-                    playButton.title = playButton.title || 'Play';
+                    playButton.title = playButton.title || 'Lecture';
                     
                     const textSpan = playButton.querySelector('.detailButton-text, .buttonText');
                     if (textSpan) {
-                        textSpan.textContent = 'Play';
+                        textSpan.textContent = 'Lecture';
                     }
                 }
             }
@@ -574,7 +574,7 @@
         button.setAttribute('is', 'emby-playstatebutton');
         button.type = 'button';
         button.className = 'button-flat btnPlaystate detailButton emby-button kt-playlist-sort-btn';
-        button.title = 'Sort Playlist';
+        button.title = 'Trier la playlist';
 
         // Create detailButton-content wrapper
         const contentWrapper = document.createElement('div');
@@ -672,7 +672,7 @@
         button.setAttribute('is', 'emby-playstatebutton');
         button.type = 'button';
         button.className = 'button-flat btnPlaystate detailButton emby-button kt-playlist-resume-btn';
-        button.title = 'Play from Beginning';
+        button.title = 'Lire depuis le début';
 
         // Create detailButton-content wrapper
         const contentWrapper = document.createElement('div');
