@@ -279,7 +279,7 @@ window.KefinTweaksConfig = {
                 },
                 "genreMovies": {
                     "enabled": true,
-                    "name": "[Genre] Movies",
+                    "name": "Films du genre [Genre]",
                     "itemLimit": 16,
                     "sortOrder": "Random",
                     "sortOrderDirection": "Ascending",
@@ -287,7 +287,7 @@ window.KefinTweaksConfig = {
                 },
                 "studioShows": {
                     "enabled": true,
-                    "name": "Shows from [Studio]",
+                    "name": "Séries de [Studio]",
                     "itemLimit": 16,
                     "sortOrder": "Random",
                     "sortOrderDirection": "Ascending",
@@ -352,7 +352,7 @@ window.KefinTweaksConfig = {
                 },
                 "starringActorRecentlyWatched": {
                     "enabled": true,
-                    "name": "Avec [Actor], car vous avez récemment regardé [Movie]",
+                    "name": "Avec [Actor], parce que vous avez récemment regardé [Movie]",
                     "itemLimit": 16,
                     "sortOrder": "Random",
                     "sortOrderDirection": "Ascending",
@@ -360,7 +360,7 @@ window.KefinTweaksConfig = {
                 },
                 "directedByDirectorRecentlyWatched": {
                     "enabled": true,
-                    "name": "Réalisé par [Director], car vous avez récemment regardé [Movie]",
+                    "name": "Réalisé par [Director], parce que vous avez récemment regardé [Movie]",
                     "itemLimit": 16,
                     "sortOrder": "Random",
                     "sortOrderDirection": "Ascending",
@@ -368,7 +368,7 @@ window.KefinTweaksConfig = {
                 },
                 "writtenByWriterRecentlyWatched": {
                     "enabled": true,
-                    "name": "Écrit par [Writer], car vous avez récemment regardé [Movie]",
+                    "name": "Écrit par [Writer], parce que vous avez récemment regardé [Movie]",
                     "itemLimit": 16,
                     "sortOrder": "Random",
                     "sortOrderDirection": "Ascending",

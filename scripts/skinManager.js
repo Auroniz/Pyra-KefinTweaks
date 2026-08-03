@@ -1317,7 +1317,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         appearanceButton.type = 'button';
         appearanceButton.setAttribute('is', 'paper-icon-button-light');
         appearanceButton.className = 'headerButton headerButtonRight headerAppearanceButton paper-icon-button-light';
-        appearanceButton.title = 'Appearance';
+        appearanceButton.title = 'Apparence';
         
         // Create the icon span
         const iconSpan = document.createElement('span');
@@ -1664,7 +1664,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
             gearIcon.setAttribute('data-optional-includes-gear', 'true');
             gearIcon.textContent = 'settings';
             gearIcon.style.cssText = 'font-size: 1em; margin-left: 0.5em; cursor: pointer; opacity: 0.7; transition: opacity 0.2s; vertical-align: middle;';
-            gearIcon.title = 'Configure additional skin options';
+            gearIcon.title = 'Configurer les options supplémentaires';
             gearIcon.addEventListener('mouseenter', () => {
                 gearIcon.style.opacity = '1';
             });
@@ -2007,7 +2007,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         // Create modal using ModalSystem (no footer - auto-save on change)
         const modal = window.ModalSystem.create({
             id: modalId,
-            title: `Optional CSS Modules`,
+            title: `Modules CSS facultatifs`,
             content: content,
             footer: null,
             closeOnBackdrop: true,
@@ -2128,7 +2128,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
             gearIcon.style.cursor = 'pointer';
             gearIcon.style.opacity = '0.7';
             gearIcon.style.transition = 'opacity 0.2s';
-            gearIcon.title = 'Configure additional skin options';
+            gearIcon.title = 'Configurer les options supplémentaires';
             gearIcon.addEventListener('mouseenter', () => {
                 gearIcon.style.opacity = '1';
             });

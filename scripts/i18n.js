@@ -63,7 +63,11 @@
             'home.becauseLiked': 'Parce que vous avez aimé [Movie]',
             'home.starring': 'Avec [Actor]',
             'home.directedBy': 'Réalisé par [Director]',
-            'home.writtenBy': 'Écrit par [Writer]'
+            'home.writtenBy': 'Écrit par [Writer]',
+            'home.becauseRecentlyWatched': 'Parce que vous avez récemment regardé [Movie]',
+            'home.starringRecentlyWatched': 'Avec [Actor], parce que vous avez récemment regardé [Movie]',
+            'home.directedRecentlyWatched': 'Réalisé par [Director], parce que vous avez récemment regardé [Movie]',
+            'home.writtenRecentlyWatched': 'Écrit par [Writer], parce que vous avez récemment regardé [Movie]'
         },
         en: {
             'common.close': 'Close', 'common.cancel': 'Cancel', 'common.confirm': 'Confirm',
@@ -94,7 +98,11 @@
             'home.studioShows': 'Shows from [Studio]', 'home.topStudioShows': 'Top Rated Shows from [Studio]',
             'home.becauseWatched': 'Because you watched [Movie]', 'home.becauseLiked': 'Because you liked [Movie]',
             'home.starring': 'Starring [Actor]', 'home.directedBy': 'Directed by [Director]',
-            'home.writtenBy': 'Written by [Writer]'
+            'home.writtenBy': 'Written by [Writer]',
+            'home.becauseRecentlyWatched': 'Because you recently watched [Movie]',
+            'home.starringRecentlyWatched': 'Starring [Actor] because you recently watched [Movie]',
+            'home.directedRecentlyWatched': 'Directed by [Director] because you recently watched [Movie]',
+            'home.writtenRecentlyWatched': 'Written by [Writer] because you recently watched [Movie]'
         }
     };
 
@@ -173,7 +181,11 @@
             'Because you liked [Movie]': 'home.becauseLiked',
             'Starring [Actor]': 'home.starring',
             'Directed by [Director]': 'home.directedBy',
-            'Written by [Writer]': 'home.writtenBy'
+            'Written by [Writer]': 'home.writtenBy',
+            'Because you recently watched [Movie]': 'home.becauseRecentlyWatched',
+            'Starring [Actor] because you recently watched [Movie]': 'home.starringRecentlyWatched',
+            'Directed by [Director] because you recently watched [Movie]': 'home.directedRecentlyWatched',
+            'Written by [Writer] because you recently watched [Movie]': 'home.writtenRecentlyWatched'
         };
         return templates[value] ? t(templates[value]) : value;
     }

@@ -415,7 +415,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (sortBtn) {
 			const currentDirection = direction || getCurrentSortDirection();
 			const directionText = currentDirection === 'asc' ? '↑' : '↓';
-			const label = SORT_OPTIONS[sortKey]?.label || 'Last Watched';
+			const label = SORT_OPTIONS[sortKey]?.label || 'Dernier visionnage';
 			const labelSpan = sortBtn.querySelector('.sort-label');
 			if (labelSpan) {
 				labelSpan.textContent = `${label} ${directionText}`;
@@ -538,7 +538,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (sortBtn) {
 			const currentDirection = direction || getCurrentMovieSortDirection();
 			const directionText = currentDirection === 'asc' ? '↑' : '↓';
-			const label = MOVIE_SORT_OPTIONS[sortKey]?.label || 'Last Watched';
+			const label = MOVIE_SORT_OPTIONS[sortKey]?.label || 'Dernier visionnage';
 			const labelSpan = sortBtn.querySelector('.sort-label');
 			if (labelSpan) {
 				labelSpan.textContent = `${label} ${directionText}`;
@@ -930,14 +930,14 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		} else {
 			showsHtml = allShows.map((show, index) => {
 				const rank = index + 1;
-				const episodesText = show.episodesWatched === 1 ? 'episode' : 'episodes';
+				const episodesText = show.episodesWatched === 1 ? 'épisode' : 'épisodes';
 				
 				return `
 					<div class="all-show-item">
 						<div class="show-rank">${rank}</div>
 						<div class="show-info">
 							<div class="show-name">${show.name}</div>
-							<div class="show-episodes">${show.episodesWatched} of ${show.totalEpisodes} ${episodesText} (${show.percentage}%)</div>
+							<div class="show-episodes">${show.episodesWatched} ${episodesText} sur ${show.totalEpisodes} (${show.percentage} %)</div>
 						</div>
 					</div>
 				`;
@@ -1791,28 +1791,28 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 	// Sorting configuration and functions
 	const SORT_OPTIONS = {
 		lastWatched: { 
-			label: 'Dernier visionnage', 
+			label: 'Dernier visionnage',
 			default: true,
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByLastWatched(a, b, direction)
 		},
 		name: { 
-			label: 'Nom', 
+			label: 'Nom',
 			defaultDirection: 'asc',
 			sortFn: (a, b, direction) => sortByName(a, b, direction)
 		},
 		progress: { 
-			label: 'Progression', 
+			label: 'Progression',
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByProgress(a, b, direction)
 		},
 		episodeCount: { 
-			label: 'Nombre d’épisodes', 
+			label: 'Nombre d’épisodes',
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByEpisodeCount(a, b, direction)
 		},
 		releaseDate: { 
-			label: 'Date de sortie', 
+			label: 'Date de sortie',
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByReleaseDate(a, b, direction)
 		}
@@ -1821,23 +1821,23 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 	// Movie-specific sorting configuration
 	const MOVIE_SORT_OPTIONS = {
 		lastWatched: { 
-			label: 'Dernier visionnage', 
+			label: 'Dernier visionnage',
 			default: true,
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortMovieByLastWatched(a, b, direction)
 		},
 		name: { 
-			label: 'Nom', 
+			label: 'Nom',
 			defaultDirection: 'asc',
 			sortFn: (a, b, direction) => sortMovieByName(a, b, direction)
 		},
 		premiereDate: { 
-			label: 'Date de première diffusion', 
+			label: 'Date de première diffusion',
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortMovieByPremiereDate(a, b, direction)
 		},
 		runtime: { 
-			label: 'Durée', 
+			label: 'Durée',
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortMovieByRuntime(a, b, direction)
 		}
@@ -2699,23 +2699,23 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		const date = new Date(dateString);
 		const diffInSeconds = Math.floor((now - date) / 1000);
 		
-		if (diffInSeconds < 60) return 'just now';
-		if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} minutes ago`;
-		if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)} hours ago`;
-		if (diffInSeconds < 2592000) return `${Math.floor(diffInSeconds / 86400)} days ago`;
-		if (diffInSeconds < 31536000) return `${Math.floor(diffInSeconds / 2592000)} months ago`;
-		return `${Math.floor(diffInSeconds / 31536000)} years ago`;
+		if (diffInSeconds < 60) return 'à l’instant';
+		if (diffInSeconds < 3600) return `il y a ${Math.floor(diffInSeconds / 60)} minute${diffInSeconds >= 120 ? 's' : ''}`;
+		if (diffInSeconds < 86400) return `il y a ${Math.floor(diffInSeconds / 3600)} heure${diffInSeconds >= 7200 ? 's' : ''}`;
+		if (diffInSeconds < 2592000) return `il y a ${Math.floor(diffInSeconds / 86400)} jour${diffInSeconds >= 172800 ? 's' : ''}`;
+		if (diffInSeconds < 31536000) return `il y a ${Math.floor(diffInSeconds / 2592000)} mois`;
+		return `il y a ${Math.floor(diffInSeconds / 31536000)} an${diffInSeconds >= 63072000 ? 's' : ''}`;
 	}
 
 	function formatLastWatchedDate(dateString) {
 		const date = new Date(dateString);
-		return date.toLocaleDateString('en-US', { 
+		return date.toLocaleDateString('fr-FR', {
 			month: 'short', 
 			day: 'numeric', 
 			year: 'numeric',
 			hour: 'numeric',
 			minute: '2-digit',
-			hour12: true
+			hour12: false
 		});
 	}
 
@@ -2846,13 +2846,13 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		
 		const showsHtml = topShows.map((show, index) => {
 			const rank = index + 1;
-			const episodesText = show.episodesWatched === 1 ? 'episode' : 'episodes';
+			const episodesText = show.episodesWatched === 1 ? 'épisode' : 'épisodes';
 			
 			return `
 				<div class="top-show-item">
 					<div class="show-rank">${rank}</div>
 					<div class="top-show-name" title="${show.name}">${show.name}</div>
-					<div class="top-show-episodes">${show.episodesWatched} of ${show.totalEpisodes} ${episodesText} (${show.percentage}%)</div>
+					<div class="top-show-episodes">${show.episodesWatched} ${episodesText} sur ${show.totalEpisodes} (${show.percentage} %)</div>
 				</div>
 			`;
 		}).join('');
@@ -3181,7 +3181,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					<h2>Historique des films</h2>
 					<div class="movie-history-stats-container">
 						<div class="movie-history-stats">
-							<span id="movie-count">0 Watched</span>
+							<span id="movie-count">0 vu</span>
 						</div>
 					</div>
 				</div>
@@ -3696,7 +3696,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			}
 		};
 
-		const setLoading = (isLoading, message = 'Loading playlists...') => {
+		const setLoading = (isLoading, message = 'Chargement des playlists…') => {
 			state.isLoading = isLoading;
 			playlistSelect.disabled = isLoading;
 			refreshBtn.disabled = isLoading;
@@ -3817,7 +3817,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 	function openPlaylistSyncConfirmation({ isNew, playlist, onSuccess }) {
 		if (!window.ModalSystem) {
-			alert('Modal system not available');
+			alert('Le système de modales n’est pas disponible.');
 			return;
 		}
 
@@ -3835,7 +3835,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		if (isNew) {
 			title = 'Créer une playlist depuis la liste';
-			message.textContent = 'A new playlist will be created containing the items currently on your watchlist.';
+			message.textContent = 'Une nouvelle playlist sera créée avec les éléments actuellement présents dans votre liste.';
 
 			nameInput = document.createElement('input');
 			nameInput.type = 'text';
@@ -3848,7 +3848,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			modalContent.appendChild(nameInput);
 		} else {
 			title = 'Synchroniser une playlist existante';
-			message.textContent = 'This will set the items in the playlist to be the items in your watchlist. Any items on this playlist which are not in your watchlist will be removed.';
+			message.textContent = 'Le contenu de la playlist sera remplacé par celui de votre liste. Les autres éléments seront retirés de la playlist.';
 			const playlistInfo = document.createElement('div');
 			playlistInfo.style.cssText = 'padding: 10px; border-radius: 4px; background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.9);';
 			playlistInfo.textContent = `Playlist : ${playlist?.Name || 'Inconnue'}`;
@@ -4197,27 +4197,27 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const successDiv = document.createElement('div');
 		successDiv.style.color = '#4caf50';
-		successDiv.textContent = `✓ Successfully imported: ${results.imported} item(s)`;
+		successDiv.textContent = `✓ Importés avec succès : ${results.imported}`;
 		summaryList.appendChild(successDiv);
 
 		if (results.skipped > 0) {
 			const skippedDiv = document.createElement('div');
 			skippedDiv.style.color = 'rgba(255, 255, 255, 0.7)';
-			skippedDiv.textContent = `⊘ Already in watchlist: ${results.skipped} item(s)`;
+			skippedDiv.textContent = `⊘ Déjà dans la liste : ${results.skipped}`;
 			summaryList.appendChild(skippedDiv);
 		}
 
 		if (results.notFound > 0) {
 			const notFoundDiv = document.createElement('div');
 			notFoundDiv.style.color = '#ff6b6b';
-			notFoundDiv.textContent = `✗ Not found in library: ${results.notFound} item(s)`;
+			notFoundDiv.textContent = `✗ Introuvables dans la médiathèque : ${results.notFound}`;
 			summaryList.appendChild(notFoundDiv);
 		}
 
 		if (results.errors > 0) {
 			const errorsDiv = document.createElement('div');
 			errorsDiv.style.color = '#ff6b6b';
-			errorsDiv.textContent = `✗ Errors: ${results.errors} item(s)`;
+			errorsDiv.textContent = `✗ Erreurs : ${results.errors}`;
 			summaryList.appendChild(errorsDiv);
 		}
 
@@ -4302,11 +4302,11 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 	// Validate import data
 	function validateImportData(data) {
 		if (!Array.isArray(data)) {
-			return { valid: false, message: 'Data must be an array of items.' };
+			return { valid: false, message: 'Les données doivent être un tableau d’éléments.' };
 		}
 
 		if (data.length === 0) {
-			return { valid: false, message: 'No items to import.' };
+			return { valid: false, message: 'Aucun élément à importer.' };
 		}
 
 		const errors = [];
@@ -4318,23 +4318,23 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 			// Check if item is an object
 			if (typeof item !== 'object' || item === null) {
-				errors.push(`Item ${itemNum}: Must be an object.`);
+				errors.push(`Élément ${itemNum} : doit être un objet.`);
 				continue;
 			}
 
 			// Check status field
 			if (item.status !== undefined && typeof item.status !== 'boolean') {
-				errors.push(`Item ${itemNum}: 'status' must be a boolean.`);
+				errors.push(`Élément ${itemNum} : « status » doit être un booléen.`);
 			}
 
 			// Check Type field (required)
 			const itemType = item.Type || item.type;
 			if (!itemType) {
-				errors.push(`Item ${itemNum}: 'Type' field is required (Movie, Series, Season, or Episode).`);
+				errors.push(`Élément ${itemNum} : le champ « Type » est requis (Movie, Series, Season ou Episode).`);
 				continue;
 			}
 			if (!['Movie', 'Series', 'Season', 'Episode'].includes(itemType)) {
-				errors.push(`Item ${itemNum}: 'Type' must be one of: Movie, Series, Season, Episode.`);
+				errors.push(`Élément ${itemNum} : « Type » doit être Movie, Series, Season ou Episode.`);
 				continue;
 			}
 
@@ -4344,7 +4344,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			const tvdb = item.Tvdb || item.tvdb;
 
 			if (!imdb && !tmdb && !tvdb) {
-				errors.push(`Item ${itemNum}: Must have at least one provider ID (Imdb, Tmdb, or Tvdb).`);
+				errors.push(`Élément ${itemNum} : au moins un identifiant Imdb, Tmdb ou Tvdb est requis.`);
 				continue;
 			}
 
@@ -4357,7 +4357,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			for (const key of providerKeys) {
 				if (providerIdMap.has(key)) {
 					const existingItem = providerIdMap.get(key);
-					errors.push(`Item ${itemNum}: Duplicate provider ID '${key}' found (also in item ${existingItem}).`);
+					errors.push(`Élément ${itemNum} : identifiant fournisseur « ${key} » en double (déjà présent dans l’élément ${existingItem}).`);
 				} else {
 					providerIdMap.set(key, itemNum);
 				}
@@ -5182,7 +5182,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Update button based on current watchlist status
 			const isInWatchlist = item.UserData.Likes ?? false;
 			watchlistButton.setAttribute('data-active', isInWatchlist.toString());
-			watchlistButton.title = isInWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist';
+			watchlistButton.title = isInWatchlist ? 'Retirer de Ma liste' : 'Ajouter à Ma liste';
 			
 			LOG(`Updated watchlist button on detail page for item ${currentItemId}: ${isInWatchlist ? 'in watchlist' : 'not in watchlist'}`);
 		} catch (err) {
@@ -5333,7 +5333,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					<div class="movie-poster-overlay">
 						<div class="movie-watched-badge">
 							<span class="material-icons check_circle"></span>
-							<span>Watched</span>
+							<span>Vu</span>
 						</div>
 						<button class="cardOverlayButton cardOverlayButton-hover emby-button ${favoriteClass}" onclick="event.preventDefault(); event.stopPropagation(); toggleMovieFavorite('${movie.Id}', this)">
 							<span class="material-icons ${favoriteIcon}"></span>
@@ -5352,7 +5352,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						<span>${runtime}</span>
 					</div>
 				</div>
-				<div class="movie-watched-date">Watched on ${watchedDate}</div>
+				<div class="movie-watched-date">Vu le ${watchedDate}</div>
 			</div>
 		`;
 
@@ -5715,7 +5715,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			const timeAgo = formatTimeAgo(lastWatchedEpisode.UserData.LastPlayedDate);
 			const formattedDate = formatLastWatchedDate(lastWatchedEpisode.UserData.LastPlayedDate);
 			const episodeInfo = lastWatchedEpisode.ParentIndexNumber && lastWatchedEpisode.IndexNumber ? `${lastWatchedEpisode.ParentIndexNumber}x${lastWatchedEpisode.IndexNumber.toString().padStart(2, '0')} ${lastWatchedEpisode.Name}` : lastWatchedEpisode.Name;
-			lastWatchedInfo = `Last watched <strong>${episodeInfo}</strong> ${timeAgo} on ${formattedDate}.`;
+			lastWatchedInfo = `Dernier visionnage : <strong>${episodeInfo}</strong> ${timeAgo}, le ${formattedDate}.`;
 		}
 
 		card.innerHTML = `
@@ -5743,15 +5743,15 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					<div class="progress-stats">
 						<span>
 						${percentage === 100 
-							? `Watched <strong>${watchedCount} of ${totalEpisodes}</strong> episodes - <strong>Series Complete!</strong>`
-							: `Watched <strong>${watchedCount} of ${totalEpisodes}</strong> episodes which leaves <strong>${remainingCount} episodes</strong> left to watch.`
+							? `<strong>${watchedCount} épisode${watchedCount > 1 ? 's' : ''} vu${watchedCount > 1 ? 's' : ''} sur ${totalEpisodes}</strong> — <strong>Série terminée !</strong>`
+							: `<strong>${watchedCount} épisode${watchedCount > 1 ? 's' : ''} vu${watchedCount > 1 ? 's' : ''} sur ${totalEpisodes}</strong> — <strong>${remainingCount} épisode${remainingCount > 1 ? 's' : ''}</strong> à regarder.`
 						}
 						</span>
 					</div>
 					${lastWatchedInfo ? `<div class="progress-last-watched">${lastWatchedInfo}</div>` : ''}
 					<div class="progress-actions">
-						<button class="action-link unwatched-toggle ${remainingCount === 0 ? 'hide' : ''}" data-series-id="${series.Id}">+ View Unwatched Episodes</button>
-						<button class="action-link mark-all-watched ${percentage === 100 ? 'hide' : ''}" data-series-id="${series.Id}">+ Mark All As Watched</button>
+						<button class="action-link unwatched-toggle ${remainingCount === 0 ? 'hide' : ''}" data-series-id="${series.Id}">+ Afficher les épisodes non vus</button>
+						<button class="action-link mark-all-watched ${percentage === 100 ? 'hide' : ''}" data-series-id="${series.Id}">+ Tout marquer comme vu</button>
 					</div>
 					<div class="unwatched-episodes-container" id="unwatched-${series.Id}" style="display: none;">
 						<div class="unwatched-episodes-list">
@@ -5771,11 +5771,11 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				// Show unwatched episodes
 				await loadUnwatchedEpisodes(series.Id, unwatchedContainer);
 				unwatchedContainer.style.display = 'block';
-				unwatchedToggle.textContent = '- Hide Unwatched Episodes';
+				unwatchedToggle.textContent = '− Masquer les épisodes non vus';
 			} else {
 				// Hide unwatched episodes
 				unwatchedContainer.style.display = 'none';
-				unwatchedToggle.textContent = '+ View Unwatched Episodes';
+				unwatchedToggle.textContent = '+ Afficher les épisodes non vus';
 			}
 		});
 
@@ -5875,7 +5875,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				chunk.dataset.isWatched = isWatched;
 				chunk.setAttribute('data-season', season);
 				chunk.setAttribute('data-episode', i + 1);
-				chunk.title = `S${season}:E${i + 1} (${isWatched ? 'Watched' : 'Unwatched'})`;
+				chunk.title = `S${season}:E${i + 1} (${isWatched ? 'Vu' : 'Non vu'})`;
 				
 				// Add click handler for all episodes
 				chunk.addEventListener('click', async (e) => {
@@ -5885,7 +5885,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					
 					// Show confirmation modal - episode details will be enhanced if available
 					const episodeInfo = {
-						title: `Episode ${i + 1}`, // Placeholder name
+						title: `Épisode ${i + 1}`, // Placeholder name
 						season: parseInt(season),
 						episode: i + 1,
 						seriesId: seriesId
@@ -5947,7 +5947,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						? ` (Part ${episodeNum - episode.IndexNumber + 1} of ${episode.IndexNumberEnd - episode.IndexNumber + 1})`
 						: '';
 					
-					chunk.title = `S${season}:E${episodeNum} - ${episode.Name}${partInfo} (${episode.UserData && episode.UserData.Played === true ? 'Watched' : 'Unwatched'})`;
+					chunk.title = `S${season}:E${episodeNum} - ${episode.Name}${partInfo} (${episode.UserData && episode.UserData.Played === true ? 'Vu' : 'Non vu'})`;
 					chunk.classList.remove('binary-chunk'); // Remove binary class
 					
 					// Add click handler for all episodes
@@ -5996,7 +5996,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				
 				// Update title
 				if (chunk.title) {
-					chunk.title = chunk.title.replace(/\((Watched|Unwatched)\)/, isWatched ? '(Watched)' : '(Unwatched)');
+					chunk.title = chunk.title.replace(/\((Vu|Non vu)\)/, isWatched ? '(Vu)' : '(Non vu)');
 				}
 			});
 			
@@ -6094,7 +6094,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Create episode list HTML
 			const episodesHtml = sortedEpisodes.map(episode => {
 				const seasonEpisode = `${episode.ParentIndexNumber}x${episode.IndexNumber.toString().padStart(2, '0')}`;
-				const episodeTitle = episode.Name || 'Untitled Episode';
+				const episodeTitle = episode.Name || 'Épisode sans titre';
 				const episodeDate = episode.PremiereDate ? new Date(episode.PremiereDate).toLocaleDateString() : '';
 				
 				// Check if episode has a valid image
@@ -6108,7 +6108,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				
 				return `
 					<div class="unwatched-episode-item" data-episode-id="${episode.Id}" data-series-id="${seriesId}" data-season="${episode.ParentIndexNumber}" data-episode="${episode.IndexNumber}" data-name="${episodeTitle}">
-						<button class="episode-watched-toggle" data-episode-id="${episode.Id}" title="Mark as watched">
+						<button class="episode-watched-toggle" data-episode-id="${episode.Id}" title="Marquer comme vu">
 							<span class="material-icons check"></span>
 						</button>
 						<div class="episode-image">
@@ -6148,7 +6148,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					const episode = episodeItem.getAttribute('data-episode');
 					
 					const episodeInfo = {
-						title: episodeName ? episodeName.replace(/^S\d+:E\d+\s*-\s*/, '') : 'Unknown Episode', // Remove season/episode prefix
+						title: episodeName ? episodeName.replace(/^S\d+:E\d+\s*-\s*/, '') : 'Épisode inconnu', // Remove season/episode prefix
 						season: season,
 						episode: episode,
 						seriesId: seriesId
@@ -6160,7 +6160,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			
 		} catch (err) {
 			ERR('Error loading unwatched episodes:', err);
-			listContainer.innerHTML = '<div class="unwatched-error">Error loading episodes</div>';
+			listContainer.innerHTML = '<div class="unwatched-error">Erreur lors du chargement des épisodes</div>';
 		}
 	}
 
@@ -6244,13 +6244,13 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 							chunkEl.classList.add('watched');
 							chunkEl.classList.remove('unwatched');
 							if (chunkEl.title) {
-								chunkEl.title = chunkEl.title.replace(/\(Unwatched\)/, '(Watched)');
+								chunkEl.title = chunkEl.title.replace(/\(Non vu\)/, '(Vu)');
 							}
 						} else {
 							chunkEl.classList.add('unwatched');
 							chunkEl.classList.remove('watched');
 							if (chunkEl.title) {
-								chunkEl.title = chunkEl.title.replace(/\(Watched\)/, '(Unwatched)');
+								chunkEl.title = chunkEl.title.replace(/\(Vu\)/, '(Non vu)');
 							}
 						}
 					}
@@ -6275,7 +6275,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					if (listContainer) {
 						const remainingEpisodes = listContainer.querySelectorAll('.unwatched-episode-item');
 						if (remainingEpisodes.length === 0) {
-							listContainer.innerHTML = '<div class="unwatched-empty">No unwatched episodes found</div>';
+							listContainer.innerHTML = '<div class="unwatched-empty">Aucun épisode non vu</div>';
 						}
 					}
 				}, 300);
@@ -6319,7 +6319,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		
 		// Disable button and show loading state
 		buttonElement.disabled = true;
-		buttonElement.textContent = 'Marking...';
+		buttonElement.textContent = 'Marquage…';
 		
 		try {
 			// Mark all episodes as played in parallel
@@ -6386,7 +6386,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			if (progressCard) {
 				const unwatchedContainer = progressCard.querySelector('.unwatched-episodes-container');
 				const listContainer = unwatchedContainer.querySelector('.unwatched-episodes-list');
-				listContainer.innerHTML = '<div class="unwatched-empty">No unwatched episodes found</div>';
+				listContainer.innerHTML = '<div class="unwatched-empty">Aucun épisode non vu</div>';
 				
 				// Hide the unwatched episodes container
 				unwatchedContainer.style.display = 'none';
@@ -6990,7 +6990,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (showsStats) {
 			if (showsCount > 0) {
 				showsStats.style.display = 'flex';
-				getElementByIdSafe('watchlist-shows-count').textContent = `${showsCount} Show${showsCount === 1 ? '' : 's'}`;
+				getElementByIdSafe('watchlist-shows-count').textContent = `${showsCount} série${showsCount > 1 ? 's' : ''}`;
 			} else {
 				showsStats.style.display = 'none';
 			}
@@ -7001,7 +7001,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (seasonsStats) {
 			if (seasonsCount > 0) {
 				seasonsStats.style.display = 'flex';
-				getElementByIdSafe('watchlist-seasons-count').textContent = `${seasonsCount} Season${seasonsCount === 1 ? '' : 's'}`;
+				getElementByIdSafe('watchlist-seasons-count').textContent = `${seasonsCount} saison${seasonsCount > 1 ? 's' : ''}`;
 			} else {
 				seasonsStats.style.display = 'none';
 			}
@@ -7012,7 +7012,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (episodesStats) {
 			if (episodesCount > 0) {
 				episodesStats.style.display = 'flex';
-				getElementByIdSafe('watchlist-episodes-count').textContent = `${episodesCount} Episode${episodesCount === 1 ? '' : 's'}`;
+				getElementByIdSafe('watchlist-episodes-count').textContent = `${episodesCount} épisode${episodesCount > 1 ? 's' : ''}`;
 			} else {
 				episodesStats.style.display = 'none';
 			}
@@ -7023,7 +7023,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (moviesStats) {
 			if (moviesCount > 0) {
 				moviesStats.style.display = 'flex';
-				getElementByIdSafe('watchlist-movies-count').textContent = `${moviesCount} Movie${moviesCount === 1 ? '' : 's'}`;
+				getElementByIdSafe('watchlist-movies-count').textContent = `${moviesCount} film${moviesCount > 1 ? 's' : ''}`;
 			} else {
 				moviesStats.style.display = 'none';
 			}
@@ -7090,7 +7090,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			const subtitle = emptyMessage.querySelector('.empty-message-subtitle');
 			
 			if (title) title.textContent = 'Aucune progression à afficher';
-			if (subtitle) subtitle.textContent = 'Start watching some shows to track your progress here';
+			if (subtitle) subtitle.textContent = 'Commencez une série pour suivre votre progression ici.';
 			
 			emptyMessage.style.display = 'none';
 		}
@@ -7304,7 +7304,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		watchlistButton.setAttribute('data-action', 'none');
 		watchlistButton.setAttribute('data-id', itemId);
 		watchlistButton.setAttribute('data-active', 'false');
-		watchlistButton.title = 'Add to Watchlist';
+		watchlistButton.title = 'Ajouter à Ma liste';
 		
 		// Create the bookmark icon
 		const watchlistIcon = document.createElement('span');
@@ -7326,7 +7326,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Update icon and title based on state
 			const isActive = watchlistButton.dataset.active === 'true';
 			// Icon state is handled by CSS class, no need to change textContent
-			watchlistButton.title = isActive ? 'Remove from Watchlist' : 'Add to Watchlist';
+			watchlistButton.title = isActive ? 'Retirer de Ma liste' : 'Ajouter à Ma liste';
 			
 			// Update watchlist cache immediately
 			await updateWatchlistCacheOnToggle(itemId, itemType, isActive);
@@ -7369,7 +7369,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Set button state if item is in watchlist
 			if (isInWatchlist) {
 				watchlistButton.dataset.active = 'true';
-				watchlistButton.title = 'Remove from Watchlist';
+				watchlistButton.title = 'Retirer de Ma liste';
 			}
 		}
 		
@@ -7460,7 +7460,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		const watchlistIcon = document.createElement('button');
 		watchlistIcon.setAttribute("is", "emby-button");
 		watchlistIcon.className = `watchlist-icon detailButton emby-button button-flat${isTVLayout ? ' show-focus' : ''}`;	
-		watchlistIcon.title = "Add to Watchlist";
+		watchlistIcon.title = "Ajouter à Ma liste";
 		watchlistIcon.dataset.active = 'false';
 		
 		// Add the content wrapper and icon span inside the button
@@ -7484,7 +7484,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			
 			// Update title based on state
 			const isActive = watchlistIcon.dataset.active === 'true';
-			watchlistIcon.title = isActive ? 'Remove from Watchlist' : 'Add to Watchlist';
+			watchlistIcon.title = isActive ? 'Retirer de Ma liste' : 'Ajouter à Ma liste';
 			
 			// Update watchlist cache immediately
 			// Get item type from the item data we already have
@@ -7498,7 +7498,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Set initial state based on current watchlist status
 			if (item.UserData && item.UserData.Likes) {
 				watchlistIcon.dataset.active = 'true';
-				watchlistIcon.title = 'Remove from Watchlist';
+				watchlistIcon.title = 'Retirer de Ma liste';
 			}
 		} else {
 			// Get item data to check if it should be shown and current state
@@ -7515,7 +7515,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				// Set initial state based on current watchlist status
 				if (item.UserData && item.UserData.Likes) {
 					watchlistIcon.dataset.active = 'true';
-					watchlistIcon.title = 'Remove from Watchlist';
+					watchlistIcon.title = 'Retirer de Ma liste';
 				}
 			}).catch(err => {
 				ERR('Error fetching item data:', err);
@@ -7612,7 +7612,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		watchlistButton.className = 'watchlist-button';
 		watchlistButton.setAttribute('data-item-id', itemId);
 		watchlistButton.setAttribute('data-active', 'false');
-		watchlistButton.title = 'Add to Watchlist';
+		watchlistButton.title = 'Ajouter à Ma liste';
 
 		// Add click event listener
 		watchlistButton.addEventListener('click', async (e) => {
@@ -7626,7 +7626,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 			// Update title based on state
 			const isActive = watchlistButton.dataset.active === 'true';
-			watchlistButton.title = isActive ? 'Remove from Watchlist' : 'Add to Watchlist';
+			watchlistButton.title = isActive ? 'Retirer de Ma liste' : 'Ajouter à Ma liste';
 
 			// Update watchlist cache immediately
 			const item = await ApiClient.getItem(ApiClient.getCurrentUserId(), itemId);
@@ -7646,7 +7646,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Set initial state based on current watchlist status
 			if (item.UserData && item.UserData.Likes) {
 				watchlistButton.dataset.active = 'true';
-				watchlistButton.title = 'Remove from Watchlist';
+				watchlistButton.title = 'Retirer de Ma liste';
 			}
 		}).catch(err => {
 			ERR('Error fetching item data for slide watchlist button:', err);

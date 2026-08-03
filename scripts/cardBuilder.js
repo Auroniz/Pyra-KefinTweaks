@@ -449,7 +449,7 @@
         watchedButton.setAttribute('data-serverid', serverId);
         watchedButton.setAttribute('data-itemtype', item.Type);
         watchedButton.setAttribute('data-played', item.UserData?.Played || 'false');
-        watchedButton.title = 'Marquer comme lu';
+        watchedButton.title = 'Marquer comme vu';
         
         const watchedIcon = document.createElement('span');
         watchedIcon.className = 'material-icons cardOverlayButtonIcon cardOverlayButtonIcon-hover check playstatebutton-icon-unplayed';
@@ -666,7 +666,7 @@
                 const titleLink = document.createElement('a');
                 titleLink.className = 'spotlight-section-title spotlight-title-link';
                 titleLink.textContent = title;
-                titleLink.title = 'Tout afficher';
+                titleLink.title = 'Tout voir';
                 titleLink.style.textDecoration = 'none';
 
                 const cssStyle = document.createElement('style');
@@ -973,7 +973,7 @@
                 const seasonText = `Saison ${seasonNumber}`;
                 const episodeNumber = item.IndexNumber || 0;
                 const episodeText = `Épisode ${episodeNumber}`;
-                seriesInfoContainer.textContent = `${seasonText} - ${episodeText}`;
+                seriesInfoContainer.textContent = `${seasonText} – ${episodeText}`;
             }
             
             // Taglines for Movies, Overview for Series

@@ -392,7 +392,7 @@
             const btnCore = document.createElement('button');
             btnCore.id = 'smart-search-core';
             btnCore.className = 'smart-search-btn emby-button raised button-submit active';
-            btnCore.textContent = 'Films/Séries';
+            btnCore.textContent = 'Films et séries';
             const btnMusic = document.createElement('button');
             btnMusic.id = 'smart-search-music';
             btnMusic.className = 'smart-search-btn emby-button';
@@ -576,7 +576,7 @@
         if (!toggleBtn) {
             toggleBtn = document.createElement('button');
             toggleBtn.id = 'persistent-toggle-btn';
-            toggleBtn.textContent = 'Utiliser la recherche classique';
+            toggleBtn.textContent = 'Utiliser la recherche standard';
             const searchFields = document.querySelector('.searchFields');
             if (searchFields) {
                 searchFields.appendChild(toggleBtn);
@@ -597,7 +597,7 @@
                 searchResults.forEach(sr => sr.style.display = 'none');
                 const resultsContainer = ensureSmartResultsContainer();
                 resultsContainer.style.display = '';
-                toggleBtn.textContent='Utiliser la recherche classique';
+                toggleBtn.textContent='Utiliser la recherche standard';
                 // Add smart-search-mode class to body for CSS targeting
                 document.body.classList.add('smart-search-mode');
             } else {

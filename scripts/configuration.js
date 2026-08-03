@@ -22,9 +22,9 @@
         { key: 'directedByTopDirector', label: 'Réalisé par [Top Director]', defaultName: 'Réalisé par [Director]' },
         { key: 'writtenByTopWriter', label: 'Écrit par [Top Writer]', defaultName: 'Écrit par [Writer]' },
         { key: 'becauseYouRecentlyWatched', label: 'Parce que vous avez récemment regardé [Movie]', defaultName: 'Parce que vous avez récemment regardé [Movie]' },
-        { key: 'starringActorRecentlyWatched', label: 'Avec [Actor], car vous avez récemment regardé [Movie]', defaultName: 'Avec [Actor], car vous avez récemment regardé [Movie]' },
-        { key: 'directedByDirectorRecentlyWatched', label: 'Réalisé par [Director], car vous avez récemment regardé [Movie]', defaultName: 'Réalisé par [Director], car vous avez récemment regardé [Movie]' },
-        { key: 'writtenByWriterRecentlyWatched', label: 'Écrit par [Writer], car vous avez récemment regardé [Movie]', defaultName: 'Écrit par [Writer], car vous avez récemment regardé [Movie]' }
+        { key: 'starringActorRecentlyWatched', label: 'Avec [Actor], parce que vous avez récemment regardé [Movie]', defaultName: 'Avec [Actor], parce que vous avez récemment regardé [Movie]' },
+        { key: 'directedByDirectorRecentlyWatched', label: 'Réalisé par [Director], parce que vous avez récemment regardé [Movie]', defaultName: 'Réalisé par [Director], parce que vous avez récemment regardé [Movie]' },
+        { key: 'writtenByWriterRecentlyWatched', label: 'Écrit par [Writer], parce que vous avez récemment regardé [Movie]', defaultName: 'Écrit par [Writer], parce que vous avez récemment regardé [Movie]' }
     ];
 
     const SUPPORTED_CUSTOM_SECTION_PARAMS = {
@@ -480,10 +480,10 @@
                     <div class="listItemContent" style="display: flex; gap: 1em; align-items: center; flex-wrap: wrap;">
                         <label class="checkboxContainer" style="display: flex; align-items: center; gap: 0.75em; cursor: pointer;">
                             <input type="checkbox" id="kefinTweaksEnabled" class="checkbox" ${isEnabled ? 'checked' : ''}>
-                            <span id="kefinTweaksEnabledLabel" class="listItemBodyText" style="margin: 0;">${isEnabled ? 'Enabled' : 'Disabled'}</span>
+                            <span id="kefinTweaksEnabledLabel" class="listItemBodyText" style="margin: 0;">${isEnabled ? 'Activé' : 'Désactivé'}</span>
                         </label>
-                        <button class="emby-button raised" id="changeKefinTweaksSourceBtn" style="padding: 0.75em 2em; font-size: 1em;" title="Switch between the Latest, Development, Version specific branches or point to your own self hosted location!">
-                            <span>Plugin Settings</span>
+                        <button class="emby-button raised" id="changeKefinTweaksSourceBtn" style="padding: 0.75em 2em; font-size: 1em;" title="Choisir une version ou une source auto-hébergée">
+                            <span>Paramètres de l’extension</span>
                         </button>
                     </div>
                 </div>
@@ -492,8 +492,8 @@
             <div class="paperList" style="margin-bottom: 2em;">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Feature Configuration</h3>
-                        <div class="listItemBodyText secondary">Toggle individual KefinTweaks features on or off. Existing configurations are maintained when disabling features.</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Configuration des fonctionnalités</h3>
+                        <div class="listItemBodyText secondary">Activez ou désactivez chaque fonctionnalité. Les réglages existants sont conservés.</div>
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.5em;">
@@ -504,8 +504,8 @@
             <div class="paperList" style="margin-bottom: 2em;">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Home Screen Configuration</h3>
-                        <div class="listItemBodyText secondary">Configure custom home screen sections and discovery features</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Configuration de l’accueil</h3>
+                        <div class="listItemBodyText secondary">Configurez les sections personnalisées et la découverte.</div>
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr; gap: 0.5em;">
@@ -516,8 +516,8 @@
             <div class="paperList" id="configSection_exclusiveElsewhere" style="margin-bottom: 2em; ${scripts.exclusiveElsewhere === false ? 'display: none;' : ''}">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Exclusive Elsewhere Configuration</h3>
-                        <div class="listItemBodyText secondary">Configure exclusive elsewhere branding behavior</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Configuration des exclusivités</h3>
+                        <div class="listItemBodyText secondary">Configurez l’affichage des contenus exclusifs.</div>
                     </div>
                 </div>
                 ${buildExclusiveElsewhereConfig(exclusiveElsewhere)}
@@ -526,8 +526,8 @@
             <div class="paperList" id="configSection_search" style="margin-bottom: 2em; ${scripts.search === false ? 'display: none;' : ''}">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Search Configuration</h3>
-                        <div class="listItemBodyText secondary">Configure search functionality</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Configuration de la recherche</h3>
+                        <div class="listItemBodyText secondary">Configurez le fonctionnement de la recherche.</div>
                     </div>
                 </div>
                 ${buildSearchConfig(search)}
@@ -536,8 +536,8 @@
             <div class="paperList" id="configSection_flattenSingleSeasonShows" style="margin-bottom: 2em; ${scripts.flattenSingleSeasonShows === false ? 'display: none;' : ''}">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Episodes On Series Page Configuration</h3>
-                        <div class="listItemBodyText secondary">Configure episodes display on series pages</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Épisodes sur la page de série</h3>
+                        <div class="listItemBodyText secondary">Configurez l’affichage des épisodes sur les pages de séries.</div>
                     </div>
                 </div>
                 ${buildFlattenShowsConfig(flattenSingleSeasonShows)}
@@ -546,24 +546,24 @@
             <div class="paperList" id="configSection_skin" style="margin-bottom: 2em; ${scripts.skinManager === false ? 'display: none;' : ''}">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Skin Configuration</h3>
-                        <div class="listItemBodyText secondary">Configure default skin and available skins for all users</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Configuration des thèmes</h3>
+                        <div class="listItemBodyText secondary">Configurez le thème par défaut et les thèmes proposés aux utilisateurs.</div>
                     </div>
                 </div>
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Default Skin</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Thème par défaut</div>
                         <select id="defaultSkin" class="fld emby-select-withcolor emby-select emby-select-withcolor emby-select-withcolor" style="width: 100%; max-width: 400px;">
                             ${allSkinNames.map(name => `<option value="${name}" ${config.defaultSkin === name ? 'selected' : ''}>${name}</option>`).join('')}
-                            ${allSkinNames.length === 0 ? '<option value="">No skins available</option>' : ''}
+                            ${allSkinNames.length === 0 ? '<option value="">Aucun thème disponible</option>' : ''}
                         </select>
-                        <div class="listItemBodyText secondary" style="margin-top: 0.5em; font-size: 0.9em;">Select a default skin for all users</div>
+                        <div class="listItemBodyText secondary" style="margin-top: 0.5em; font-size: 0.9em;">Choisissez le thème par défaut de tous les utilisateurs.</div>
                     </div>
                 </div>
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                     <div class="listItemContent" style="width: 100%;">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.5em;">Enable/Disable Skins</h3>
-                        <div class="listItemBodyText secondary" style="margin-bottom: 1em; font-size: 0.9em;">Disabled skins will not appear in the appearance dropdowns for users</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.5em;">Activer ou désactiver les thèmes</h3>
+                        <div class="listItemBodyText secondary" style="margin-bottom: 1em; font-size: 0.9em;">Les thèmes désactivés ne seront pas proposés aux utilisateurs.</div>
                         <div class="listItemBodyText secondary" style="margin-bottom: 1em; font-size: 0.85em; color: rgba(255,255,255,0.7); line-height: 1.5;">
                             All themes are created with love by community members like you. Don't forget to thank them for their work and time if you appreciate their creations.
                             KefinTweaks has not contributed to the creation of any of the skins below and is only attempting to facilitate their accessibility.
@@ -580,9 +580,9 @@
                         return `
                             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                                 <div class="listItemContent">
-                                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Some default skins have been overridden by custom configurations. Click the button below to remove custom skins that override defaults.</div>
+                                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Certains thèmes par défaut sont remplacés par une configuration personnalisée. Utilisez ce bouton pour supprimer ces doublons.</div>
                                     <button type="button" id="removeDuplicateDefaultsBtn" class="emby-button raised" style="padding: 0.5em 1.5em; font-size: 0.9em;">
-                                        <span>Remove Custom Skins Overriding Defaults</span>
+                                        <span>Supprimer les thèmes personnalisés en double</span>
                                     </button>
                                 </div>
                             </div>
@@ -592,11 +592,11 @@
                 })()}
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Optional CSS Modules</h3>
-                        <div class="listItemBodyText secondary" style="margin-bottom: 1em; font-size: 0.9em;">Configure default enabled/disabled state for optional CSS modules. These settings will be used when users haven't specified their own preferences.</div>
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Select Skin</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Modules CSS facultatifs</h3>
+                        <div class="listItemBodyText secondary" style="margin-bottom: 1em; font-size: 0.9em;">Définissez l’état par défaut des modules CSS facultatifs lorsque l’utilisateur n’a pas choisi ses préférences.</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Choisir un thème</div>
                         <select id="optionalIncludesCategory" class="fld emby-select-withcolor emby-select emby-select-withcolor emby-select-withcolor" style="width: 100%; max-width: 400px; margin-bottom: 1em;">
-                            <option value="global">Global (applies to all skins)</option>
+                            <option value="global">Global (tous les thèmes)</option>
                             ${buildOptionalIncludesSkinOptions(skins)}
                         </select>
                         <div id="optionalIncludesEditor" style="margin-top: 1em;">
@@ -611,10 +611,10 @@
                     </summary>
                     <div style="padding: 0.75em; border-top: 1px solid rgba(255,255,255,0.1);">
                         <div class="listItemContent">
-                            <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Add additional skins that will be available to all users. Each skin can have multiple CSS files for different server versions. You can override the Default skins from KefinTweaks by specifying a custom configuration with that Skin Name in the configuration JSON below. Any skins that appear in this JSON and are named the same as the KefinTweaks default skins will override the default functionality. Default skins are not shown here as they are managed separately.</div>
+                            <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Ajoutez des thèmes accessibles à tous les utilisateurs. Un thème peut contenir plusieurs fichiers CSS selon la version du serveur.</div>
                             <textarea id="skinsJson" class="fld emby-textarea" rows="15" placeholder='[{"name":"Skin Name","author":"Author","url":[...]}]' style="width: 100%; font-family: monospace; font-size: 0.9em; line-height: 1.5;">${JSON.stringify(config.skins || [], null, 2)}</textarea>
                             <details style="margin-top: 0.75em;">
-                                <summary class="listItemBodyText secondary" style="font-size: 0.9em; color: #4a9eff;">View Example Format</summary>
+                                <summary class="listItemBodyText secondary" style="font-size: 0.9em; color: #4a9eff;">Voir un exemple de format</summary>
                                 <pre style="background: rgba(0,0,0,0.3); padding: 1em; border-radius: 4px; margin-top: 0.5em; overflow-x: auto; font-size: 0.85em; line-height: 1.6;">[
   {
     "name": "Custom Skin",
@@ -648,17 +648,17 @@
             <div class="paperList" id="configSection_theme" style="margin-bottom: 2em; ${scripts.skinManager === false ? 'display: none;' : ''}">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Theme Configuration</h3>
-                        <div class="listItemBodyText secondary">Configure additional themes available to all users</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Configuration des variantes</h3>
+                        <div class="listItemBodyText secondary">Configurez les variantes supplémentaires proposées aux utilisateurs.</div>
                     </div>
                 </div>
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                     <div class="listItemContent">
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Themes JSON</div>
-                        <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Add additional themes that will be available to all users. Each theme should have a name and URL pointing to a CSS file.</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Variantes JSON</div>
+                        <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Ajoutez des variantes accessibles à tous les utilisateurs avec un nom et l’URL d’un fichier CSS.</div>
                         <textarea id="themesJson" class="fld emby-textarea" rows="12" placeholder='[{"name":"Theme Name","url":"https://..."}]' style="width: 100%; font-family: monospace; font-size: 0.9em; line-height: 1.5;">${JSON.stringify(themes, null, 2)}</textarea>
                         <details style="margin-top: 0.75em;">
-                            <summary class="listItemBodyText secondary" style="font-size: 0.9em; color: #4a9eff;">View Example Format</summary>
+                            <summary class="listItemBodyText secondary" style="font-size: 0.9em; color: #4a9eff;">Voir un exemple de format</summary>
                             <pre style="background: rgba(0,0,0,0.3); padding: 1em; border-radius: 4px; margin-top: 0.5em; overflow-x: auto; font-size: 0.85em; line-height: 1.6;">[
   {
     "name": "Custom Dark Theme",
@@ -677,17 +677,17 @@
             <div class="paperList" id="configSection_customMenuLinks" style="margin-bottom: 2em; ${scripts.customMenuLinks === false ? 'display: none;' : ''}">
                 <div class="listItem" style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1em; margin-bottom: 1em;">
                     <div class="listItemContent">
-                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Custom Menu Links</h3>
-                        <div class="listItemBodyText secondary">Configure custom menu links to be added to the custom menu</div>
+                        <h3 class="listItemBodyText" style="margin-bottom: 0.25em;">Liens de menu personnalisés</h3>
+                        <div class="listItemBodyText secondary">Configurez les liens ajoutés au menu personnalisé.</div>
                     </div>
                 </div>
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                     <div class="listItemContent">
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Custom Menu Links JSON</div>
-                        <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Add custom menu links that will appear in the custom menu. Use Material icon names for icons.</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Liens personnalisés JSON</div>
+                        <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Ajoutez des liens au menu personnalisé. Utilisez les noms Material Icons pour les icônes.</div>
                         <textarea id="customMenuLinksJson" class="fld emby-textarea" rows="12" placeholder='[{"name":"Link Name","icon":"link","url":"#/..."}]' style="width: 100%; font-family: monospace; font-size: 0.9em; line-height: 1.5;">${JSON.stringify(customMenuLinks, null, 2)}</textarea>
                         <details style="margin-top: 0.75em;">
-                            <summary class="listItemBodyText secondary" style="font-size: 0.9em; color: #4a9eff;">View Example Format</summary>
+                            <summary class="listItemBodyText secondary" style="font-size: 0.9em; color: #4a9eff;">Voir un exemple de format</summary>
                             <pre style="background: rgba(0,0,0,0.3); padding: 1em; border-radius: 4px; margin-top: 0.5em; overflow-x: auto; font-size: 0.85em; line-height: 1.6;">[
   {
     "name": "My Custom Link",
@@ -895,7 +895,7 @@
                                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5em; gap: 0.5em;">
                                     <div style="flex: 1; min-width: 0;">
                                         <div class="listItemBodyText" style="font-weight: 500; margin-bottom: 0.25em;">${include.name}</div>
-                                        ${author ? `<div class="listItemBodyText secondary" style="font-size: 0.85em;">by <a href="https://github.com/${author}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">${author}</a></div>` : ''}
+                                        ${author ? `<div class="listItemBodyText secondary" style="font-size: 0.85em;">par <a href="https://github.com/${author}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; opacity: 0.8; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">${author}</a></div>` : ''}
                                     </div>
                                     <input type="checkbox" 
                                            id="optionalInclude_${category}_${index}" 
@@ -1023,7 +1023,7 @@
             'Series', 'Studio', 'Trailer', 'TvChannel', 'TvProgram', 'UserRootFolder', 'UserView', 'Video', 'Year'
         ];
         
-        const selectionLabel = currentTypes.length ? `${currentTypes.length} selected` : 'Select item types';
+        const selectionLabel = currentTypes.length ? `${currentTypes.length} sélectionné${currentTypes.length > 1 ? 's' : ''}` : 'Choisir les types de contenus';
         
         // Current types as badges
         const badgesHtml = currentTypes.map(typeName => `
@@ -1047,8 +1047,8 @@
             <div class="${prefix}_section_includeItemTypes_container" data-section-index="${sectionIndex}" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; position: static;">
                 <div style="position: relative;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5em;">
-                        <div class="listItemBodyText">Include Item Types</div>
-                        <button type="button" class="badge-clear-all" data-section-index="${sectionIndex}" data-field="includeItemTypes" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.25em 0.5em; color: rgba(255,255,255,0.87); cursor: pointer; font-size: 0.85em;" title="Clear All">Clear All</button>
+                        <div class="listItemBodyText">Types de contenus inclus</div>
+                        <button type="button" class="badge-clear-all" data-section-index="${sectionIndex}" data-field="includeItemTypes" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.25em 0.5em; color: rgba(255,255,255,0.87); cursor: pointer; font-size: 0.85em;" title="Tout effacer">Tout effacer</button>
                     </div>
                     <div class="tag-badge-container includeItemTypes-badge-container" data-section-index="${sectionIndex}" data-prefix="${prefix}" data-available-types="${allAvailableTypes.join(',')}" style="border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.5em; margin-bottom: 0.5em; background: rgba(0,0,0,0.2); display: flex; flex-direction: column; gap: 0.5em; position: relative;">
                         <button type="button" class="includeItemTypes-dropdown-toggle" data-section-index="${sectionIndex}" style="display: inline-flex; align-items: center; justify-content: space-between; gap: 0.5em; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.35em 0.75em; color: rgba(255,255,255,0.87); cursor: pointer; font-size: 0.9em;">
@@ -1062,7 +1062,7 @@
                         </div>
                         <input type="text" class="${prefix}_section_includeItemTypes fld emby-input includeItemTypes-input-proxy" data-section-index="${sectionIndex}" data-prefix="${prefix}" data-field="includeItemTypes" autocomplete="off" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
                         <div class="includeItemTypes-badges" style="flex: 1; min-height: 2.5em; min-width: 0; display: flex; flex-wrap: wrap; gap: 0.25em; align-items: flex-start; overflow-wrap: break-word;">
-                            <span class="includeItemTypes-empty" ${currentTypes.length ? 'hidden' : ''} style="opacity: 0.6; font-size: 0.9em; margin: 0.25em;">No item types selected</span>
+                            <span class="includeItemTypes-empty" ${currentTypes.length ? 'hidden' : ''} style="opacity: 0.6; font-size: 0.9em; margin: 0.25em;">Aucun type sélectionné</span>
                             ${badgesHtml}
                         </div>
                     </div>
@@ -1082,14 +1082,14 @@
 
         return `
             <div class="${prefix}_section_additionalOptions_controls" data-section-index="${sectionIndex}" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; position: static;">
-                <div class="listItemBodyText" style="margin-bottom: 0.5em;">Additional Options</div>
+                <div class="listItemBodyText" style="margin-bottom: 0.5em;">Options supplémentaires</div>
                 <div style="display: flex; gap: 0.5em; align-items: center;">
                     <select class="fld emby-select-withcolor emby-select additional-option-select" style="flex: 1; margin: 0; min-width: 0;">
-                        <option value="">Select an option to add...</option>
+                        <option value="">Choisir une option à ajouter…</option>
                         ${dropdownOptions}
                     </select>
                     <button type="button" class="raised emby-button add-additional-option" style="background: rgba(0, 164, 220, 0.2); min-width: auto; padding: 0.5em 1em;">
-                        <span>Add</span>
+                        <span>Ajouter</span>
                     </button>
                 </div>
             </div>
@@ -1194,7 +1194,7 @@
             sourceFieldHtml = `
                 <div class="${prefix}_section_source_container" data-section-index="${sectionIndex}" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; position: static;">
                     <div style="position: relative;">
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Parent IDs (comma-separated, leave empty for "Any")</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Identifiants parents (séparés par des virgules, vide = tous)</div>
                         <input type="text" class="${prefix}_section_source fld emby-input" data-section-index="${sectionIndex}" data-prefix="${prefix}" data-type="${type}" value="${parentIds}" placeholder="Enter parent IDs (e.g., collection-id, playlist-id) or leave empty" style="width: 100%;">
                         <input type="hidden" class="${prefix}_section_source_hidden" data-section-index="${sectionIndex}" value="${parentIds}">
                     </div>
@@ -1273,15 +1273,15 @@
                 <!-- Row 1: Enabled, Render Mode, Discovery, Type -->
                 <div class="listItem" style="display: grid; grid-template-columns: auto auto auto 1fr; gap: 1em; align-items: end; margin: 0.75em 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                     <div>
-                        <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Enabled</div>
+                        <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Activé</div>
                         ${buildJellyfinCheckbox(`${prefix}_section_enabled_${sectionIndex}`, enabled, '', { 'data-section-index': sectionIndex, 'data-prefix': prefix, 'class': `${prefix}_section_enabled` })}
                     </div>
                     <div>
-                        <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Render Mode</div>
+                        <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Mode de rendu</div>
                         <select class="${prefix}_section_renderMode fld emby-select-withcolor emby-select" data-section-index="${sectionIndex}" data-prefix="${prefix}" style="width: 100%;">
                             <option value="Normal" ${renderMode === 'Normal' ? 'selected' : ''}>Normal</option>
                             <option value="Spotlight" ${renderMode === 'Spotlight' ? 'selected' : ''}>Spotlight</option>
-                            <option value="Random" ${renderMode === 'Random' ? 'selected' : ''}>Random</option>
+                            <option value="Random" ${renderMode === 'Random' ? 'selected' : ''}>Aléatoire</option>
                         </select>
                     </div>
                     <div>
@@ -1295,7 +1295,7 @@
                             <option value="Genre" ${type === 'Genre' ? 'selected' : ''}>Genre</option>
                             <option value="Playlist" ${type === 'Playlist' ? 'selected' : ''}>Playlist</option>
                             <option value="Collection" ${type === 'Collection' ? 'selected' : ''}>Collection</option>
-                            <option value="Parent" ${type === 'Parent' ? 'selected' : ''}>Generic Query</option>
+                            <option value="Parent" ${type === 'Parent' ? 'selected' : ''}>Requête générique</option>
                         </select>
                     </div>
                 </div>
@@ -1309,7 +1309,7 @@
                     <!-- Search Term field -->
                     <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                         <div class="listItemContent">
-                            <div class="listItemBodyText" style="margin-bottom: 0.5em;">Search Term</div>
+                            <div class="listItemBodyText" style="margin-bottom: 0.5em;">Terme de recherche</div>
                             <input type="text" id="${sanitizedSectionPrefix}_searchTerm" class="fld emby-input" value="${searchTerm}" placeholder="Optional search filter" style="width: 100%;">
                         </div>
                     </div>
@@ -1334,7 +1334,7 @@
             const orderClass = prefix === 'customSection' ? 'custom-section-order' : 'seasonal-section-order';
             const showPreviewButton = prefix === 'customSection' || prefix === 'seasonal_season';
             const previewButtonHtml = showPreviewButton
-                ? `<button class="emby-button preview-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">Preview</button>`
+                ? `<button class="emby-button preview-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">Aperçu</button>`
                 : '';
             
             return `
@@ -1342,12 +1342,12 @@
                     <summary class="${summaryClass}" data-section-index="${sectionIndex}" style="display: flex; justify-content: space-between; align-items: center; padding: 1em; cursor: pointer; list-style: none; user-select: none;">
                         <div class="listItemBodyText" style="font-weight: 500; display: flex; align-items: center; gap: 0.5em;">
                             <span class="material-icons" style="font-size: 1.2em; transition: transform 0.2s;">chevron_right</span>
-                        <span class="${nameClass}" data-section-index="${sectionIndex}">${name || 'Unnamed Section'}</span>
-                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="${enabledClass}" data-section-index="${sectionIndex}">${enabled ? 'Enabled' : 'Disabled'}</span>, Order: <span class="${orderClass}" data-section-index="${sectionIndex}">${order}</span>)</span>
+                        <span class="${nameClass}" data-section-index="${sectionIndex}">${name || 'Section sans nom'}</span>
+                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="${enabledClass}" data-section-index="${sectionIndex}">${enabled ? 'Activé' : 'Désactivé'}</span>, position : <span class="${orderClass}" data-section-index="${sectionIndex}">${order}</span>)</span>
                         </div>
                         <div style="display: flex; gap: 0.5em;">
                             ${previewButtonHtml}
-                            <button class="emby-button delete-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" data-is-seasonal="${isSeasonalNested}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Delete</button>
+                            <button class="emby-button delete-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" data-is-seasonal="${isSeasonalNested}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Supprimer</button>
                         </div>
                     </summary>
                     <div style="padding: 0 1em 1em 1em; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 0;">
@@ -1359,15 +1359,15 @@
             // Fallback for any other section types (shouldn't happen in current code)
             const showPreviewButton = prefix === 'customSection' || prefix === 'seasonal_season';
             const previewButtonHtml = showPreviewButton
-                ? `<button class="emby-button preview-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">Preview</button>`
+                ? `<button class="emby-button preview-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">Aperçu</button>`
                 : '';
             return `
                 <div class="${prefix}_section_item" data-section-index="${sectionIndex}" data-section-id="${sectionId}" style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; padding: 1em; margin-bottom: 0.75em; background: rgba(255,255,255,0.03);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75em;">
-                        <div class="listItemBodyText" style="font-weight: 500;">${name || 'Unnamed Section'}</div>
+                        <div class="listItemBodyText" style="font-weight: 500;">${name || 'Section sans nom'}</div>
                         <div style="display: flex; gap: 0.5em;">
                             ${previewButtonHtml}
-                            <button class="emby-button delete-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" data-is-seasonal="${isSeasonalNested}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Delete</button>
+                            <button class="emby-button delete-section-btn" data-prefix="${prefix}" data-section-index="${sectionIndex}" data-is-seasonal="${isSeasonalNested}" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Supprimer</button>
                         </div>
                     </div>
                     ${sectionContent}
@@ -1478,7 +1478,7 @@
             includeOrder = true,
             includeName = true,
             defaultName = '',
-            nameLabel = 'Section Name',
+            nameLabel = 'Nom de la section',
             nameInputAttributes = {},
             includeCardFormat = true,
             includeItemLimit = true,
@@ -1519,12 +1519,12 @@
             html += `
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Card Format</div>
+                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Format des cartes</div>
                     <select id="${prefix}_cardFormat" class="fld emby-select-withcolor emby-select" style="width: 100%; max-width: 200px;">
-                        <option value="Random" ${cardFormat === 'Random' ? 'selected' : ''}>Random</option>
-                        <option value="Backdrop" ${cardFormat === 'Backdrop' ? 'selected' : ''}>Backdrop</option>
-                        <option value="Thumb" ${cardFormat === 'Thumb' ? 'selected' : ''}>Thumb</option>
-                        <option value="Poster" ${cardFormat === 'Poster' ? 'selected' : ''}>Poster</option>
+                        <option value="Random" ${cardFormat === 'Random' ? 'selected' : ''}>Aléatoire</option>
+                        <option value="Backdrop" ${cardFormat === 'Backdrop' ? 'selected' : ''}>Arrière-plan</option>
+                        <option value="Thumb" ${cardFormat === 'Thumb' ? 'selected' : ''}>Vignette</option>
+                        <option value="Poster" ${cardFormat === 'Poster' ? 'selected' : ''}>Affiche</option>
                     </select>
                 </div>
             </div>`;
@@ -1534,21 +1534,21 @@
             html += `
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Sort Order</div>
+                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Critère de tri</div>
                     <select id="${prefix}_sortOrder" class="fld emby-select-withcolor emby-select" style="width: 100%; max-width: 200px;">
-                        <option value="Random" ${sortOrder === 'Random' ? 'selected' : ''}>Random</option>
-                        <option value="PremiereDate" ${sortOrder === 'PremiereDate' ? 'selected' : ''}>Premiere Date</option>
-                        <option value="DateCreated" ${sortOrder === 'DateCreated' ? 'selected' : ''}>Date Created</option>
-                        <option value="DateAdded" ${sortOrder === 'DateAdded' ? 'selected' : ''}>Date Added</option>
-                        <option value="SortName" ${sortOrder === 'SortName' ? 'selected' : ''}>Sort Name</option>
-                        <option value="Name" ${sortOrder === 'Name' ? 'selected' : ''}>Name</option>
-                        <option value="CommunityRating" ${sortOrder === 'CommunityRating' ? 'selected' : ''}>Community Rating</option>
-                        <option value="CriticRating" ${sortOrder === 'CriticRating' ? 'selected' : ''}>Critic Rating</option>
+                        <option value="Random" ${sortOrder === 'Random' ? 'selected' : ''}>Aléatoire</option>
+                        <option value="PremiereDate" ${sortOrder === 'PremiereDate' ? 'selected' : ''}>Date de première diffusion</option>
+                        <option value="DateCreated" ${sortOrder === 'DateCreated' ? 'selected' : ''}>Date de création</option>
+                        <option value="DateAdded" ${sortOrder === 'DateAdded' ? 'selected' : ''}>Date d’ajout</option>
+                        <option value="SortName" ${sortOrder === 'SortName' ? 'selected' : ''}>Titre de tri</option>
+                        <option value="Name" ${sortOrder === 'Name' ? 'selected' : ''}>Nom</option>
+                        <option value="CommunityRating" ${sortOrder === 'CommunityRating' ? 'selected' : ''}>Note des utilisateurs</option>
+                        <option value="CriticRating" ${sortOrder === 'CriticRating' ? 'selected' : ''}>Note de la critique</option>
                         <option value="OfficialRating" ${sortOrder === 'OfficialRating' ? 'selected' : ''}>Official Rating</option>
-                        <option value="ProductionYear" ${sortOrder === 'ProductionYear' ? 'selected' : ''}>Production Year</option>
-                        <option value="PlayCount" ${sortOrder === 'PlayCount' ? 'selected' : ''}>Play Count</option>
-                        <option value="Runtime" ${sortOrder === 'Runtime' ? 'selected' : ''}>Runtime</option>
-                        <option value="Default" ${sortOrder === 'Default' ? 'selected' : ''}>Default</option>
+                        <option value="ProductionYear" ${sortOrder === 'ProductionYear' ? 'selected' : ''}>Année de production</option>
+                        <option value="PlayCount" ${sortOrder === 'PlayCount' ? 'selected' : ''}>Nombre de lectures</option>
+                        <option value="Runtime" ${sortOrder === 'Runtime' ? 'selected' : ''}>Durée</option>
+                        <option value="Default" ${sortOrder === 'Default' ? 'selected' : ''}>Par défaut</option>
                         <option value="AiredEpisodeOrder" ${sortOrder === 'AiredEpisodeOrder' ? 'selected' : ''}>Aired Episode Order</option>
                         <option value="DatePlayed" ${sortOrder === 'DatePlayed' ? 'selected' : ''}>Date Played</option>
                         <option value="StartDate" ${sortOrder === 'StartDate' ? 'selected' : ''}>Start Date</option>
@@ -1566,10 +1566,10 @@
             </div>
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Sort Order Direction</div>
+                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Ordre de tri</div>
                     <select id="${prefix}_sortOrderDirection" class="fld emby-select-withcolor emby-select" style="width: 100%; max-width: 200px;">
-                        <option value="Ascending" ${sortOrderDirection === 'Ascending' ? 'selected' : ''}>Ascending</option>
-                        <option value="Descending" ${sortOrderDirection === 'Descending' ? 'selected' : ''}>Descending</option>
+                        <option value="Ascending" ${sortOrderDirection === 'Ascending' ? 'selected' : ''}>Croissant</option>
+                        <option value="Descending" ${sortOrderDirection === 'Descending' ? 'selected' : ''}>Décroissant</option>
                     </select>
                 </div>
             </div>`;
@@ -1580,8 +1580,8 @@
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
                     <div class="listItemBodyText" style="margin-bottom: 0.5em; display: flex; align-items: center; gap: 0.4em; overflow: visible;">
-                        <span>Order</span>
-                        <span class="material-icons info info-tooltip" tabindex="0" role="note" data-tooltip="Lower numbers appear first" aria-label="Lower numbers appear first"></span>
+                        <span>Position</span>
+                        <span class="material-icons info info-tooltip" tabindex="0" role="note" data-tooltip="Les nombres les plus bas apparaissent en premier" aria-label="Les nombres les plus bas apparaissent en premier"></span>
                     </div>
                     <input type="number" id="${prefix}_order" class="fld emby-input" value="${order}" min="0" style="width: 100%; max-width: 200px;">
                 </div>
@@ -1592,7 +1592,7 @@
             html += `
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                     <div class="listItemContent">
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Item Limit</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Nombre maximal d’éléments</div>
                         <input type="number" id="${prefix}_itemLimit" class="fld emby-input" value="${itemLimit}" min="1" style="width: 100%; max-width: 200px;">
                     </div>
                 </div>`;
@@ -1604,16 +1604,16 @@
             html += `                
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                     <div class="listItemContent">
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Minimum Age (Days)</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Âge minimal (jours)</div>
                         <input type="number" id="${prefix}_minAgeInDays" class="fld emby-input" value="${minAgeInDays}" style="width: 100%;">
-                        <div class="fieldDescription" style="margin-top: 0.25em;">Optional. Days since release (e.g. 0 for today).</div>
+                        <div class="fieldDescription" style="margin-top: 0.25em;">Facultatif. Nombre de jours depuis la sortie (0 = aujourd’hui).</div>
                     </div>
                 </div>
                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                     <div class="listItemContent">
-                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Maximum Age (Days)</div>
+                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Âge maximal (jours)</div>
                         <input type="number" id="${prefix}_maxAgeInDays" class="fld emby-input" value="${maxAgeInDays}" style="width: 100%;">
-                        <div class="fieldDescription" style="margin-top: 0.25em;">Optional. Max days old (e.g. 30).</div>
+                        <div class="fieldDescription" style="margin-top: 0.25em;">Facultatif. Ancienneté maximale en jours (par exemple 30).</div>
                     </div>
                 </div>`;
         }
@@ -1622,12 +1622,12 @@
             html += `
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                    ${buildJellyfinCheckbox(`${prefix}_isPlayed_enabled`, isPlayedFilterEnabled, 'Filter by Played Status')}
+                    ${buildJellyfinCheckbox(`${prefix}_isPlayed_enabled`, isPlayedFilterEnabled, 'Filtrer selon l’état de lecture')}
                     
                     <div id="${prefix}_isPlayed_options" style="margin-top: 0.5em; margin-left: 1.5em; display: ${isPlayedFilterEnabled ? 'block' : 'none'};">
                         <select id="${prefix}_isPlayed_value" class="fld emby-select-withcolor emby-select" style="width: 100%; max-width: 200px;">
-                            <option value="false" ${!isPlayedValue ? 'selected' : ''}>Unplayed</option>
-                            <option value="true" ${isPlayedValue ? 'selected' : ''}>Played</option>
+                            <option value="false" ${!isPlayedValue ? 'selected' : ''}>Non lu</option>
+                            <option value="true" ${isPlayedValue ? 'selected' : ''}>Lu</option>
                         </select>
                     </div>
                 </div>
@@ -1665,33 +1665,33 @@
                 <summary class="seasonal-season-summary" data-season-index="${seasonIndex}" style="display: flex; justify-content: space-between; align-items: center; padding: 1em; cursor: pointer; list-style: none; user-select: none;">
                     <div class="listItemBodyText" style="font-weight: 500; display: flex; align-items: center; gap: 0.5em;">
                         <span class="material-icons" style="font-size: 1.2em; transition: transform 0.2s;">chevron_right</span>
-                        <span class="seasonal-season-name-display" data-season-index="${seasonIndex}">${season.name || 'Unnamed Season'}</span>
-                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="seasonal-season-enabled-display" data-season-index="${seasonIndex}">${season.enabled !== false ? 'Enabled' : 'Disabled'}</span>, Order: <span class="seasonal-season-order" data-season-index="${seasonIndex}">${seasonOrder}</span>)</span>
+                        <span class="seasonal-season-name-display" data-season-index="${seasonIndex}">${season.name || 'Période sans nom'}</span>
+                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="seasonal-season-enabled-display" data-season-index="${seasonIndex}">${season.enabled !== false ? 'Activé' : 'Désactivé'}</span>, position : <span class="seasonal-season-order" data-season-index="${seasonIndex}">${seasonOrder}</span>)</span>
                     </div>
                     <div style="display: flex; gap: 0.5em;">
-                        <button class="emby-button" onclick="deleteSeasonalSeason(${seasonIndex})" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Delete</button>
+                        <button class="emby-button" onclick="deleteSeasonalSeason(${seasonIndex})" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Supprimer</button>
                     </div>
                 </summary>
                 <div style="padding: 0 1em 1em 1em; border-top: 1px solid rgba(255,255,255,0.1);">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75em; margin-bottom: 0.75em; margin-top: 0.75em;">
                         <div>
-                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Enabled</div>
+                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Activé</div>
                             ${buildJellyfinCheckbox(`seasonal-season-enabled-${seasonIndex}`, season.enabled !== false, 'Enabled', { 'data-index': seasonIndex, 'class': 'seasonal-season-enabled' })}
                         </div>
                         <div>
-                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Name</div>
+                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Nom</div>
                             <input type="text" class="seasonal-season-name fld emby-input" data-index="${seasonIndex}" value="${season.name || ''}" style="width: 100%;">
                         </div>
                         <div>
-                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Start Date (MM-DD)</div>
+                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Date de début (MM-JJ)</div>
                             <input type="text" class="seasonal-season-startDate fld emby-input" data-index="${seasonIndex}" value="${season.startDate || ''}" placeholder="10-01" style="width: 100%;">
                         </div>
                         <div>
-                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">End Date (MM-DD)</div>
+                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Date de fin (MM-JJ)</div>
                             <input type="text" class="seasonal-season-endDate fld emby-input" data-index="${seasonIndex}" value="${season.endDate || ''}" placeholder="10-31" style="width: 100%;">
                         </div>
                         <div>
-                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em; display: flex; align-items: center; gap: 0.4em;">Order</div>
+                            <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em; display: flex; align-items: center; gap: 0.4em;">Position</div>
                             <input type="number" class="seasonal-season-order-input fld emby-input" data-index="${seasonIndex}" value="${seasonOrder}" min="0" style="width: 100%;">
                         </div>
                     </div>
@@ -1701,7 +1701,7 @@
                             ${sectionsHtml}
                         </div>
                         <button type="button" class="emby-button raised add-section-to-seasonal-btn" data-season-index="${seasonIndex}" style="padding: 0.75em 1.5em; margin-top: 0.5em;">
-                            <span>Add Section</span>
+                            <span>Ajouter une section</span>
                         </button>
                     </div>
                 </div>
@@ -3800,7 +3800,7 @@
                 let pickerModalInstanceRef = null;
                 const pickerModal = window.ModalSystem.create({
                     id: 'collectionPickerModal',
-                    title: 'Select Collections',
+                    title: 'Choisir des collections',
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
@@ -3821,10 +3821,10 @@
                     `,
                     footer: `
                         <button class="emby-button raised button-submit" id="collectionPickerConfirm" style="padding: 0.75em 2em;">
-                            <span>Confirm</span>
+                            <span>Confirmer</span>
                         </button>
                         <button class="emby-button raised" id="collectionPickerCancel" style="padding: 0.75em 2em;">
-                            <span>Cancel</span>
+                            <span>Annuler</span>
                         </button>
                     `,
                     closeOnBackdrop: true,
@@ -3864,10 +3864,10 @@
                                     const selectedDiv = modalInstance.dialogContent.querySelector(`.seasonal-season-collections-selected[data-index="${seasonIndex}"]`);
                                     
                                     if (button) {
-                                        button.querySelector('span').textContent = `Select Collections (${selectedIds.length})`;
+                                        button.querySelector('span').textContent = `Choisir des collections (${selectedIds.length})`;
                                     }
                                     if (selectedDiv) {
-                                        selectedDiv.textContent = selectedIds.length > 0 ? `Selected: ${selectedIds.length} collection(s)` : 'No collections selected';
+                                        selectedDiv.textContent = selectedIds.length > 0 ? `Sélection : ${selectedIds.length} collection${selectedIds.length > 1 ? 's' : ''}` : 'Aucune collection sélectionnée';
                                     }
                                 }
                                 
@@ -3920,7 +3920,7 @@
                 let pickerModalInstanceRef = null;
                 const pickerModal = window.ModalSystem.create({
                     id: 'playlistPickerModal',
-                    title: 'Select Playlists',
+                    title: 'Choisir des playlists',
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
@@ -3941,10 +3941,10 @@
                     `,
                     footer: `
                         <button class="emby-button raised button-submit" id="playlistPickerConfirm" style="padding: 0.75em 2em;">
-                            <span>Confirm</span>
+                            <span>Confirmer</span>
                         </button>
                         <button class="emby-button raised" id="playlistPickerCancel" style="padding: 0.75em 2em;">
-                            <span>Cancel</span>
+                            <span>Annuler</span>
                         </button>
                     `,
                     closeOnBackdrop: true,
@@ -3984,10 +3984,10 @@
                                     const selectedDiv = modalInstance.dialogContent.querySelector(`.seasonal-season-playlists-selected[data-index="${seasonIndex}"]`);
                                     
                                     if (button) {
-                                        button.querySelector('span').textContent = `Select Playlists (${selectedIds.length})`;
+                                        button.querySelector('span').textContent = `Choisir des playlists (${selectedIds.length})`;
                                     }
                                     if (selectedDiv) {
-                                        selectedDiv.textContent = selectedIds.length > 0 ? `Selected: ${selectedIds.length} playlist(s)` : 'No playlists selected';
+                                        selectedDiv.textContent = selectedIds.length > 0 ? `Sélection : ${selectedIds.length} playlist${selectedIds.length > 1 ? 's' : ''}` : 'Aucune playlist sélectionnée';
                                     }
                                 }
                                 
@@ -4039,7 +4039,7 @@
                 
                 const pickerModal = window.ModalSystem.create({
                     id: 'collectionPickerForSectionModal',
-                    title: 'Select Collection',
+                    title: 'Choisir une collection',
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
@@ -4063,10 +4063,10 @@
                             <span>Clear</span>
                         </button>
                         <button class="emby-button raised button-submit" id="collectionPickerForSectionConfirm" style="padding: 0.75em 2em;">
-                            <span>Confirm</span>
+                            <span>Confirmer</span>
                         </button>
                         <button class="emby-button raised" id="collectionPickerForSectionCancel" style="padding: 0.75em 2em;">
-                            <span>Cancel</span>
+                            <span>Annuler</span>
                         </button>
                     `,
                     closeOnBackdrop: true,
@@ -4101,10 +4101,10 @@
                                     const selectedDiv = sectionItem?.querySelector(`.${prefix}_section_collection_selected[data-section-index="${sectionIndex}"]`);
                                     
                                     if (button) {
-                                        button.querySelector('span').textContent = `Select Collection ${selectedId ? '(1)' : ''}`;
+                                        button.querySelector('span').textContent = `Choisir une collection ${selectedId ? '(1)' : ''}`;
                                     }
                                     if (selectedDiv) {
-                                        selectedDiv.textContent = selectedId ? `Selected: 1 collection` : 'No collection selected';
+                                        selectedDiv.textContent = selectedId ? `Sélection : 1 collection` : 'Aucune collection sélectionnée';
                                     }
                                 }
                                 
@@ -4124,10 +4124,10 @@
                                     const selectedDiv = sectionItem?.querySelector(`.${prefix}_section_collection_selected[data-section-index="${sectionIndex}"]`);
                                     
                                     if (button) {
-                                        button.querySelector('span').textContent = 'Select Collection';
+                                        button.querySelector('span').textContent = 'Choisir une collection';
                                     }
                                     if (selectedDiv) {
-                                        selectedDiv.textContent = 'No collection selected';
+                                        selectedDiv.textContent = 'Aucune collection sélectionnée';
                                     }
                                 }
                                 
@@ -4177,7 +4177,7 @@
                 
                 const pickerModal = window.ModalSystem.create({
                     id: 'playlistPickerForSectionModal',
-                    title: 'Select Playlist',
+                    title: 'Choisir une playlist',
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
@@ -4201,10 +4201,10 @@
                             <span>Clear</span>
                         </button>
                         <button class="emby-button raised button-submit" id="playlistPickerForSectionConfirm" style="padding: 0.75em 2em;">
-                            <span>Confirm</span>
+                            <span>Confirmer</span>
                         </button>
                         <button class="emby-button raised" id="playlistPickerForSectionCancel" style="padding: 0.75em 2em;">
-                            <span>Cancel</span>
+                            <span>Annuler</span>
                         </button>
                     `,
                     closeOnBackdrop: true,
@@ -4239,10 +4239,10 @@
                                     const selectedDiv = sectionItem?.querySelector(`.${prefix}_section_playlist_selected[data-section-index="${sectionIndex}"]`);
                                     
                                     if (button) {
-                                        button.querySelector('span').textContent = `Select Playlist ${selectedId ? '(1)' : ''}`;
+                                        button.querySelector('span').textContent = `Choisir une playlist ${selectedId ? '(1)' : ''}`;
                                     }
                                     if (selectedDiv) {
-                                        selectedDiv.textContent = selectedId ? `Selected: 1 playlist` : 'No playlist selected';
+                                        selectedDiv.textContent = selectedId ? `Sélection : 1 playlist` : 'Aucune playlist sélectionnée';
                                     }
                                 }
                                 
@@ -4262,10 +4262,10 @@
                                     const selectedDiv = sectionItem?.querySelector(`.${prefix}_section_playlist_selected[data-section-index="${sectionIndex}"]`);
                                     
                                     if (button) {
-                                        button.querySelector('span').textContent = 'Select Playlist';
+                                        button.querySelector('span').textContent = 'Choisir une playlist';
                                     }
                                     if (selectedDiv) {
-                                        selectedDiv.textContent = 'No playlist selected';
+                                        selectedDiv.textContent = 'Aucune playlist sélectionnée';
                                     }
                                 }
                                 

@@ -432,7 +432,7 @@
 					recommendationTag.className = 'recommendation-tag';
 					recommendationTag.innerHTML = `
 						<span class="material-icons thumb_up recommendation icon" aria-hidden="true"></span>
-						<span class="recommendation-count">${recommendations.length} ${recommendations.length > 1 ? 'Recommendations' : 'Recommendation'}</span>
+						<span class="recommendation-count">${recommendations.length} recommandation${recommendations.length > 1 ? 's' : ''}</span>
 					`;
 
 					// Create the flyout element
@@ -837,7 +837,7 @@
                     console.log('Admin overlay appended to document.body');
                 } catch (error) {
                     console.error('Error appending admin overlay:', error.message);
-                    alert('Failed to create admin overlay: ' + error.message);
+                    alert('Échec de la création de l’interface d’administration : ' + error.message);
                     return;
                 }
 

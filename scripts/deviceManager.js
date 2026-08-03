@@ -153,7 +153,7 @@
         const button = document.createElement('button');
         button.setAttribute('is', 'paper-icon-button-light');
         button.className = 'sessionCardButton btnSessionRemoveDevice paper-icon-button-light';
-        button.setAttribute('title', 'Remove Device');
+        button.setAttribute('title', 'Supprimer l’appareil');
         
         const iconSpan = document.createElement('span');
         iconSpan.className = 'material-icons';
@@ -173,7 +173,7 @@
             
             button.disabled = true;
             const originalTitle = button.getAttribute('title');
-            button.setAttribute('title', 'Removing...');
+            button.setAttribute('title', 'Suppression…');
             
             const success = await removeDevice(deviceId);
             

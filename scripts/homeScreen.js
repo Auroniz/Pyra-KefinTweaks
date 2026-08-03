@@ -981,18 +981,18 @@
     const DISCOVERY_SECTION_DEFINITIONS = [
         { key: 'spotlightGenre', defaultName: 'Spotlight' },
         { key: 'spotlightNetwork', defaultName: 'Spotlight' },
-        { key: 'genreMovies', defaultName: '[Genre] Movies' },
-        { key: 'studioShows', defaultName: 'Shows from [Studio]' },
+        { key: 'genreMovies', defaultName: 'Films du genre [Genre]' },
+        { key: 'studioShows', defaultName: 'Séries de [Studio]' },
         { key: 'collections', defaultName: '[Collection Name]', minimumItems: 10 },
-        { key: 'becauseYouWatched', defaultName: 'Because you watched [Movie]' },
-        { key: 'becauseYouLiked', defaultName: 'Because you liked [Movie]' },
-        { key: 'starringTopActor', defaultName: 'Starring [Actor]' },
-        { key: 'directedByTopDirector', defaultName: 'Directed by [Director]' },
-        { key: 'writtenByTopWriter', defaultName: 'Written by [Writer]' },
-        { key: 'becauseYouRecentlyWatched', defaultName: 'Because you recently watched [Movie]' },
-        { key: 'starringActorRecentlyWatched', defaultName: 'Starring [Actor] because you recently watched [Movie]' },
-        { key: 'directedByDirectorRecentlyWatched', defaultName: 'Directed by [Director] because you recently watched [Movie]' },
-        { key: 'writtenByWriterRecentlyWatched', defaultName: 'Written by [Writer] because you recently watched [Movie]' }
+        { key: 'becauseYouWatched', defaultName: 'Parce que vous avez regardé [Movie]' },
+        { key: 'becauseYouLiked', defaultName: 'Parce que vous avez aimé [Movie]' },
+        { key: 'starringTopActor', defaultName: 'Avec [Actor]' },
+        { key: 'directedByTopDirector', defaultName: 'Réalisé par [Director]' },
+        { key: 'writtenByTopWriter', defaultName: 'Écrit par [Writer]' },
+        { key: 'becauseYouRecentlyWatched', defaultName: 'Parce que vous avez récemment regardé [Movie]' },
+        { key: 'starringActorRecentlyWatched', defaultName: 'Avec [Actor], parce que vous avez récemment regardé [Movie]' },
+        { key: 'directedByDirectorRecentlyWatched', defaultName: 'Réalisé par [Director], parce que vous avez récemment regardé [Movie]' },
+        { key: 'writtenByWriterRecentlyWatched', defaultName: 'Écrit par [Writer], parce que vous avez récemment regardé [Movie]' }
     ];
 
     const discoverySectionDefinitionMap = DISCOVERY_SECTION_DEFINITIONS.reduce((map, definition) => {
@@ -4992,7 +4992,7 @@
                         sectionId = `watched-recent-${sectionData.data.Id}`;
                         break;
                     case 'actor-recent':
-                        const actorRecentTemplate = sectionConfig?.name || 'Avec [Actor], car vous avez récemment regardé [Movie]';
+                        const actorRecentTemplate = sectionConfig?.name || 'Avec [Actor], parce que vous avez récemment regardé [Movie]';
                         const actorRecentMovieName = `${sectionData.data.movie.Name}${sectionData.data.movie.ProductionYear ? ` (${sectionData.data.movie.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(actorRecentTemplate, { 
                             Actor: sectionData.data.person.Name, 
@@ -5001,7 +5001,7 @@
                         sectionId = `actor-recent-${sectionData.data.person.Id}-${sectionData.data.movie.Id}`;
                         break;
                     case 'director-recent':
-                        const directorRecentTemplate = sectionConfig?.name || 'Réalisé par [Director], car vous avez récemment regardé [Movie]';
+                        const directorRecentTemplate = sectionConfig?.name || 'Réalisé par [Director], parce que vous avez récemment regardé [Movie]';
                         const directorRecentMovieName = `${sectionData.data.movie.Name}${sectionData.data.movie.ProductionYear ? ` (${sectionData.data.movie.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(directorRecentTemplate, { 
                             Director: sectionData.data.person.Name, 
@@ -5010,7 +5010,7 @@
                         sectionId = `director-recent-${sectionData.data.person.Id}-${sectionData.data.movie.Id}`;
                         break;
                     case 'writer-recent':
-                        const writerRecentTemplate = sectionConfig?.name || 'Écrit par [Writer], car vous avez récemment regardé [Movie]';
+                        const writerRecentTemplate = sectionConfig?.name || 'Écrit par [Writer], parce que vous avez récemment regardé [Movie]';
                         const writerRecentMovieName = `${sectionData.data.movie.Name}${sectionData.data.movie.ProductionYear ? ` (${sectionData.data.movie.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(writerRecentTemplate, { 
                             Writer: sectionData.data.person.Name, 
