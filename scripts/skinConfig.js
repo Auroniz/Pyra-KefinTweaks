@@ -22,57 +22,57 @@
         // These will be merged with admin-configured global optional includes from KefinTweaksConfig
         globalOptionalIncludes: [
             {
-                name: 'Custom Media Covers',
+                name: 'Jaquettes personnalisées',
                 url: 'https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/custom-media-covers-latest-min.css',
                 enabled: false
             },
             {
-                name: 'Center My Media',
+                name: 'Centrer Mes médias',
                 url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/central-libraries-small.css',
                 enabled: false
             },
             {
-                name: 'Hide My Media Label',
+                name: 'Masquer le libellé Mes médias',
                 url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/hide-my-media.css',
                 enabled: false
             },
             {
-                name: 'Smaller Cast Images',
+                name: 'Images de distribution réduites',
                 url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/smaller-cast.css',
                 enabled: false
             },
             {
-                name: 'Episode Grid',
+                name: 'Grille d’épisodes',
                 url: 'https://cdn.jsdelivr.net/gh/LitCastVlog/Flow@main/CSS/ScyFlow-EpisodeGrid.css',
                 enabled: false
             },
             {
-                name: 'Round Cast',
+                name: 'Distribution arrondie',
                 url: 'https://cdn.jsdelivr.net/gh/LitCastVlog/Flow@main/CSS/ScyFLow-RoundCastCrew.css',
                 enabled: false
             },
             {
-                name: 'Smaller Cast',
+                name: 'Distribution réduite',
                 url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/smallercast.css',
                 enabled: false
             },
             {
-                name: 'Compact Episode List',
+                name: 'Liste d’épisodes compacte',
                 url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/episodelist/episodes_compactlist.css',
                 enabled: false
             },
             {
-                name: 'Episode Grid',
+                name: 'Grille d’épisodes',
                 url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/episodelist/episodes_grid.css',
                 enabled: false
             },
             {
-                name: 'Pan Animation',
+                name: 'Animation panoramique',
                 url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/effects/pan-animation.css',
                 enabled: false
             },
             {
-                name: 'Animated Overlay',
+                name: 'Superposition animée',
                 url: 'https://cdn.jsdelivr.net/gh/LitCastVlog/Flow@main/CSS/ScyFlow-AnimatedOverlay.css',
                 enabled: false
             }
@@ -128,12 +128,12 @@
                         enabled: false
                     },
                     {
-                        name: 'Disable Card Hover Effect',
+                        name: 'Désactiver l’effet au survol',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/cardHoverEffect.css`,
                         enabled: false
                     },
                     {
-                        name: 'Center Overlay Play Button',
+                        name: 'Centrer le bouton Lecture',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/centerPlayButton.css`,
                         enabled: false
                     },
@@ -143,12 +143,12 @@
                         enabled: false
                     },
                     {
-                        name: 'Library Label Visibility',
+                        name: 'Visibilité du libellé de médiathèque',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/libraryLabelVisibility.css`,
                         enabled: false
                     },
                     {
-                        name: 'Solid App Bar',
+                        name: 'Barre d’application opaque',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/solidAppBar.css`,
                         enabled: false
                     }
@@ -180,12 +180,12 @@
                         enabled: false
                     },
                     {
-                        name: 'Disable Card Hover Effect',
+                        name: 'Désactiver l’effet au survol',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/cardHoverEffect.css`,
                         enabled: false
                     },
                     {
-                        name: 'Center Overlay Play Button',
+                        name: 'Centrer le bouton Lecture',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/centerPlayButton.css`,
                         enabled: false
                     },
@@ -195,12 +195,12 @@
                         enabled: false
                     },
                     {
-                        name: 'Library Label Visibility',
+                        name: 'Visibilité du libellé de médiathèque',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/libraryLabelVisibility.css`,
                         enabled: false
                     },
                     {
-                        name: 'Solid App Bar',
+                        name: 'Barre d’application opaque',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/solidAppBar.css`,
                         enabled: false
                     }
@@ -261,27 +261,27 @@
                         enabled: false
                     },
                     {
-                        name: 'Watched Status Badges',
+                        name: 'Badges de visionnage',
                         url: 'https://cdn.jsdelivr.net/gh/KBH-Reeper/GlassFin@main/Theme/Styling/ActivateBadges.css',
                         enabled: false
                     },
                     {
-                        name: 'Disable Card Hover Effect',
+                        name: 'Désactiver l’effet au survol',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/cardHoverEffect.css`,
                         enabled: false
                     },
                     {
-                        name: 'Center Overlay Play Button',
+                        name: 'Centrer le bouton Lecture',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/centerPlayButton.css`,
                         enabled: false
                     },
                     {
-                        name: 'Library Label Visibility',
+                        name: 'Visibilité du libellé de médiathèque',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/libraryLabelVisibility.css`,
                         enabled: false
                     },
                     {
-                        name: 'Solid App Bar',
+                        name: 'Barre d’application opaque',
                         url: `${getKefinTweaksRoot()}skins/optional/ElegantFin/solidAppBar.css`,
                         enabled: false
                     }
@@ -318,12 +318,12 @@
                 colorSchemes: [],
                 optionalIncludes: [
                     {
-                        name: 'No Animations',
+                        name: 'Sans animations',
                         url: 'https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/no-animation.css',
                         enabled: false
                     },
                     {
-                        name: 'Horizontal Scrolling',
+                        name: 'Défilement horizontal',
                         url: 'https://cdn.jsdelivr.net/gh/tedhinklater/finimalism@main/horizontal-scrolling.css',
                         enabled: false
                     }
@@ -347,12 +347,12 @@
                 ],
                 optionalIncludes: [
                     {
-                        name: 'Floating Progress Bar',
+                        name: 'Barre de progression flottante',
                         url: 'https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/progress_bar.css',
                         enabled: false
                     },
                     {
-                        name: 'Watched Indicators',
+                        name: 'Indicateurs de visionnage',
                         url: 'https://cdn.jsdelivr.net/gh/n00bcodr/Jellyfish/indicators.css',
                         enabled: false
                     },
@@ -501,27 +501,27 @@
                 colorSchemes: [],
                 optionalIncludes: [
                     {
-                        name: 'Watched Indicators',
+                        name: 'Indicateurs de visionnage',
                         url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/count-indicators.css',
                         enabled: false
                     },
                     {
-                        name: 'Floating Progress Bar',
+                        name: 'Barre de progression flottante',
                         url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/floating-progress.css',
                         enabled: false
                     },
                     {
-                        name: 'Hide Forgot Password',
+                        name: 'Masquer « Mot de passe oublié »',
                         url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/forgot-password.css',
                         enabled: false
                     },
                     {
-                        name: 'Hover Animation',
+                        name: 'Animation au survol',
                         url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/moving-cards.css',
                         enabled: false
                     },
                     {
-                        name: 'Static Sidebar',
+                        name: 'Barre latérale fixe',
                         url: 'https://cdn.jsdelivr.net/gh/JamsRepos/Jamfin@latest/theme/modules/static-sidebar.css',
                         enabled: false
                     }
@@ -548,7 +548,7 @@
                 ],
                 optionalIncludes: [
                     {
-                        name: 'Disable Static Drawer',
+                        name: 'Désactiver le volet fixe',
                         url: 'https://cdn.jsdelivr.net/gh/loof2736/scyfin@latest/CSS/disable-static-drawer.css',
                         enabled: false
                     }
@@ -631,7 +631,7 @@
                         enabled: false
                     },
                     {
-                        name: 'Collapsible Side Drawer',
+                        name: 'Volet latéral rétractable',
                         url: 'https://cdn.jsdelivr.net/gh/LitCastVlog/Flow@main/CSS/ScyFlow-Drawer-Toggle.css',
                         enabled: false
                     },
@@ -651,7 +651,7 @@
                         enabled: false
                     },
                     {
-                        name: 'Horizontal Scroll Episodes',
+                        name: 'Défilement horizontal des épisodes',
                         url: 'https://cdn.jsdelivr.net/gh/LitCastVlog/Flow@main/CSS/ScyFlow-Scrollable-Episodes-WIP.css',
                         enabled: false
                     },
@@ -661,7 +661,7 @@
                         enabled: false
                     },
                     {
-                        name: 'Nyan Progress Bar',
+                        name: 'Barre de progression Nyan',
                         url: 'https://cdn.jsdelivr.net/gh/LitCastVlog/Flow@main/CSS/Themes/NyanProgress.css',
                         enabled: false
                     },
@@ -747,7 +747,7 @@
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/type/dark_withaccent.css'
                     },
                     {
-                        name: 'Round UI Corners',
+                        name: 'Coins arrondis',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/rounding.css',
                         enabled: false
                     },
@@ -757,12 +757,12 @@
                         enabled: false
                     },
                     {
-                        name: 'Login Screen Minimal',
+                        name: 'Écran de connexion minimal',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_minimalistic.css',
                         enabled: false
                     },
                     {
-                        name: 'Login Screen Full',
+                        name: 'Écran de connexion complet',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/login/login_frame.css',
                         enabled: false
                     },
@@ -777,12 +777,12 @@
                         enabled: false
                     },
                     {
-                        name: 'Floating Watched Indicators',
+                        name: 'Indicateurs de visionnage flottants',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/cornerindicator/indicator_floating.css',
                         enabled: false
                     },
                     {
-                        name: 'Corner Watched Indicators',
+                        name: 'Indicateurs de visionnage dans les coins',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/cornerindicator/indicator_corner.css',
                         enabled: false
                     },
@@ -807,17 +807,17 @@
                         enabled: false
                     },
                     {
-                        name: 'Progress Bar',
+                        name: 'Barre de progression',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/overlayprogress.css',
                         enabled: false
                     },
                     {
-                        name: 'Bottom Progress Bar',
+                        name: 'Barre de progression inférieure',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/bottombarprogress.css',
                         enabled: false
                     },
                     {
-                        name: 'Floating Progress Bar',
+                        name: 'Barre de progression flottante',
                         url: 'https://cdn.jsdelivr.net/gh/CTalvio/Ultrachromic/progress/floating.css',
                         enabled: false
                     },

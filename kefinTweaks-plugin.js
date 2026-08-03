@@ -434,7 +434,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
 
         const cancelBtn = document.createElement('button');
         cancelBtn.className = 'btnCancel raised emby-button button-cancel';
-        cancelBtn.textContent = 'Cancel';
+        cancelBtn.textContent = 'Annuler';
         cancelBtn.onclick = () => {
             closeSimpleModal(CONFIRM_MODAL_ID);
             if (onCancel) onCancel();
@@ -442,7 +442,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
 
         const confirmBtn = document.createElement('button');
         confirmBtn.className = 'btnSubmit raised emby-button button-submit';
-        confirmBtn.textContent = 'Confirm';
+        confirmBtn.textContent = 'Confirmer';
         confirmBtn.onclick = () => {
             closeSimpleModal(CONFIRM_MODAL_ID);
             if (onConfirm) onConfirm();
@@ -451,7 +451,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
         footer.appendChild(cancelBtn);
         footer.appendChild(confirmBtn);
 
-        createSimpleModal(CONFIRM_MODAL_ID, 'Confirm', content, footer);
+        createSimpleModal(CONFIRM_MODAL_ID, 'Confirmer', content, footer);
     }
 
     /**
@@ -502,15 +502,15 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
         if (isInitialInstall) {
             // Initial installation message with support information
             content.innerHTML = `
-                <p>Thanks so much for installing KefinTweaks!</p>
-                <p>KefinTweaks is not maintained by the Jellyfin team, and as a result you are encouraged to seek support from me directly.</p>
-                <p>Sadly, there is <i>currently</i> no place suitable for discussion of plugins built by community members or fan-made projects in the official Jellyfin Discord, so please visit the <a href="https://discord.gg/v7P9CAvCKZ" target="_blank" style="color: #00a4dc; text-decoration: underline;">Jellyfin Community Discord</a> to find me (username: HighImKevin) and other users who would be happy to help you out.</p>
-                <p>Please also feel free to report bugs and request features from the <a href="https://github.com/ranaldsgift/KefinTweaks/issues" target="_blank" style="color: #00a4dc; text-decoration: underline;">Issues</a> page. The strength of this plugin relies on awesome community members like you, so thanks for using KefinTweaks!</p>
+                <p>Merci d’avoir installé KefinTweaks !</p>
+                <p>KefinTweaks n’est pas maintenu par l’équipe Jellyfin. Pour obtenir de l’aide, contactez directement son auteur.</p>
+                <p>Pour échanger avec l’auteur (HighImKevin) et la communauté, rejoignez le <a href="https://discord.gg/v7P9CAvCKZ" target="_blank" style="color: #00a4dc; text-decoration: underline;">Discord de la communauté Jellyfin</a>.</p>
+                <p>Vous pouvez également signaler un bug ou proposer une fonctionnalité sur la page <a href="https://github.com/ranaldsgift/KefinTweaks/issues" target="_blank" style="color: #00a4dc; text-decoration: underline;">Issues</a>. Merci d’utiliser KefinTweaks !</p>
             `;
         } else {
             // Update message with refresh instruction
             content.innerHTML = `
-                <p>KefinTweaks configuration has been successfully updated. Please refresh your page for the changes to take effect!</p>
+                <p>La configuration de KefinTweaks a été mise à jour. Actualisez la page pour appliquer les changements.</p>
             `;
         }
 
@@ -567,7 +567,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
             });
         }
 
-        createSimpleModal(SUCCESS_MODAL_ID, `${isInitialInstall ? 'Plugin Installed' : 'Plugin Updated'}`, content, footer);
+        createSimpleModal(SUCCESS_MODAL_ID, `${isInitialInstall ? 'Extension installée' : 'Extension mise à jour'}`, content, footer);
 
         
     }
@@ -576,7 +576,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
     async function openKefinTweaksSourceModal() {
         const userIsAdmin = await isAdmin();
         if (!userIsAdmin) {
-            showAlertModal('Access Denied', '<p>You must be an administrator to configure KefinTweaks.</p>');
+            showAlertModal('Accès refusé', '<p>Vous devez être administrateur pour configurer KefinTweaks.</p>');
             return;
         }
 
@@ -612,7 +612,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
         enabledLabel.style.gap = '0.75em';
         
         const enabledText = document.createElement('span');
-        enabledText.textContent = isEnabled ? 'Enabled' : 'Disabled';
+        enabledText.textContent = isEnabled ? 'Activé' : 'Désactivé';
         enabledText.id = 'kefinTweaksEnabledModalLabel';
         
         enabledLabel.appendChild(enabledCheckbox);
@@ -621,14 +621,14 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
         
         // Update label text when checkbox changes
         enabledCheckbox.addEventListener('change', () => {
-            enabledText.textContent = enabledCheckbox.checked ? 'Enabled' : 'Disabled';
+            enabledText.textContent = enabledCheckbox.checked ? 'Activé' : 'Désactivé';
         });
         
         content.appendChild(enabledContainer);
 
         // Source Type dropdown
         const sourceTypeLabel = document.createElement('label');
-        sourceTypeLabel.textContent = 'Install From:';
+        sourceTypeLabel.textContent = 'Installer depuis :';
         sourceTypeLabel.style.display = 'block';
         sourceTypeLabel.style.marginBottom = '0.5em';
 
@@ -642,7 +642,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
 
         // Source dropdown (for GitHub)
         const sourceLabel = document.createElement('label');
-        sourceLabel.textContent = 'Version:';
+        sourceLabel.textContent = 'Version :';
         sourceLabel.style.display = 'block';
         sourceLabel.style.marginBottom = '0.5em';
 
@@ -700,19 +700,19 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
 
         const cancelBtn = document.createElement('button');
         cancelBtn.className = 'btnCancel raised emby-button button-cancel';
-        cancelBtn.textContent = 'Cancel';
+        cancelBtn.textContent = 'Annuler';
         cancelBtn.onclick = () => closeSimpleModal(MODAL_ID);
 
         const saveBtn = document.createElement('button');
         saveBtn.className = 'btnSubmit raised emby-button button-submit';
-        saveBtn.textContent = (!currentRoot || currentRoot.trim() === '') ? 'Install' : 'Save';
+        saveBtn.textContent = (!currentRoot || currentRoot.trim() === '') ? 'Installer' : 'Enregistrer';
         saveBtn.onclick = async () => {
             try {
                 const sourceType = sourceTypeSelect.value;
                 const source = sourceType === 'custom' ? customUrlInput.value : sourceSelect.value;
                 
                 if (sourceType === 'custom' && (!source || source.trim() === '')) {
-                    showAlertModal('Invalid URL', '<p>Please enter a valid URL for your self-hosted location.</p>');
+                    showAlertModal('URL invalide', '<p>Saisissez une URL valide pour votre hébergement.</p>');
                     return;
                 }
 
@@ -802,13 +802,13 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                 await showSuccessModal(isInitialInstall, versionDisplay);
             } catch (error) {
                 console.error('[KefinTweaks Installer] Error saving configuration:', error);
-                showAlertModal('Configuration Error', `<p>Error saving configuration: ${error.message}</p>`);
+                showAlertModal('Erreur de configuration', `<p>Erreur lors de l’enregistrement : ${error.message}</p>`);
             }
         };
         
         const uninstallBtn = document.createElement('button');
         uninstallBtn.className = 'btnCancel raised emby-button button-cancel';
-        uninstallBtn.textContent = 'Uninstall';
+        uninstallBtn.textContent = 'Désinstaller';
         uninstallBtn.style.marginRight = 'auto';
         // Hide uninstall button if KefinTweaks isn't installed yet (no root URL)
         if (!currentRoot || currentRoot.trim() === '') {
@@ -825,7 +825,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
                         removeKefinTweaksPluginCard();
                         showAlertModal(
                             'KefinTweaks Uninstalled',
-                            '<p>KefinTweaks has been uninstalled. The installer has been disabled and your configuration has been backed up.<br><br>Please refresh your page.<br><br>You can re-enable KefinTweaks at any time from the JS Injector Plugin.'
+                            '<p>KefinTweaks a été désinstallé. L’installateur a été désactivé et votre configuration sauvegardée.<br><br>Actualisez la page.<br><br>Vous pouvez réactiver KefinTweaks à tout moment depuis JS Injector.'
                         );
                     } catch (error) {
                         console.error('[KefinTweaks Installer] Error uninstalling:', error);
@@ -846,7 +846,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
         footer.appendChild(cancelBtn);
         footer.appendChild(uninstallBtn);
 
-        createSimpleModal(MODAL_ID, 'KefinTweaks Plugin Settings', content, footer);
+        createSimpleModal(MODAL_ID, 'Paramètres de l’extension KefinTweaks', content, footer);
     }
 
     /**
@@ -1043,7 +1043,7 @@ window.KefinTweaksConfig = ${JSON.stringify(config, null, 2)};`;
             // Create the heading
             const heading = document.createElement('div');
             heading.className = 'sectionTitleContainer flex align-items-center';
-            heading.innerHTML = '<h2 class="sectionTitle">Front End Plugins</h2>';
+            heading.innerHTML = '<h2 class="sectionTitle">Extensions d’interface</h2>';
             heading.style.marginTop = '2em';
             
             // Create the frontEndPlugins container

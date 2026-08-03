@@ -11,20 +11,20 @@
     let currentLoadedConfig = null;
 
     const DISCOVERY_SECTION_DEFINITIONS = [
-        { key: 'spotlightGenre', label: 'Spotlight Sections (Genre)', defaultName: 'Spotlight' },
-        { key: 'spotlightNetwork', label: 'Spotlight Sections (Network)', defaultName: 'Spotlight' },
-        { key: 'genreMovies', label: 'Genre Movies', defaultName: '[Genre] Movies' },
-        { key: 'studioShows', label: 'Shows from [Studio]', defaultName: 'Shows from [Studio]' },
-        { key: 'collections', label: 'Collection Spotlight', defaultName: '[Collection Name]', extras: { minimumItems: 10 } },
-        { key: 'becauseYouWatched', label: 'Because you watched [Movie]', defaultName: 'Because you watched [Movie]' },
-        { key: 'becauseYouLiked', label: 'Because you liked [Movie]', defaultName: 'Because you liked [Movie]' },
-        { key: 'starringTopActor', label: 'Starring [Top Actor]', defaultName: 'Starring [Actor]' },
-        { key: 'directedByTopDirector', label: 'Directed by [Top Director]', defaultName: 'Directed by [Director]' },
-        { key: 'writtenByTopWriter', label: 'Written by [Top Writer]', defaultName: 'Written by [Writer]' },
-        { key: 'becauseYouRecentlyWatched', label: 'Because you recently watched [Movie]', defaultName: 'Because you recently watched [Movie]' },
-        { key: 'starringActorRecentlyWatched', label: 'Starring [Actor] because you recently watched [Movie]', defaultName: 'Starring [Actor] because you recently watched [Movie]' },
-        { key: 'directedByDirectorRecentlyWatched', label: 'Directed by [Director] because you recently watched [Movie]', defaultName: 'Directed by [Director] because you recently watched [Movie]' },
-        { key: 'writtenByWriterRecentlyWatched', label: 'Written by [Writer] because you recently watched [Movie]', defaultName: 'Written by [Writer] because you recently watched [Movie]' }
+        { key: 'spotlightGenre', label: 'Sections Spotlight (genre)', defaultName: 'Spotlight' },
+        { key: 'spotlightNetwork', label: 'Sections Spotlight (chaîne)', defaultName: 'Spotlight' },
+        { key: 'genreMovies', label: 'Films par genre', defaultName: 'Films du genre [Genre]' },
+        { key: 'studioShows', label: 'Séries de [Studio]', defaultName: 'Séries de [Studio]' },
+        { key: 'collections', label: 'Spotlight de collection', defaultName: '[Collection Name]', extras: { minimumItems: 10 } },
+        { key: 'becauseYouWatched', label: 'Parce que vous avez regardé [Movie]', defaultName: 'Parce que vous avez regardé [Movie]' },
+        { key: 'becauseYouLiked', label: 'Parce que vous avez aimé [Movie]', defaultName: 'Parce que vous avez aimé [Movie]' },
+        { key: 'starringTopActor', label: 'Avec [Top Actor]', defaultName: 'Avec [Actor]' },
+        { key: 'directedByTopDirector', label: 'Réalisé par [Top Director]', defaultName: 'Réalisé par [Director]' },
+        { key: 'writtenByTopWriter', label: 'Écrit par [Top Writer]', defaultName: 'Écrit par [Writer]' },
+        { key: 'becauseYouRecentlyWatched', label: 'Parce que vous avez récemment regardé [Movie]', defaultName: 'Parce que vous avez récemment regardé [Movie]' },
+        { key: 'starringActorRecentlyWatched', label: 'Avec [Actor], car vous avez récemment regardé [Movie]', defaultName: 'Avec [Actor], car vous avez récemment regardé [Movie]' },
+        { key: 'directedByDirectorRecentlyWatched', label: 'Réalisé par [Director], car vous avez récemment regardé [Movie]', defaultName: 'Réalisé par [Director], car vous avez récemment regardé [Movie]' },
+        { key: 'writtenByWriterRecentlyWatched', label: 'Écrit par [Writer], car vous avez récemment regardé [Movie]', defaultName: 'Écrit par [Writer], car vous avez récemment regardé [Movie]' }
     ];
 
     const SUPPORTED_CUSTOM_SECTION_PARAMS = {
@@ -976,24 +976,24 @@
     // Build script toggle switches
     function buildScriptToggles(scripts) {
         const scriptNames = [
-            { key: 'watchlist', label: 'Watchlist', desc: 'Allows your users to add items to their Watchlist. The Watchlist page shows an overview of all items on a user\'s Watchlist, as well as their Series Progress and Movie History. It also includes a Statistics page with an overview of your user watched stats.' },
-            { key: 'homeScreen', label: 'Enhanced Home Screen', desc: 'Add custom home screen sections and a "discovery engine" to your Home Page. Create sections based on Genre, Tags, Playlists, Collections or Search Terms for specific Item Types. Use the "Spotlight" feature to highlight specific sections with an image carousel/slideshow.' },
-            { key: 'search', label: 'Enhanced Search', desc: 'Search speed is improved by searching less content types by default. Provides options to specify which content type to search. Fully compatible with both the Jellysearch Search from Jellyfin Enhanced plugin and the Meilisearch plugin.' },
-            { key: 'infiniteScroll', label: 'Infinite Scroll', desc: 'Adds infinite scrolling to the library pages for Movies and TV' },
-            { key: 'removeContinue', label: 'Remove Continue', desc: 'Adds the ability to remove items from the Continue Watching sections' },
-            { key: 'skinManager', label: 'Skin Manager', desc: 'Skin selection and management - adds skin dropdown to header and display preferences' },
-            { key: 'headerTabs', label: 'Header Tabs', desc: 'Allows direct navigation to specific Tab sections of a given library page. Full support for default Jellyfin landing pages.' },
-            { key: 'customMenuLinks', label: 'Custom Menu Links', desc: 'Add custom menu links to the left side navigation menu' },
-            { key: 'breadcrumbs', label: 'Breadcrumbs', desc: 'Breadcrumb navigation for Movies, TV and Music. Allows quick navigation between Seasons/Episodes and Albums/Songs.' },
-            { key: 'playlist', label: 'Playlist UX', desc: 'Improved Playlist page navigation: Items only play when the Play button is pressed. Clicking an item navigates to the item\'s page.' },
-            { key: 'itemDetailsCollections', label: 'Collections on Details Page', desc: 'Displays collections on item details pages (Included In section)' },
-            { key: 'flattenSingleSeasonShows', label: 'Episodes On Series Page', desc: 'Displays episodes directly on series page. For single-season shows, shows all episodes. For multi-season shows, shows episodes from the season with Next Up episode (or Season 1 if no Next Up).' },
-            { key: 'seriesInfo', label: 'Series Info+', desc: 'Adds Season and Episode counts to the Series and Season pages. Also adds an "Ends at" time similar to the Episode page.' },
-            { key: 'collections', label: 'Collection Sorting', desc: 'Collection sorting functionality on the Collection page' },
-            { key: 'subtitleSearch', label: 'Subtitle Search', desc: 'Search and download subtitles directly from the video OSD' },
-            { key: 'exclusiveElsewhere', label: 'Exclusive Elsewhere', desc: 'Custom branding when items aren\'t available on streaming services' },
-            { key: 'backdropLeakFix', label: 'Backdrop Leak Fix', desc: 'Fixes memory leaks from backdrop images when tab isn\'t focused' },
-            { key: 'dashboardButtonFix', label: 'Dashboard Button Fix', desc: 'Improved back button behavior on dashboard - prevents navigating back to the new tab browser page' }
+            { key: 'watchlist', label: 'Ma liste', desc: 'Permet d’ajouter des contenus à une liste et d’en consulter la progression, l’historique et les statistiques.' },
+            { key: 'homeScreen', label: 'Accueil amélioré', desc: 'Ajoute des sections personnalisées et un moteur de découverte à l’accueil, notamment des carrousels Spotlight.' },
+            { key: 'search', label: 'Recherche avancée', desc: 'Accélère la recherche et permet de choisir les types de contenus à rechercher.' },
+            { key: 'infiniteScroll', label: 'Défilement infini', desc: 'Ajoute le défilement infini aux médiathèques de films et de séries.' },
+            { key: 'removeContinue', label: 'Retrait de Reprendre la lecture', desc: 'Permet de retirer des éléments des sections Reprendre la lecture.' },
+            { key: 'skinManager', label: 'Gestionnaire de thèmes', desc: 'Ajoute la sélection et la gestion des thèmes dans les préférences d’affichage.' },
+            { key: 'headerTabs', label: 'Onglets du header', desc: 'Permet d’accéder directement aux onglets des pages de médiathèque.' },
+            { key: 'customMenuLinks', label: 'Liens de menu personnalisés', desc: 'Ajoute des liens personnalisés au menu de navigation latéral.' },
+            { key: 'breadcrumbs', label: 'Fil d’Ariane', desc: 'Ajoute une navigation hiérarchique pour les films, séries et contenus musicaux.' },
+            { key: 'playlist', label: 'Interface des playlists', desc: 'Améliore la navigation dans les playlists et sépare la lecture de l’ouverture de la fiche.' },
+            { key: 'itemDetailsCollections', label: 'Collections dans les fiches', desc: 'Affiche les collections associées sur les pages de détails.' },
+            { key: 'flattenSingleSeasonShows', label: 'Épisodes sur la page de série', desc: 'Affiche directement les épisodes sur la page d’une série.' },
+            { key: 'seriesInfo', label: 'Informations séries+', desc: 'Ajoute les nombres de saisons et d’épisodes ainsi que l’heure de fin.' },
+            { key: 'collections', label: 'Tri des collections', desc: 'Ajoute le tri sur les pages de collections.' },
+            { key: 'subtitleSearch', label: 'Recherche de sous-titres', desc: 'Recherche et télécharge des sous-titres depuis le lecteur vidéo.' },
+            { key: 'exclusiveElsewhere', label: 'Exclusivité', desc: 'Personnalise l’indication des contenus absents des services de streaming.' },
+            { key: 'backdropLeakFix', label: 'Correctif des arrière-plans', desc: 'Corrige les fuites mémoire des images d’arrière-plan lorsque l’onglet est inactif.' },
+            { key: 'dashboardButtonFix', label: 'Correctif du bouton Tableau de bord', desc: 'Améliore le comportement du bouton Retour dans le tableau de bord.' }
         ];
 
         return scriptNames.map(script => {
@@ -2191,19 +2191,19 @@
         footer.style.alignItems = 'center';
         footer.innerHTML = `
             <button class="emby-button raised block button-submit" id="saveConfigBtn" style="padding: 0.75em 2em; font-size: 1em; font-weight: 500;">
-                <span>Save</span>
+                <span>Enregistrer</span>
             </button>
             <button class="emby-button raised" id="resetConfigBtn" style="padding: 0.75em 2em; font-size: 1em;">
-                <span>Defaults</span>
+                <span>Valeurs par défaut</span>
             </button>
             <button class="emby-button raised" id="exportConfigBtn" style="padding: 0.75em 2em; font-size: 1em;">
-                <span>Export</span>
+                <span>Exporter</span>
             </button>
             <button class="emby-button raised" id="importConfigBtn" style="padding: 0.75em 2em; font-size: 1em;">
-                <span>Import</span>
+                <span>Importer</span>
             </button>
             <button class="emby-button raised block button-delete" id="resetAllUsersBtn" style="padding: 0.75em 2em; font-size: 1em; font-weight: 500;">
-                <span>Reset All Users Local Settings</span>
+                <span>Réinitialiser les réglages locaux de tous les utilisateurs</span>
             </button>
         `;
 
@@ -2216,7 +2216,7 @@
 
         const modal = window.ModalSystem.create({
             id: MODAL_ID,
-            title: 'KefinTweaks Configuration',
+            title: 'Configuration de KefinTweaks',
             content: content,
             footer: footer,
             closeOnBackdrop: true,
@@ -2264,7 +2264,7 @@
             // Function to update label text
             const updateLabel = () => {
                 if (enabledLabel) {
-                    enabledLabel.textContent = enabledCheckbox.checked ? 'Enabled' : 'Disabled';
+                    enabledLabel.textContent = enabledCheckbox.checked ? 'Activé' : 'Désactivé';
                 }
             };
             
@@ -2534,7 +2534,7 @@
             const moviesEnabledCheckbox = modalInstance.dialogContent.querySelector('#homeScreen_recentlyReleased_movies_enabled');
             if (moviesEnabledSpan && moviesEnabledCheckbox) {
                 moviesEnabledCheckbox.addEventListener('change', () => {
-                    moviesEnabledSpan.textContent = moviesEnabledCheckbox.checked ? 'Enabled' : 'Disabled';
+                    moviesEnabledSpan.textContent = moviesEnabledCheckbox.checked ? 'Activé' : 'Désactivé';
                 });
             }
             
@@ -2542,7 +2542,7 @@
             const episodesEnabledCheckbox = modalInstance.dialogContent.querySelector('#homeScreen_recentlyReleased_episodes_enabled');
             if (episodesEnabledSpan && episodesEnabledCheckbox) {
                 episodesEnabledCheckbox.addEventListener('change', () => {
-                    episodesEnabledSpan.textContent = episodesEnabledCheckbox.checked ? 'Enabled' : 'Disabled';
+                    episodesEnabledSpan.textContent = episodesEnabledCheckbox.checked ? 'Activé' : 'Désactivé';
                 });
             }
         }
@@ -2567,7 +2567,7 @@
                 const enabledSpan = modalInstance.dialogContent.querySelector(`.seasonal-season-enabled-display[data-season-index="${seasonIndex}"]`);
                 if (enabledSpan) {
                     checkbox.addEventListener('change', () => {
-                        enabledSpan.textContent = checkbox.checked ? 'Enabled' : 'Disabled';
+                        enabledSpan.textContent = checkbox.checked ? 'Activé' : 'Désactivé';
                     });
                 }
             });
@@ -2590,7 +2590,7 @@
                 const enabledSpan = modalInstance.dialogContent.querySelector(`.discovery-section-type-enabled[data-section-key="${section.key}"]`);
                 if (enabledCheckbox && enabledSpan) {
                     enabledCheckbox.addEventListener('change', () => {
-                        enabledSpan.textContent = enabledCheckbox.checked ? 'Enabled' : 'Disabled';
+                        enabledSpan.textContent = enabledCheckbox.checked ? 'Activé' : 'Désactivé';
                     });
                 }
             });
@@ -2604,7 +2604,7 @@
                 const nameSpan = modalInstance.dialogContent.querySelector(`.seasonal-season-name-display[data-season-index="${seasonIndex}"]`);
                 if (nameSpan) {
                     input.addEventListener('input', () => {
-                        nameSpan.textContent = input.value || 'Unnamed Season';
+                        nameSpan.textContent = input.value || 'Période sans nom';
                     });
                 }
             });
@@ -2620,7 +2620,7 @@
             const newSection = {
                 id: `seasonal-${seasonIndex}-section-${sectionIndex}`,
                 enabled: true,
-                name: 'New Section',
+                name: 'Nouvelle section',
                 type: 'Genre',
                 source: '',
                 itemLimit: 16,
@@ -2676,7 +2676,7 @@
             const newSection = {
                 id: `custom-section-${sectionIndex}`,
                 enabled: true,
-                name: 'New Custom Section',
+                name: 'Nouvelle section personnalisée',
                 type: 'Collection',
                 source: '',
                 itemLimit: 16,
@@ -2747,7 +2747,7 @@
             
             if (nameInput && nameSpan) {
                 nameInput.addEventListener('input', () => {
-                    nameSpan.textContent = nameInput.value || 'Unnamed Section';
+                    nameSpan.textContent = nameInput.value || 'Section sans nom';
                 });
             }
             
@@ -2759,7 +2759,7 @@
             
             if (enabledCheckbox && enabledSpan) {
                 enabledCheckbox.addEventListener('change', () => {
-                    enabledSpan.textContent = enabledCheckbox.checked ? 'Enabled' : 'Disabled';
+                    enabledSpan.textContent = enabledCheckbox.checked ? 'Activé' : 'Désactivé';
                 });
             }
 
@@ -2985,17 +2985,17 @@
                         return;
                     }
                     
-                    container.innerHTML = `<div style="opacity: 0.75;">Loading preview...</div>`;
+                    container.innerHTML = `<div style="opacity: 0.75;">Chargement de l’aperçu…</div>`;
                     
                     try {
                         const items = await fetchItemsForSectionPreview(sectionConfig);
                         if (!items || items.length === 0) {
-                            container.innerHTML = `<div style="opacity: 0.75; text-align: center;">No items match this configuration yet.</div>`;
+                            container.innerHTML = `<div style="opacity: 0.75; text-align: center;">Aucun élément ne correspond encore à cette configuration.</div>`;
                             return;
                         }
                         
                         if (!window.cardBuilder) {
-                            container.innerHTML = `<div style="color: #ff6b6b; text-align: center;">Card builder utilities are not available.</div>`;
+                            container.innerHTML = `<div style="color: #ff6b6b; text-align: center;">Les outils de création de cartes ne sont pas disponibles.</div>`;
                             return;
                         }
                         
@@ -3023,11 +3023,11 @@
                         if (previewElement) {
                             container.appendChild(previewElement);
                         } else {
-                            container.innerHTML = `<div style="opacity: 0.75; text-align: center;">Unable to render preview with the current configuration.</div>`;
+                            container.innerHTML = `<div style="opacity: 0.75; text-align: center;">Impossible d’afficher l’aperçu avec la configuration actuelle.</div>`;
                         }
                     } catch (error) {
                         console.error('[KefinTweaks Configuration] Error rendering preview:', error);
-                        container.innerHTML = `<div style="color: #ff6b6b; text-align: center;">Failed to load preview: ${error?.message || error}</div>`;
+                        container.innerHTML = `<div style="color: #ff6b6b; text-align: center;">Échec du chargement de l’aperçu : ${error?.message || error}</div>`;
                     }
                 }
             });
@@ -3625,7 +3625,7 @@
                 if (toggleButton) {
                     const textSpan = toggleButton.querySelector('.includeItemTypes-toggle-label');
                     if (textSpan) {
-                        textSpan.textContent = count > 0 ? `${count} selected` : 'Select item types';
+                        textSpan.textContent = count > 0 ? `${count} sélectionné${count > 1 ? 's' : ''}` : 'Choisir les types de contenus';
                     }
                 }
             };
@@ -3683,7 +3683,7 @@
             const newSeason = {
                 id: `season-${newIndex}`,
                 enabled: true,
-                name: 'New Season',
+                name: 'Nouvelle période',
                 startDate: '',
                 endDate: '',
                 order: 100,
@@ -3750,7 +3750,7 @@
                 
                 if (nameInput && nameSpan) {
                     nameInput.addEventListener('input', () => {
-                        nameSpan.textContent = nameInput.value || 'Unnamed Season';
+                        nameSpan.textContent = nameInput.value || 'Période sans nom';
                     });
                 }
                 
@@ -3762,7 +3762,7 @@
                 
                 if (enabledCheckbox && enabledSpan) {
                     enabledCheckbox.addEventListener('change', () => {
-                        enabledSpan.textContent = enabledCheckbox.checked ? 'Enabled' : 'Disabled';
+                        enabledSpan.textContent = enabledCheckbox.checked ? 'Activé' : 'Désactivé';
                     });
                 }
             }
@@ -3804,7 +3804,7 @@
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
-                                <input type="text" id="collectionPickerSearch" class="fld emby-input" placeholder="Search collections..." style="width: 100%;">
+                                <input type="text" id="collectionPickerSearch" class="fld emby-input" placeholder="Rechercher des collections…" style="width: 100%;">
                             </div>
                             <div id="collectionPickerList" style="display: flex; flex-direction: column; gap: 0.5em;">
                                 ${collections.map(collection => {
@@ -3924,7 +3924,7 @@
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
-                                <input type="text" id="playlistPickerSearch" class="fld emby-input" placeholder="Search playlists..." style="width: 100%;">
+                                <input type="text" id="playlistPickerSearch" class="fld emby-input" placeholder="Rechercher des playlists…" style="width: 100%;">
                             </div>
                             <div id="playlistPickerList" style="display: flex; flex-direction: column; gap: 0.5em;">
                                 ${playlists.map(playlist => {
@@ -4043,7 +4043,7 @@
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
-                                <input type="text" id="collectionPickerForSectionSearch" class="fld emby-input" placeholder="Search collections..." style="width: 100%;">
+                                <input type="text" id="collectionPickerForSectionSearch" class="fld emby-input" placeholder="Rechercher des collections…" style="width: 100%;">
                             </div>
                             <div id="collectionPickerForSectionList" style="display: flex; flex-direction: column; gap: 0.5em;">
                                 ${collections.map(collection => {
@@ -4181,7 +4181,7 @@
                     content: `
                         <div style="max-height: 60vh; overflow-y: auto;">
                             <div style="margin-bottom: 1em;">
-                                <input type="text" id="playlistPickerForSectionSearch" class="fld emby-input" placeholder="Search playlists..." style="width: 100%;">
+                                <input type="text" id="playlistPickerForSectionSearch" class="fld emby-input" placeholder="Rechercher des playlists…" style="width: 100%;">
                             </div>
                             <div id="playlistPickerForSectionList" style="display: flex; flex-direction: column; gap: 0.5em;">
                                 ${playlists.map(playlist => {
@@ -4542,7 +4542,7 @@
                 <div class="listItemBodyText" style="margin-bottom: 1em;">
                     Paste your configuration JSON below. This will completely replace your current configuration.
                 </div>
-                <textarea id="importConfigTextarea" class="fld emby-textarea" rows="20" placeholder='Paste your configuration JSON here...' style="width: 100%; font-family: monospace; font-size: 0.9em; line-height: 1.5;"></textarea>
+                <textarea id="importConfigTextarea" class="fld emby-textarea" rows="20" placeholder='Collez votre configuration JSON ici…' style="width: 100%; font-family: monospace; font-size: 0.9em; line-height: 1.5;"></textarea>
             `,
             footer: `
                 <button class="emby-button raised button-submit" id="confirmImportBtn" style="padding: 0.75em 2em; font-size: 1em; font-weight: 500; margin-right: 1em;">

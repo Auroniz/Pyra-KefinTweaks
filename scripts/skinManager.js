@@ -1412,7 +1412,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         
         // Create skin dropdown
         const skinContainer = createDropdown({
-            label: 'Skin',
+            label: 'Thème',
             id: 'selectSkinPopover',
             options: SKINS_CONFIG.map(skin => ({
                 value: skin.name,
@@ -1426,7 +1426,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         
         // Create color schemes dropdown
         const colorSchemesContainer = createDropdown({
-            label: 'Color Schemes',
+            label: 'Palettes de couleurs',
             id: 'selectColorSchemesPopover',
             options: [], // Will be populated by updatePopoverColorSchemes
             changeHandler: handleColorSchemeChange,
@@ -1847,7 +1847,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         // Description
         const description = document.createElement('div');
         description.className = 'listItemBodyText secondary';
-        description.textContent = 'Enable or disable additional CSS modules. Global options apply to all skins:';
+        description.textContent = 'Activez ou désactivez des modules CSS supplémentaires. Les options globales s’appliquent à tous les thèmes :';
         description.style.cssText = 'margin-bottom: 1em; font-size: 0.9em; opacity: 0.8;';
         content.appendChild(description);
         
@@ -1859,7 +1859,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         if (enabledGlobalIncludes.length === 0 && enabledSkinIncludes.length === 0) {
             const noOptionsMessage = document.createElement('div');
             noOptionsMessage.className = 'listItemBodyText secondary';
-            noOptionsMessage.textContent = 'No additional options available for this skin.';
+            noOptionsMessage.textContent = 'Aucune option supplémentaire pour ce thème.';
             noOptionsMessage.style.cssText = 'text-align: center; padding: 1em; opacity: 0.6;';
             checkboxesContainer.appendChild(noOptionsMessage);
         }
@@ -1871,7 +1871,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
             
             const globalHeader = document.createElement('div');
             globalHeader.className = 'listItemBodyText';
-            globalHeader.textContent = 'Global Options';
+            globalHeader.textContent = 'Options globales';
             globalHeader.style.cssText = 'font-weight: 500; margin-bottom: 0.5em; font-size: 0.95em;';
             globalSection.appendChild(globalHeader);
             
@@ -1904,7 +1904,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
                 const author = extractAuthorFromUrl(include.url);
                 if (author) {
                     const authorSpan = document.createElement('span');
-                    authorSpan.textContent = ' by ';
+                    authorSpan.textContent = ' par ';
                     authorSpan.style.cssText = 'font-size: 0.85em; opacity: 0.7; margin-left: 0.25em;';
                     
                     const authorLink = document.createElement('a');
@@ -1939,7 +1939,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
             
             const skinHeader = document.createElement('div');
             skinHeader.className = 'listItemBodyText';
-            skinHeader.textContent = `${skin.name} Skin Options`;
+            skinHeader.textContent = `Options du thème ${skin.name}`;
             skinHeader.style.cssText = 'font-weight: 500; margin-bottom: 0.5em; font-size: 0.95em;';
             skinSection.appendChild(skinHeader);
             
@@ -1972,7 +1972,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
                 const author = extractAuthorFromUrl(include.url);
                 if (author) {
                     const authorSpan = document.createElement('span');
-                    authorSpan.textContent = ' by ';
+                    authorSpan.textContent = ' par ';
                     authorSpan.style.cssText = 'font-size: 0.85em; opacity: 0.7; margin-left: 0.25em;';
                     
                     const authorLink = document.createElement('a');
@@ -2091,12 +2091,12 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         
         labelElement.innerHTML = '';
         if (!selectedSkin || (!selectedSkin.author && !getSkinRepositoryUrl(selectedSkin))) {
-            labelElement.textContent = 'Skin';
+            labelElement.textContent = 'Thème';
             return;
         }
         
         const prefix = document.createElement('span');
-        prefix.textContent = 'Skin by ';
+        prefix.textContent = 'Thème par ';
         labelElement.appendChild(prefix);
         
         const authorName = selectedSkin.author || 'View Repository';
@@ -2230,7 +2230,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         
         // Create the dropdown using the generic function
         const dropdown = createDropdown({
-            label: 'Skin',
+            label: 'Thème',
             id: 'selectSkin',
             options: SKINS_CONFIG.map(skin => ({
                 value: skin.name,
@@ -2331,7 +2331,7 @@ window.KefinTweaksConfig = ${JSON.stringify(configToBackup, null, 2)};`;
         
         // Create the dropdown using the generic function
         const dropdown = createDropdown({
-            label: 'Color Schemes',
+            label: 'Palettes de couleurs',
             id: 'selectColorSchemes',
             options: [], // Will be populated by updateColorSchemesDropdown
             changeHandler: handleColorSchemeChange
