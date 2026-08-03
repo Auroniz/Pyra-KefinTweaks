@@ -6,6 +6,68 @@
     const BUTTON_ID = 'pyra-header-branding-button';
     let headerObserver = null;
 
+    function applyPyraFavicon() {
+        const root = window.KefinTweaksConfig?.kefinTweaksRoot;
+
+        if (!root || !document.head) {
+            return;
+        }
+
+        const normalizedRoot = root.endsWith('/') ? root : `${root}/`;
+        const faviconUrl = `${normalizedRoot}assets/branding/pyra-header-icon-white.png?v=pyra-1`;
+        const iconSelector = [
+            'link[rel="icon"]',
+            'link[rel="shortcut icon"]',
+            'link[rel="apple-touch-icon"]'
+        ].join(', ');
+
+        document.querySelectorAll(iconSelector).forEach(link => {
+            if (link.dataset.pyraBranding !== 'favicon') {
+                link.remove();
+            }
+        });
+
+        const definitions = [
+            { rel: 'icon', sizes: '256x256' },
+            { rel: 'shortcut icon' },
+            { rel: 'apple-touch-icon', sizes: '256x256' }
+        ];
+        const existingPyraLinks = Array.from(
+            document.querySelectorAll('link[data-pyra-branding="favicon"]')
+        );
+        const retainedLinks = new Set();
+
+        definitions.forEach(definition => {
+            let link = existingPyraLinks.find(existingLink =>
+                !retainedLinks.has(existingLink) &&
+                existingLink.getAttribute('rel') === definition.rel
+            );
+
+            if (!link) {
+                link = document.createElement('link');
+                document.head.appendChild(link);
+            }
+
+            retainedLinks.add(link);
+            link.setAttribute('rel', definition.rel);
+            link.setAttribute('type', 'image/png');
+            link.setAttribute('href', faviconUrl);
+            link.setAttribute('data-pyra-branding', 'favicon');
+
+            if (definition.sizes) {
+                link.setAttribute('sizes', definition.sizes);
+            } else {
+                link.removeAttribute('sizes');
+            }
+        });
+
+        existingPyraLinks.forEach(link => {
+            if (!retainedLinks.has(link)) {
+                link.remove();
+            }
+        });
+    }
+
     function goHome() {
         const nativeHomeButton = document.querySelector('.skinHeader .headerHomeButton');
 
@@ -87,6 +149,9 @@
     } else {
         initializeBranding();
     }
+
+    applyPyraFavicon();
+    window.addEventListener('pageshow', applyPyraFavicon);
 
     console.log('[KefinTweaks HeaderBranding] Global header branding styles loaded');
 })();
