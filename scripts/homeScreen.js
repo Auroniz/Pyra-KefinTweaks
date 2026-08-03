@@ -17,6 +17,33 @@
     let mainHeroHeaderObserver = null;
     let mainHeroResizeHandler = null;
 
+    function detectPyraClient() {
+        let appName = '';
+
+        try {
+            appName =
+                globalThis.NativeShell?.AppHost?.appName?.() || '';
+        } catch (error) {
+            appName = '';
+        }
+
+        const isMediaApp =
+            Boolean(globalThis.jmpInfo) ||
+            /Jellyfin (Media Player|Desktop)/i.test(appName);
+
+        document.documentElement.classList.toggle(
+            'pyra-client-media-app',
+            isMediaApp
+        );
+
+        document.documentElement.classList.toggle(
+            'pyra-client-web',
+            !isMediaApp
+        );
+
+        return isMediaApp;
+    }
+
     function alignMainHero() {
         const hero = document.querySelector(MAIN_HERO_SELECTOR);
         const header = document.querySelector('.skinHeader');
@@ -35,8 +62,13 @@
                     return;
                 }
 
+                const visibleHeader =
+                    window.matchMedia('(min-width: 56.25em)').matches
+                        ? header.querySelector('.headerTop') || header
+                        : header;
                 const heroTop = hero.getBoundingClientRect().top;
-                const headerBottom = header.getBoundingClientRect().bottom;
+                const headerBottom =
+                    visibleHeader.getBoundingClientRect().bottom;
                 const marginTop = Math.round(headerBottom - heroTop);
 
                 hero.style.setProperty(
@@ -51,6 +83,10 @@
         if (mainHeroAlignmentFrame !== null) {
             cancelAnimationFrame(mainHeroAlignmentFrame);
             mainHeroAlignmentFrame = null;
+        }
+
+        if (detectPyraClient()) {
+            return;
         }
 
         alignMainHero();
@@ -92,6 +128,7 @@
         }
     }
     
+    detectPyraClient();
     LOG('Initializing...');
     
     // Add CSS for discovery section loading indicator
@@ -5918,7 +5955,10 @@
             
             container.appendChild(cardContainer);
 
-            if (cardContainer.classList.contains('pyra-main-hero')) {
+            if (
+                cardContainer.classList.contains('pyra-main-hero') &&
+                !detectPyraClient()
+            ) {
                 setupMainHeroAlignment();
                 scheduleMainHeroAlignment();
             }

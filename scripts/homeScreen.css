@@ -160,6 +160,31 @@ div#discovery-loading-indicator:not(.show)::after {
     overflow-x: clip;
 }
 
+html.pyra-client-media-app .spotlight-section.pyra-main-hero,
+html.pyra-client-media-app .spotlight-section[data-custom-section-id="custom-custom-section-0"] {
+    margin-top: calc(-4rem - 7px) !important;
+}
+
+@media (min-width: 56.25em) {
+    html.pyra-client-web .skinHeader {
+        position: fixed;
+    }
+
+    html.pyra-client-web .skinHeader .headerTabs:not(.hide) {
+        position: absolute !important;
+        top: 0 !important;
+        left: 50% !important;
+        width: auto !important;
+        height: 100% !important;
+        margin: 0 !important;
+        transform: translateX(-50%) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 2;
+    }
+}
+
 .spotlight-section.pyra-main-hero .spotlight-banner-container,
 .spotlight-section[data-custom-section-id="custom-custom-section-0"] .spotlight-banner-container {
     border-radius: 0;
