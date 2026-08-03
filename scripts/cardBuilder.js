@@ -301,7 +301,7 @@
         cardImageContainer.href = `${ApiClient._serverAddress}/web/#/details?id=${item.Id}&serverId=${serverId}`;
         cardImageContainer.className = 'cardImageContainer coveredImage cardContent itemAction lazy blurhashed lazy-image-fadein-fast';
         cardImageContainer.setAttribute('data-action', 'link');
-        cardImageContainer.setAttribute('aria-label', item.Name || 'Unknown');
+        cardImageContainer.setAttribute('aria-label', item.Name || 'Inconnu');
 
         // Force specific image if card format is specified
         if (cardFormat === 'backdrop') {
@@ -449,7 +449,7 @@
         watchedButton.setAttribute('data-serverid', serverId);
         watchedButton.setAttribute('data-itemtype', item.Type);
         watchedButton.setAttribute('data-played', item.UserData?.Played || 'false');
-        watchedButton.title = 'Mark played';
+        watchedButton.title = 'Marquer comme lu';
         
         const watchedIcon = document.createElement('span');
         watchedIcon.className = 'material-icons cardOverlayButtonIcon cardOverlayButtonIcon-hover check playstatebutton-icon-unplayed';
@@ -468,7 +468,7 @@
         favoriteButton.setAttribute('data-itemtype', item.Type);
         favoriteButton.setAttribute('data-likes', '');
         favoriteButton.setAttribute('data-isfavorite', item.UserData?.IsFavorite || 'false');
-        favoriteButton.title = 'Add to favorites';
+        favoriteButton.title = 'Ajouter aux favoris';
         
         const favoriteIcon = document.createElement('span');
         favoriteIcon.className = 'material-icons cardOverlayButtonIcon cardOverlayButtonIcon-hover favorite';
@@ -480,7 +480,7 @@
         moreButton.setAttribute('is', 'paper-icon-button-light');
         moreButton.className = 'cardOverlayButton cardOverlayButton-hover itemAction paper-icon-button-light';
         moreButton.setAttribute('data-action', 'menu');
-        moreButton.title = 'More';
+        moreButton.title = 'Plus';
         const moreIcon = document.createElement('span');
         moreIcon.className = 'material-icons cardOverlayButtonIcon cardOverlayButtonIcon-hover more_vert';
         moreIcon.setAttribute('aria-hidden', 'true');
@@ -510,8 +510,8 @@
             seriesLink.setAttribute('data-channelid', 'undefined');
             seriesLink.setAttribute('data-isfolder', 'true');
             seriesLink.setAttribute('data-action', 'link');
-            seriesLink.title = item.SeriesName || 'Unknown Series';
-            seriesLink.textContent = item.SeriesName || 'Unknown Series';
+            seriesLink.title = item.SeriesName || 'Série inconnue';
+            seriesLink.textContent = item.SeriesName || 'Série inconnue';
 
             const seriesBdi = document.createElement('bdi');
             seriesBdi.appendChild(seriesLink);
@@ -530,8 +530,8 @@
             episodeLink.setAttribute('data-channelid', 'undefined');
             episodeLink.setAttribute('data-isfolder', 'false');
             episodeLink.setAttribute('data-action', 'link');
-            episodeLink.title = item.Name || 'Unknown Episode';
-            episodeLink.textContent = item.Name || 'Unknown Episode';
+            episodeLink.title = item.Name || 'Épisode inconnu';
+            episodeLink.textContent = item.Name || 'Épisode inconnu';
 
             const episodeBdi = document.createElement('bdi');
             episodeBdi.appendChild(episodeLink);
@@ -548,8 +548,8 @@
             titleLink.setAttribute('data-channelid', 'undefined');
             titleLink.setAttribute('data-isfolder', item.Type === 'MusicAlbum' || item.Type === 'Artist' || item.Type === 'MusicArtist' ? 'true' : 'false');
             titleLink.setAttribute('data-action', 'link');
-            titleLink.title = item.Name || 'Unknown';
-            titleLink.textContent = item.Name || 'Unknown';
+            titleLink.title = item.Name || 'Inconnu';
+            titleLink.textContent = item.Name || 'Inconnu';
 
             const titleBdi = document.createElement('bdi');
             titleBdi.appendChild(titleLink);
@@ -666,7 +666,7 @@
                 const titleLink = document.createElement('a');
                 titleLink.className = 'spotlight-section-title spotlight-title-link';
                 titleLink.textContent = title;
-                titleLink.title = 'See All';
+                titleLink.title = 'Tout afficher';
                 titleLink.style.textDecoration = 'none';
 
                 const cssStyle = document.createElement('style');
@@ -750,12 +750,12 @@
                 titleEl = document.createElement('img');
                 titleEl.className = 'spotlight-item-logo';
                 titleEl.src = logoUrl;
-                titleEl.alt = item.Name || 'Unknown';
+                titleEl.alt = item.Name || 'Inconnu';
             } else {
                 // Use text title as fallback
                 titleEl = document.createElement('h3');
                 titleEl.className = 'spotlight-item-title';
-                titleEl.textContent = item.Name || 'Unknown';
+                titleEl.textContent = item.Name || 'Inconnu';
             }
             
             // Combined: Year + Runtime + Rating (all on one line)
@@ -917,7 +917,7 @@
                 const seasonsCount = item.ChildCount || 0;
                 
                 // Initial text with seasons count
-                const seasonsText = `${seasonsCount} ${seasonsCount === 1 ? 'season' : 'seasons'}`;
+                const seasonsText = `${seasonsCount} saison${seasonsCount > 1 ? 's' : ''}`;
                 seriesInfoContainer.textContent = seasonsText;
                 
                 // Fetch episode count asynchronously and update
@@ -927,7 +927,7 @@
                         
                         // Update the series info container with episode count
                         if (seriesInfoContainer) {
-                            const episodesText = `${episodesCount} ${episodesCount === 1 ? 'episode' : 'episodes'}`;
+                            const episodesText = `${episodesCount} épisode${episodesCount > 1 ? 's' : ''}`;
                             seriesInfoContainer.textContent = `${seasonsText} - ${episodesText}`;
                         }
                     } catch (err) {
@@ -952,27 +952,27 @@
                     
                     if (areIdentical) {
                         // Combine into single "Directed and Written by" row (with person objects for links)
-                        combinedContainer = createTruncatedList('Directed and Written by', directors, 3, true);
+                        combinedContainer = createTruncatedList('Réalisé et écrit par', directors, 3, true);
                         // Add empty writer container to maintain spacing
                         writerContainer = document.createElement('div');
                         writerContainer.className = 'spotlight-empty-writer-container';
                     } else {
                         // Show separately (with person objects for links)
-                        directorContainer = createTruncatedList('Directed by', directors, 3, true);
-                        writerContainer = createTruncatedList('Written by', writers, 3, true);
+                        directorContainer = createTruncatedList('Réalisé par', directors, 3, true);
+                        writerContainer = createTruncatedList('Écrit par', writers, 3, true);
                     }
                 }
             } else if (itemType === 'Season') {
                 // For Seasons, show episodes count
                 const episodesCount = item.RecursiveItemCount || 0;
-                const episodesText = `${episodesCount} ${episodesCount === 1 ? 'episode' : 'episodes'}`;
+                const episodesText = `${episodesCount} épisode${episodesCount > 1 ? 's' : ''}`;
                 seriesInfoContainer.textContent = episodesText;
             } else if (itemType === 'Episode') {
                 // For Episodes, show episode number
                 const seasonNumber = item.ParentIndexNumber || 0;
-                const seasonText = `Season ${seasonNumber}`;
+                const seasonText = `Saison ${seasonNumber}`;
                 const episodeNumber = item.IndexNumber || 0;
-                const episodeText = `Episode ${episodeNumber}`;
+                const episodeText = `Épisode ${episodeNumber}`;
                 seriesInfoContainer.textContent = `${seasonText} - ${episodeText}`;
             }
             
@@ -1145,7 +1145,7 @@
                 const clearArtEl = document.createElement('img');
                 clearArtEl.className = 'spotlight-clearart';
                 clearArtEl.src = clearArtUrl;
-                clearArtEl.alt = item.Name || 'Unknown';
+                clearArtEl.alt = item.Name || 'Inconnu';
                 itemDiv.appendChild(clearArtEl);
             }
             
@@ -1423,8 +1423,8 @@
         showAllButton.type = 'button';
         showAllButton.className = 'show-all-button';
         showAllButton.style.cssText = 'margin-left: 10px; font-size: 12px; padding: 4px 8px; min-width: auto; background: transparent; border: 1px solid rgba(255, 255, 255, 0.3) !important; border-radius: 4px; cursor: pointer; color: var(--main-text, #fff) !important; margin-bottom: .35em; align-self: center;';
-        showAllButton.textContent = 'Expand';
-        showAllButton.title = 'Show all items';
+        showAllButton.textContent = 'Développer';
+        showAllButton.title = 'Afficher tous les éléments';
 
         // Create scroller container
         const scroller = document.createElement('div');
@@ -1476,15 +1476,15 @@
                 // Switch back to scroll view
                 itemsContainer.style.cssText = originalItemsContainerStyle;
                 if (scrollButtons) scrollButtons.style.display = '';
-                showAllButton.textContent = 'Expand';
-                showAllButton.title = 'Show all items in a grid layout';
+                showAllButton.textContent = 'Développer';
+                showAllButton.title = 'Afficher tous les éléments en grille';
                 isShowingAll = false;
             } else {
                 // Switch to grid view
                 itemsContainer.style.cssText = 'display: flex; flex-wrap: wrap; gap: 12px; white-space: normal; transform: none !important; transition: none !important;';
                 if (scrollButtons) scrollButtons.style.display = 'none';
-                showAllButton.textContent = 'Collapse';
-                showAllButton.title = 'Show items in scrollable layout';
+                showAllButton.textContent = 'Réduire';
+                showAllButton.title = 'Afficher les éléments dans une liste déroulante';
                 isShowingAll = true;
             }
         });

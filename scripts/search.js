@@ -245,20 +245,20 @@
 
     function getTypeDisplayName(itemType) {
         const typeMap = {
-            'Movie': 'Movies',
-            'Series': 'TV Shows',
-            'Episode': 'Episodes',
-            'Person': 'People',
+            'Movie': 'Films',
+            'Series': 'Séries',
+            'Episode': 'Épisodes',
+            'Person': 'Personnes',
             'MusicAlbum': 'Albums',
-            'Audio': 'Songs',
-            'MusicArtist': 'Artists',
-            'Playlist': 'Playlists',
-            'Book': 'Books',
-            'AudioBook': 'Audiobooks',
+            'Audio': 'Morceaux',
+            'MusicArtist': 'Artistes',
+            'Playlist': 'Listes de lecture',
+            'Book': 'Livres',
+            'AudioBook': 'Livres audio',
             'Photo': 'Photos',
-            'PhotoAlbum': 'Photo Albums',
-            'TvChannel': 'TV Channels',
-            'LiveTvProgram': 'Live TV',
+            'PhotoAlbum': 'Albums photo',
+            'TvChannel': 'Chaînes TV',
+            'LiveTvProgram': 'TV en direct',
             'BoxSet': 'Collections'
         };
         return typeMap[itemType] || itemType;
@@ -293,8 +293,8 @@
         
         // Check if we have any grouped results
         if (!results.groupedItems || Object.keys(results.groupedItems).length === 0) {
-            resultsContainer.innerHTML = '<p style="color:#999;text-align:center;">No results found</p>';
-            stats.textContent = `Search completed in ${ms}ms - 0 results`;
+            resultsContainer.innerHTML = '<p style="color:#999;text-align:center;">Aucun résultat</p>';
+            stats.textContent = `Recherche terminée en ${ms} ms — 0 résultat`;
             return;
         }
 
@@ -329,7 +329,7 @@
         });
 
         resultsContainer.appendChild(frag);
-        stats.textContent = `Search completed in ${ms}ms - ${results.total} results found`;
+        stats.textContent = `Recherche terminée en ${ms} ms — ${results.total} résultat${results.total > 1 ? 's' : ''}`;
     }
 
     // main init
@@ -378,7 +378,7 @@
             input.id = 'searchTextInput'; // Use the same ID as original
             input.className = 'smart-search-input emby-input searchfields-txtSearch';
             input.type = 'text';
-            input.placeholder = 'Search...';
+            input.placeholder = 'Rechercher…';
             input.value = ''; // Clear any existing value
             input.removeAttribute('data-jellyseerr-listener');
 
@@ -388,19 +388,19 @@
             const btnAll = document.createElement('button');
             btnAll.id = 'smart-search-all';
             btnAll.className = 'smart-search-btn emby-button';
-            btnAll.textContent = 'All';
+            btnAll.textContent = 'Tout';
             const btnCore = document.createElement('button');
             btnCore.id = 'smart-search-core';
             btnCore.className = 'smart-search-btn emby-button raised button-submit active';
-            btnCore.textContent = 'Movies/TV';
+            btnCore.textContent = 'Films/Séries';
             const btnMusic = document.createElement('button');
             btnMusic.id = 'smart-search-music';
             btnMusic.className = 'smart-search-btn emby-button';
-            btnMusic.textContent = 'Music';
+            btnMusic.textContent = 'Musique';
             const btnBooks = document.createElement('button');
             btnBooks.id = 'smart-search-books';
             btnBooks.className = 'smart-search-btn emby-button';
-            btnBooks.textContent = 'Books';
+            btnBooks.textContent = 'Livres';
 
             btnRow.appendChild(btnAll);
             btnRow.appendChild(btnCore);
@@ -411,7 +411,7 @@
                 const btnRequest = document.createElement('button');
                 btnRequest.id = 'smart-search-request';
                 btnRequest.className = 'smart-search-btn emby-button';
-                btnRequest.textContent = 'Request';
+                btnRequest.textContent = 'Demander';
     
                 btnRow.appendChild(btnRequest);
             }
@@ -576,7 +576,7 @@
         if (!toggleBtn) {
             toggleBtn = document.createElement('button');
             toggleBtn.id = 'persistent-toggle-btn';
-            toggleBtn.textContent = 'Switch to Default Search';
+            toggleBtn.textContent = 'Utiliser la recherche classique';
             const searchFields = document.querySelector('.searchFields');
             if (searchFields) {
                 searchFields.appendChild(toggleBtn);
@@ -597,7 +597,7 @@
                 searchResults.forEach(sr => sr.style.display = 'none');
                 const resultsContainer = ensureSmartResultsContainer();
                 resultsContainer.style.display = '';
-                toggleBtn.textContent='Switch to Default Search';
+                toggleBtn.textContent='Utiliser la recherche classique';
                 // Add smart-search-mode class to body for CSS targeting
                 document.body.classList.add('smart-search-mode');
             } else {
@@ -607,7 +607,7 @@
                 searchResults.forEach(sr => sr.style.display = '');
                 const resultsContainer = ensureSmartResultsContainer();
                 resultsContainer.style.display = 'none';
-                toggleBtn.textContent='Switch to Smart Search';
+                toggleBtn.textContent='Utiliser la recherche avancée';
                 // Remove smart-search-mode class from body
                 document.body.classList.remove('smart-search-mode');
                 

@@ -21,7 +21,7 @@
     
     // Configuration
     const CONFIG = {
-        searchButtonText: 'Search Subtitles',
+        searchButtonText: 'Rechercher des sous-titres',
         searchIcon: 'search',
         downloadIcon: 'file_download',
         ccIcon: 'closed_caption'
@@ -136,7 +136,7 @@
         const button = document.createElement('button');
         button.setAttribute('is', 'paper-icon-button-light');
         button.className = 'btnSubtitles autoSize paper-icon-button-light';
-        button.title = 'Subtitles';
+        button.title = 'Sous-titres';
         
         const icon = document.createElement('span');
         icon.className = 'xlargePaperIconButton material-icons closed_caption';
@@ -206,7 +206,7 @@
                  data-history="true" data-removeonclose="true" 
                  style="animation: 140ms ease-out 0s 1 normal both running scaleup; position: fixed; margin: 0px; top: -33px;">
                 <div class="actionSheetContent">
-                    <h1 class="actionSheetTitle">Subtitles</h1>
+                    <h1 class="actionSheetTitle">Sous-titres</h1>
                     <button is="emby-button" type="button" class="listItem listItem-button actionSheetMenuItem emby-button" 
                             id="subtitleSearchButton">
                         <span class="actionsheetMenuItemIcon listItemIcon listItemIcon-transparent material-icons ${CONFIG.searchIcon}" 
@@ -218,7 +218,7 @@
                     <div class="actionSheetScroller scrollY">
                         <div class="listItem">
                             <div class="listItemBody">
-                                <div class="listItemBodyText">No subtitles available</div>
+                                <div class="listItemBodyText">Aucun sous-titre disponible</div>
                             </div>
                         </div>
                     </div>
@@ -236,7 +236,7 @@
         // Remove any existing subtitle dialogs
         const existingDialogs = document.querySelectorAll('.dialogContainer');
         existingDialogs.forEach(dialog => {
-            if (dialog.querySelector('.actionSheetTitle')?.textContent === 'Subtitles') {
+            if (dialog.querySelector('.actionSheetTitle')?.textContent === 'Sous-titres') {
                 dialog.remove();
             }
         });
@@ -277,12 +277,12 @@
                  data-history="true" data-removeonclose="true" 
                  style="animation: 140ms ease-out 0s 1 normal both running scaleup; position: fixed; margin: 0px;">
                 <div class="actionSheetContent">
-                    <span style="padding: 10px 20px;margin: -6px auto 10px;max-width: 450px;background: #c1c1c1;border-radius: 0 0 10px 10px;color: #000000;">If you have ${serverName} open in multiple tabs the subtitle will be downloaded, but the player will not switch to the subtitle and it will appear as if the download is hanging.</span>
-                    <h1 class="actionSheetTitle">Subtitle Search Results</h1>
+                    <span style="padding: 10px 20px;margin: -6px auto 10px;max-width: 450px;background: #c1c1c1;border-radius: 0 0 10px 10px;color: #000000;">Si ${serverName} est ouvert dans plusieurs onglets, le sous-titre sera téléchargé, mais le lecteur ne l’activera pas et le téléchargement semblera bloqué.</span>
+                    <h1 class="actionSheetTitle">Résultats de la recherche de sous-titres</h1>
                     <div class="actionSheetScroller scrollY" id="subtitleSearchResults">
                         <div class="listItem">
                             <div class="listItemBody">
-                                <div class="listItemBodyText">Searching...</div>
+                                <div class="listItemBodyText">Recherche…</div>
                             </div>
                         </div>
                     </div>
@@ -353,7 +353,7 @@
             
         } catch (error) {
             ERR('Error searching subtitles:', error);
-            resultsContainer.innerHTML = '<div class="listItem"><div class="listItemBody"><div class="listItemBodyText">Error searching subtitles</div></div></div>';
+            resultsContainer.innerHTML = '<div class="listItem"><div class="listItemBody"><div class="listItemBodyText">Erreur lors de la recherche de sous-titres</div></div></div>';
         }
     }
     
@@ -362,13 +362,13 @@
      */
     function displaySubtitleResults(subtitles, container, itemId) {
         if (subtitles.length === 0) {
-            container.innerHTML = '<div class="listItem"><div class="listItemBody"><div class="listItemBodyText">No subtitles found</div></div></div>';
+            container.innerHTML = '<div class="listItem"><div class="listItemBody"><div class="listItemBodyText">Aucun sous-titre trouvé</div></div></div>';
             return;
         }
         
         const resultsHTML = subtitles.map(subtitle => {
-            const matchType = subtitle.IsHashMatch ? 'Perfect match' : 'Partial match';
-            const downloads = subtitle.DownloadCount?.toLocaleString() || '0';
+            const matchType = subtitle.IsHashMatch ? 'Correspondance parfaite' : 'Correspondance partielle';
+            const downloads = subtitle.DownloadCount?.toLocaleString('fr-FR') || '0';
             
             return `
                 <div class="listItem listItem-border" data-subid="${subtitle.Id}">
@@ -376,9 +376,9 @@
                     <div class="listItemBody three-line">
                         <div>${subtitle.Name}</div>
                         <div class="secondary listItemBodyText">
-                            <span style="margin-right:1em;">Format: ${subtitle.Format}</span>
-                            <span style="margin-right:1em;">${downloads} downloads</span>
-                            <span>Framerate: ${subtitle.FrameRate}</span>
+                            <span style="margin-right:1em;">Format : ${subtitle.Format}</span>
+                            <span style="margin-right:1em;">${downloads} téléchargement${subtitle.DownloadCount > 1 ? 's' : ''}</span>
+                            <span>Fréquence d’images : ${subtitle.FrameRate}</span>
                         </div>
                         <div class="secondary listItemBodyText">
                             <span class="inline-flex align-items-center justify-content-center subtitleFeaturePillow">${matchType}</span>
@@ -850,7 +850,7 @@
      */
     function showDownloadProgress() {
         if (window.KefinTweaksToaster && window.KefinTweaksToaster.toast) {
-            window.KefinTweaksToaster.toast('Downloading subtitle...', null, false);
+            window.KefinTweaksToaster.toast('Téléchargement du sous-titre…', null, false);
         }
     }
     
@@ -861,7 +861,7 @@
         hideDownloadProgress();
         
         if (window.KefinTweaksToaster && window.KefinTweaksToaster.toast) {
-            window.KefinTweaksToaster.toast('Subtitle downloaded and activated!');
+            window.KefinTweaksToaster.toast('Sous-titre téléchargé et activé !');
         }
     }
     
@@ -872,7 +872,7 @@
         hideDownloadProgress();
         
         if (window.KefinTweaksToaster && window.KefinTweaksToaster.toast) {
-            window.KefinTweaksToaster.toast(message || 'Failed to download subtitle', '5');
+            window.KefinTweaksToaster.toast(message || 'Échec du téléchargement du sous-titre', '5');
         }
     }
     
@@ -936,7 +936,7 @@
                 
                 // Hide progress and show error
                 hideDownloadProgress();
-                showDownloadError('Could not detect new subtitle');
+                showDownloadError('Impossible de détecter le nouveau sous-titre');
                 
                 // Show the dialog again on error
                 const resultsDialog = document.querySelector('#subtitleSearchResultsDialog');
@@ -953,7 +953,7 @@
             
             // Hide progress and show error
             hideDownloadProgress();
-            showDownloadError('Failed to download subtitle');
+            showDownloadError('Échec du téléchargement du sous-titre');
             
             // Show the dialog again on error
             const resultsDialog = document.querySelector('#subtitleSearchResultsDialog');

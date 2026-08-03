@@ -1116,6 +1116,9 @@
         }
 
         normalized.name = normalized.name || definition.defaultName || '';
+        if (window.KefinTweaksI18n?.translateKnownDiscoveryTemplate) {
+            normalized.name = window.KefinTweaksI18n.translateKnownDiscoveryTemplate(normalized.name);
+        }
         normalized.itemLimit = parseDiscoveryNumber(normalized.itemLimit, defaultItemLimitForDiscovery);
         normalized.sortOrder = normalized.sortOrder || defaultSortOrderForDiscovery;
         normalized.sortOrderDirection = normalized.sortOrderDirection || 'Ascending';
@@ -1686,7 +1689,7 @@
             
             const cardContainer = window.cardBuilder.renderCards(
                 items,
-                sectionConfig.name || `Recently Added`,
+                sectionConfig.name || `Ajouts récents`,
                 viewMoreUrl,
                 true, // overflowCard (use standard overflow style for horizontal scroll)
                 sectionConfig.cardFormat || 'Poster',
@@ -1696,7 +1699,7 @@
             
             const sectionId = `recently-added-${libraryId}`;
             cardContainer.setAttribute('data-custom-section-id', sectionId);
-            cardContainer.setAttribute('data-custom-section-name', sectionConfig.name || `Recently Added`);
+            cardContainer.setAttribute('data-custom-section-name', sectionConfig.name || `Ajouts récents`);
             cardContainer.style.order = sectionConfig.order || 11;
             
             container.appendChild(cardContainer);
@@ -3012,7 +3015,7 @@
             const itemLimit = newMoviesConfig.itemLimit ?? defaultItemLimit;
             const cardFormat = newMoviesConfig.cardFormat ?? defaultCardFormat;
             const order = newMoviesConfig.order ?? 30;
-            const sectionName = newMoviesConfig.name || 'Recently Released Movies';
+            const sectionName = newMoviesConfig.name || 'Films récemment sortis';
             
             // Apply limit
             const limitedMovies = movies.slice(0, itemLimit);
@@ -3065,7 +3068,7 @@
             const itemLimit = newEpisodesConfig.itemLimit ?? defaultItemLimit;
             const cardFormat = newEpisodesConfig.cardFormat ?? defaultCardFormat;
             const order = newEpisodesConfig.order ?? 31;
-            const sectionName = newEpisodesConfig.name || 'Recently Aired Episodes';
+            const sectionName = newEpisodesConfig.name || 'Épisodes récemment diffusés';
             
             // Apply limit
             const limitedEpisodes = episodes.slice(0, itemLimit);
@@ -3122,7 +3125,7 @@
             const sortOrderDirection = watchlistConfig.sortOrderDirection ?? 'Descending';
             const cardFormat = watchlistConfig.cardFormat ?? defaultCardFormat;
             const order = watchlistConfig.order ?? 60;
-            const sectionName = watchlistConfig.name || 'Watchlist';
+            const sectionName = watchlistConfig.name || 'Ma liste';
             
             // Apply sorting and limit
             let sortedItems = watchlistItems;
@@ -3214,7 +3217,7 @@
             const itemLimit = upcomingConfig.itemLimit || 48;
             const cardFormat = upcomingConfig.cardFormat || 'Backdrop';
             const order = upcomingConfig.order || 20;
-            const sectionName = upcomingConfig.name || 'Upcoming';
+            const sectionName = upcomingConfig.name || 'Prochainement';
 
             // Get the parent id from the root libraryies with CollectionType: "tvshows"
             const libraries = await ApiClient.getItems();
@@ -3467,7 +3470,7 @@
             const sortOrderDirection = watchAgainConfig.sortOrderDirection ?? 'Ascending';
             const cardFormat = watchAgainConfig.cardFormat ?? defaultCardFormat;
             const order = watchAgainConfig.order ?? 62;
-            const sectionName = watchAgainConfig.name || 'Watch Again';
+            const sectionName = watchAgainConfig.name || 'À revoir';
             
             // Fetch watched movies
             const watchedMoviesResponse = await ApiClient.getItems(userId, {
@@ -3559,7 +3562,7 @@
             const sortOrderDirection = popularTVNetworksConfig.sortOrderDirection ?? 'Ascending';
             const cardFormat = popularTVNetworksConfig.cardFormat ?? defaultCardFormat;
             const order = popularTVNetworksConfig.order ?? 61;
-            const sectionName = popularTVNetworksConfig.name || 'Popular TV Networks';
+            const sectionName = popularTVNetworksConfig.name || 'Chaînes populaires';
             
             // Apply sort order
             let sortedNetworks = networks;
@@ -4946,50 +4949,50 @@
                 
                 switch (sectionData.type) {
                     case 'genre':
-                        const genreTemplate = sectionConfig?.name || '[Genre] Movies';
+                        const genreTemplate = sectionConfig?.name || 'Films du genre [Genre]';
                         sectionName = formatSectionName(genreTemplate, { Genre: sectionData.data.Name });
                         sectionId = `genre-${sectionData.data.Name.toLowerCase()}`;
                         break;
                     case 'director':
-                        const directorTemplate = sectionConfig?.name || 'Directed by [Director]';
+                        const directorTemplate = sectionConfig?.name || 'Réalisé par [Director]';
                         sectionName = formatSectionName(directorTemplate, { Director: sectionData.data.name });
                         sectionId = `director-${sectionData.data.name.toLowerCase().replace(/\s+/g, '-')}`;
                         break;
                     case 'writer':
-                        const writerTemplate = sectionConfig?.name || 'Written by [Writer]';
+                        const writerTemplate = sectionConfig?.name || 'Écrit par [Writer]';
                         sectionName = formatSectionName(writerTemplate, { Writer: sectionData.data.name });
                         sectionId = `writer-${sectionData.data.name.toLowerCase().replace(/\s+/g, '-')}`;
                         break;
                     case 'actor':
-                        const actorTemplate = sectionConfig?.name || 'Starring [Actor]';
+                        const actorTemplate = sectionConfig?.name || 'Avec [Actor]';
                         sectionName = formatSectionName(actorTemplate, { Actor: sectionData.data.name });
                         sectionId = `actor-${sectionData.data.name.toLowerCase().replace(/\s+/g, '-')}`;
                         break;
                     case 'watched':
-                        const watchedTemplate = sectionConfig?.name || 'Because you watched [Movie]';
+                        const watchedTemplate = sectionConfig?.name || 'Parce que vous avez regardé [Movie]';
                         const watchedMovieName = `${sectionData.data.Name}${sectionData.data.ProductionYear ? ` (${sectionData.data.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(watchedTemplate, { Movie: watchedMovieName });
                         sectionId = `watched-${sectionData.data.Id}`;
                         break;
                     case 'liked':
-                        const likedTemplate = sectionConfig?.name || 'Because you liked [Movie]';
+                        const likedTemplate = sectionConfig?.name || 'Parce que vous avez aimé [Movie]';
                         const likedMovieName = `${sectionData.data.Name}${sectionData.data.ProductionYear ? ` (${sectionData.data.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(likedTemplate, { Movie: likedMovieName });
                         sectionId = `liked-${sectionData.data.Id}`;
                         break;
                     case 'studio':
-                        const studioTemplate = sectionConfig?.name || 'Shows from [Studio]';
+                        const studioTemplate = sectionConfig?.name || 'Séries de [Studio]';
                         sectionName = formatSectionName(studioTemplate, { Studio: sectionData.data.Name });
                         sectionId = `studio-${sectionData.data.Id}`;
                         break;
                     case 'watched-recent':
-                        const watchedRecentTemplate = sectionConfig?.name || 'Because you recently watched [Movie]';
+                        const watchedRecentTemplate = sectionConfig?.name || 'Parce que vous avez récemment regardé [Movie]';
                         const watchedRecentMovieName = `${sectionData.data.Name}${sectionData.data.ProductionYear ? ` (${sectionData.data.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(watchedRecentTemplate, { Movie: watchedRecentMovieName });
                         sectionId = `watched-recent-${sectionData.data.Id}`;
                         break;
                     case 'actor-recent':
-                        const actorRecentTemplate = sectionConfig?.name || 'Starring [Actor] because you recently watched [Movie]';
+                        const actorRecentTemplate = sectionConfig?.name || 'Avec [Actor], car vous avez récemment regardé [Movie]';
                         const actorRecentMovieName = `${sectionData.data.movie.Name}${sectionData.data.movie.ProductionYear ? ` (${sectionData.data.movie.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(actorRecentTemplate, { 
                             Actor: sectionData.data.person.Name, 
@@ -4998,7 +5001,7 @@
                         sectionId = `actor-recent-${sectionData.data.person.Id}-${sectionData.data.movie.Id}`;
                         break;
                     case 'director-recent':
-                        const directorRecentTemplate = sectionConfig?.name || 'Directed by [Director] because you recently watched [Movie]';
+                        const directorRecentTemplate = sectionConfig?.name || 'Réalisé par [Director], car vous avez récemment regardé [Movie]';
                         const directorRecentMovieName = `${sectionData.data.movie.Name}${sectionData.data.movie.ProductionYear ? ` (${sectionData.data.movie.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(directorRecentTemplate, { 
                             Director: sectionData.data.person.Name, 
@@ -5007,7 +5010,7 @@
                         sectionId = `director-recent-${sectionData.data.person.Id}-${sectionData.data.movie.Id}`;
                         break;
                     case 'writer-recent':
-                        const writerRecentTemplate = sectionConfig?.name || 'Written by [Writer] because you recently watched [Movie]';
+                        const writerRecentTemplate = sectionConfig?.name || 'Écrit par [Writer], car vous avez récemment regardé [Movie]';
                         const writerRecentMovieName = `${sectionData.data.movie.Name}${sectionData.data.movie.ProductionYear ? ` (${sectionData.data.movie.ProductionYear})` : ''}`;
                         sectionName = formatSectionName(writerRecentTemplate, { 
                             Writer: sectionData.data.person.Name, 
@@ -5413,7 +5416,7 @@
         if (!loadMoreButton) {
             // Create load more button
             loadMoreButton = document.createElement('button');
-            loadMoreButton.textContent = 'Discover More';
+            loadMoreButton.textContent = 'Découvrir plus';
             loadMoreButton.className = 'load-more-discovery-btn raised button-submit emby-button';
             loadMoreButton.style.cssText = `
                 order: 9998 !important;
@@ -5466,7 +5469,7 @@
         if (!loadMoreButton) return;
         
         if (discoveryBuffer.length > 0 || additionalDiscoveryContent) {
-            loadMoreButton.textContent = 'Discover More';
+            loadMoreButton.textContent = 'Découvrir plus';
             loadMoreButton.style.display = 'block';
             loadMoreButton.disabled = false;
             LOG('Load more button shown');
@@ -5591,13 +5594,13 @@
             // Render the scrollable container
             const scrollableContainer = window.cardBuilder.renderCards(
                 limitedItems,
-                'Halloween Movies',
+                'Films d’Halloween',
                 null,
                 true
             );
             
             scrollableContainer.setAttribute('data-custom-section-id', 'halloween-movies');
-            scrollableContainer.setAttribute('data-custom-section-name', 'Halloween Movies');
+            scrollableContainer.setAttribute('data-custom-section-name', 'Films d’Halloween');
             scrollableContainer.style.order = 50;
             
             container.appendChild(scrollableContainer);

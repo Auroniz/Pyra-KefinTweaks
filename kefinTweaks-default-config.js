@@ -28,7 +28,7 @@ window.KefinTweaksDefaultConfig = {
       "enabled": true,
       "order": 30,
       "movies": {
-        "name": "Recently Released Movies",
+        "name": "Films récemment sortis",
         "enabled": true,
         "itemLimit": 16,
         "sortOrder": "ReleaseDate",
@@ -39,7 +39,7 @@ window.KefinTweaksDefaultConfig = {
         "maxAgeInDays": null
       },
       "episodes": {
-        "name": "Recently Aired Episodes",
+        "name": "Épisodes récemment diffusés",
         "enabled": true,
         "itemLimit": 16,
         "sortOrder": "PremiereDate",
@@ -51,7 +51,7 @@ window.KefinTweaksDefaultConfig = {
       }
     },
     "trending": {
-      "name": "Trending",
+      "name": "Tendances",
       "enabled": false,
       "itemLimit": 16,
       "sortOrder": "Random",
@@ -60,7 +60,7 @@ window.KefinTweaksDefaultConfig = {
       "order": 32
     },
     "popularTVNetworks": {
-      "name": "Popular TV Networks",
+      "name": "Chaînes populaires",
       "enabled": true,
       "minimumShowsForNetwork": 5,
       "itemLimit": 16,
@@ -70,7 +70,7 @@ window.KefinTweaksDefaultConfig = {
       "order": 61
     },
     "watchlist": {
-      "name": "Watchlist",
+      "name": "Ma liste",
       "enabled": true,
       "itemLimit": 16,
       "sortOrder": "DateAdded",
@@ -79,7 +79,7 @@ window.KefinTweaksDefaultConfig = {
       "order": 60
     },
     "watchAgain": {
-      "name": "Watch Again",
+      "name": "À revoir",
       "enabled": true,
       "itemLimit": 16,
       "sortOrder": "Random",
@@ -88,7 +88,7 @@ window.KefinTweaksDefaultConfig = {
       "order": 62
     },
     "upcoming": {
-      "name": "Upcoming",
+      "name": "Prochainement",
       "enabled": true,
       "itemLimit": 48,
       "cardFormat": "Thumb",
@@ -121,7 +121,7 @@ window.KefinTweaksDefaultConfig = {
             {
               "id": "halloween-tag",
               "enabled": true,
-              "name": "Halloween Movies",
+              "name": "Films d’Halloween",
               "type": "Tag",
               "source": "halloween",
               "itemLimit": 16,
@@ -133,7 +133,7 @@ window.KefinTweaksDefaultConfig = {
             {
               "id": "halloween-horror",
               "enabled": true,
-              "name": "Horror Genre",
+              "name": "Films d’horreur",
               "type": "Genre",
               "source": "Horror",
               "itemLimit": 16,
@@ -145,7 +145,7 @@ window.KefinTweaksDefaultConfig = {
             {
               "id": "halloween-thriller",
               "enabled": true,
-              "name": "Thriller Genre",
+              "name": "Thrillers",
               "type": "Genre",
               "source": "Thriller",
               "itemLimit": 16,
@@ -167,7 +167,7 @@ window.KefinTweaksDefaultConfig = {
             {
               "id": "seasonal-2-section-0",
               "enabled": true,
-              "name": "Thanksgiving Movies",
+              "name": "Films de Thanksgiving",
               "type": "Tag",
               "source": "thanksgiving",
               "itemLimit": 16,
@@ -185,7 +185,7 @@ window.KefinTweaksDefaultConfig = {
             {
               "id": "seasonal-2-section-1",
               "enabled": true,
-              "name": "Thanksgiving Episodes",
+              "name": "Épisodes de Thanksgiving",
               "type": "Parent",
               "source": "",
               "itemLimit": 16,
@@ -212,7 +212,7 @@ window.KefinTweaksDefaultConfig = {
             {
               "id": "seasonal-1-section-0",
               "enabled": true,
-              "name": "Christmas Movies",
+              "name": "Films de Noël",
               "type": "Tag",
               "source": "christmas",
               "itemLimit": 16,
@@ -231,7 +231,7 @@ window.KefinTweaksDefaultConfig = {
             {
               "id": "seasonal-1-section-1",
               "enabled": true,
-              "name": "Christmas Episodes",
+              "name": "Épisodes de Noël",
               "type": "Parent",
               "source": "",
               "itemLimit": 16,
@@ -262,7 +262,7 @@ window.KefinTweaksDefaultConfig = {
       "sectionTypes": {
         "spotlightGenre": {
           "enabled": true,
-          "name": "Top Rated [Genre] Movies",
+          "name": "Films du genre [Genre] les mieux notés",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -270,7 +270,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "spotlightNetwork": {
           "enabled": true,
-          "name": "Top Rated Shows from [Studio]",
+          "name": "Séries de [Studio] les mieux notées",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -303,7 +303,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "becauseYouWatched": {
           "enabled": true,
-          "name": "Because you watched [Movie]",
+          "name": "Parce que vous avez regardé [Movie]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -311,7 +311,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "becauseYouLiked": {
           "enabled": true,
-          "name": "Because you liked [Movie]",
+          "name": "Parce que vous avez aimé [Movie]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -319,7 +319,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "starringTopActor": {
           "enabled": true,
-          "name": "Starring [Actor]",
+          "name": "Avec [Actor]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -327,7 +327,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "directedByTopDirector": {
           "enabled": true,
-          "name": "Directed by [Director]",
+          "name": "Réalisé par [Director]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -335,7 +335,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "writtenByTopWriter": {
           "enabled": true,
-          "name": "Written by [Writer]",
+          "name": "Écrit par [Writer]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -343,7 +343,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "becauseYouRecentlyWatched": {
           "enabled": true,
-          "name": "Because you recently watched [Movie]",
+          "name": "Parce que vous avez récemment regardé [Movie]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -351,7 +351,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "starringActorRecentlyWatched": {
           "enabled": true,
-          "name": "Starring [Actor] because you recently watched [Movie]",
+          "name": "Avec [Actor], car vous avez récemment regardé [Movie]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -359,7 +359,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "directedByDirectorRecentlyWatched": {
           "enabled": true,
-          "name": "Directed by [Director] because you recently watched [Movie]",
+          "name": "Réalisé par [Director], car vous avez récemment regardé [Movie]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
@@ -367,7 +367,7 @@ window.KefinTweaksDefaultConfig = {
         },
         "writtenByWriterRecentlyWatched": {
           "enabled": true,
-          "name": "Written by [Writer] because you recently watched [Movie]",
+          "name": "Écrit par [Writer], car vous avez récemment regardé [Movie]",
           "itemLimit": 16,
           "sortOrder": "Random",
           "sortOrderDirection": "Ascending",
