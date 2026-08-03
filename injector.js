@@ -97,6 +97,7 @@
         seriesInfo: true,         // Add series and season information to details pages
         collections: true,         // Collection sorting functionality
         skinManager: true,        // Skin selection and management
+        i18n: true,               // Centralized Pyra localization helpers
 
         // Note: Core functionality scripts (utils, cardBuilder, localStorageCache, modal) 
         // are automatically enabled when needed by other scripts
@@ -107,6 +108,14 @@
 
     // Script definitions with dependencies and metadata
     const SCRIPT_DEFINITIONS = [
+        {
+            name: 'i18n',
+            script: 'i18n.js',
+            css: null,
+            dependencies: [],
+            priority: true,
+            description: 'Centralized localization helpers for Pyra and KefinTweaks'
+        },
         {
             name: 'utils',
             script: 'utils.js',
