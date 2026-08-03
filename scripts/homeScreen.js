@@ -11,6 +11,86 @@
     const LOG = (...args) => console.log('[KefinTweaks HomeScreen]', ...args);
     const WARN = (...args) => console.warn('[KefinTweaks HomeScreen]', ...args);
     const ERR = (...args) => console.error('[KefinTweaks HomeScreen]', ...args);
+
+    const MAIN_HERO_SELECTOR = '.spotlight-section.pyra-main-hero, .spotlight-section[data-custom-section-id="custom-custom-section-0"]';
+    let mainHeroAlignmentFrame = null;
+    let mainHeroHeaderObserver = null;
+    let mainHeroResizeHandler = null;
+
+    function alignMainHero() {
+        const hero = document.querySelector(MAIN_HERO_SELECTOR);
+        const header = document.querySelector('.skinHeader');
+
+        if (!hero || !header) {
+            return;
+        }
+
+        hero.style.setProperty('--pyra-main-hero-margin-top', '0px');
+
+        mainHeroAlignmentFrame = requestAnimationFrame(() => {
+            mainHeroAlignmentFrame = requestAnimationFrame(() => {
+                mainHeroAlignmentFrame = null;
+
+                if (!hero.isConnected || !header.isConnected) {
+                    return;
+                }
+
+                const heroTop = hero.getBoundingClientRect().top;
+                const headerBottom = header.getBoundingClientRect().bottom;
+                const marginTop = Math.round(headerBottom - heroTop);
+
+                hero.style.setProperty(
+                    '--pyra-main-hero-margin-top',
+                    `${marginTop}px`
+                );
+            });
+        });
+    }
+
+    function scheduleMainHeroAlignment() {
+        if (mainHeroAlignmentFrame !== null) {
+            cancelAnimationFrame(mainHeroAlignmentFrame);
+            mainHeroAlignmentFrame = null;
+        }
+
+        alignMainHero();
+    }
+
+    function setupMainHeroAlignment() {
+        if (!mainHeroResizeHandler) {
+            mainHeroResizeHandler = scheduleMainHeroAlignment;
+            window.addEventListener('resize', mainHeroResizeHandler, { passive: true });
+        }
+
+        if (!mainHeroHeaderObserver) {
+            mainHeroHeaderObserver = new MutationObserver(mutations => {
+                const header = document.querySelector('.skinHeader');
+                if (!header) {
+                    return;
+                }
+
+                const headerChanged = mutations.some(mutation => {
+                    if (header.contains(mutation.target)) {
+                        return true;
+                    }
+
+                    return Array.from(mutation.addedNodes).some(node =>
+                        node.nodeType === Node.ELEMENT_NODE &&
+                        (node.matches?.('.skinHeader') || node.querySelector?.('.skinHeader'))
+                    );
+                });
+
+                if (headerChanged) {
+                    scheduleMainHeroAlignment();
+                }
+            });
+
+            mainHeroHeaderObserver.observe(document.documentElement, {
+                childList: true,
+                subtree: true
+            });
+        }
+    }
     
     LOG('Initializing...');
     
@@ -5837,6 +5917,11 @@
             cardContainer.style.order = order;
             
             container.appendChild(cardContainer);
+
+            if (cardContainer.classList.contains('pyra-main-hero')) {
+                setupMainHeroAlignment();
+                scheduleMainHeroAlignment();
+            }
             
             return true;
         } catch (err) {

@@ -152,7 +152,7 @@ div#discovery-loading-indicator:not(.show)::after {
     align-self: stretch;
     width: 100% !important;
     max-width: none !important;
-    margin-top: calc(-4rem - 7px) !important;
+    margin-top: var(--pyra-main-hero-margin-top, 0px) !important;
     margin-right: 0 !important;
     margin-left: 0 !important;
     padding-right: 0 !important;
