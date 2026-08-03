@@ -1229,7 +1229,7 @@
                     <div style="position: relative;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5em;">
                             <div class="listItemBodyText">${type}</div>
-                            <button type="button" class="badge-clear-all" data-section-index="${sectionIndex}" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.25em 0.5em; color: rgba(255,255,255,0.87); cursor: pointer; font-size: 0.85em;" title="Clear All">Clear All</button>
+                            <button type="button" class="badge-clear-all" data-section-index="${sectionIndex}" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.25em 0.5em; color: rgba(255,255,255,0.87); cursor: pointer; font-size: 0.85em;" title="Tout effacer">Tout effacer</button>
                         </div>
                         <div class="tag-badge-container" data-section-index="${sectionIndex}" data-prefix="${prefix}" data-type="${type}" style="min-height: 2.5em; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.5em; margin-bottom: 0.5em; background: rgba(0,0,0,0.2); display: flex; gap: 0.5em; align-items: flex-start; overflow: hidden;">
                             <input type="text" class="${prefix}_section_source fld emby-input autocomplete-input" data-section-index="${sectionIndex}" data-prefix="${prefix}" data-type="${type}" placeholder="Type to add ${type.toLowerCase()}..." autocomplete="off" style="flex: 0 0 auto; width: 120px; min-width: 200px; max-width: 120px; border: none; background: transparent; outline: none; color: rgba(255,255,255,0.87); padding: 0.25em;">
@@ -1544,23 +1544,23 @@
                         <option value="Name" ${sortOrder === 'Name' ? 'selected' : ''}>Nom</option>
                         <option value="CommunityRating" ${sortOrder === 'CommunityRating' ? 'selected' : ''}>Note des utilisateurs</option>
                         <option value="CriticRating" ${sortOrder === 'CriticRating' ? 'selected' : ''}>Note de la critique</option>
-                        <option value="OfficialRating" ${sortOrder === 'OfficialRating' ? 'selected' : ''}>Official Rating</option>
+                        <option value="OfficialRating" ${sortOrder === 'OfficialRating' ? 'selected' : ''}>Classification officielle</option>
                         <option value="ProductionYear" ${sortOrder === 'ProductionYear' ? 'selected' : ''}>Année de production</option>
                         <option value="PlayCount" ${sortOrder === 'PlayCount' ? 'selected' : ''}>Nombre de lectures</option>
                         <option value="Runtime" ${sortOrder === 'Runtime' ? 'selected' : ''}>Durée</option>
                         <option value="Default" ${sortOrder === 'Default' ? 'selected' : ''}>Par défaut</option>
-                        <option value="AiredEpisodeOrder" ${sortOrder === 'AiredEpisodeOrder' ? 'selected' : ''}>Aired Episode Order</option>
-                        <option value="DatePlayed" ${sortOrder === 'DatePlayed' ? 'selected' : ''}>Date Played</option>
-                        <option value="StartDate" ${sortOrder === 'StartDate' ? 'selected' : ''}>Start Date</option>
-                        <option value="IsFolder" ${sortOrder === 'IsFolder' ? 'selected' : ''}>Is Folder</option>
-                        <option value="IsUnplayed" ${sortOrder === 'IsUnplayed' ? 'selected' : ''}>Is Unplayed</option>
-                        <option value="IsPlayed" ${sortOrder === 'IsPlayed' ? 'selected' : ''}>Is Played</option>
-                        <option value="SeriesSortName" ${sortOrder === 'SeriesSortName' ? 'selected' : ''}>Series Sort Name</option>
-                        <option value="AirTime" ${sortOrder === 'AirTime' ? 'selected' : ''}>Air Time</option>
+                        <option value="AiredEpisodeOrder" ${sortOrder === 'AiredEpisodeOrder' ? 'selected' : ''}>Ordre de diffusion des épisodes</option>
+                        <option value="DatePlayed" ${sortOrder === 'DatePlayed' ? 'selected' : ''}>Date de lecture</option>
+                        <option value="StartDate" ${sortOrder === 'StartDate' ? 'selected' : ''}>Date de début</option>
+                        <option value="IsFolder" ${sortOrder === 'IsFolder' ? 'selected' : ''}>Dossiers en premier</option>
+                        <option value="IsUnplayed" ${sortOrder === 'IsUnplayed' ? 'selected' : ''}>Non lus en premier</option>
+                        <option value="IsPlayed" ${sortOrder === 'IsPlayed' ? 'selected' : ''}>Lus en premier</option>
+                        <option value="SeriesSortName" ${sortOrder === 'SeriesSortName' ? 'selected' : ''}>Titre de tri de la série</option>
+                        <option value="AirTime" ${sortOrder === 'AirTime' ? 'selected' : ''}>Heure de diffusion</option>
                         <option value="Studio" ${sortOrder === 'Studio' ? 'selected' : ''}>Studio</option>
-                        <option value="IsFavoriteOrLiked" ${sortOrder === 'IsFavoriteOrLiked' ? 'selected' : ''}>Is Favorite Or Liked</option>
-                        <option value="ParentIndexNumber" ${sortOrder === 'ParentIndexNumber' ? 'selected' : ''}>Parent Index Number</option>
-                        <option value="IndexNumber" ${sortOrder === 'IndexNumber' ? 'selected' : ''}>Index Number</option>
+                        <option value="IsFavoriteOrLiked" ${sortOrder === 'IsFavoriteOrLiked' ? 'selected' : ''}>Favoris ou aimés en premier</option>
+                        <option value="ParentIndexNumber" ${sortOrder === 'ParentIndexNumber' ? 'selected' : ''}>Numéro d’index parent</option>
+                        <option value="IndexNumber" ${sortOrder === 'IndexNumber' ? 'selected' : ''}>Numéro d’index</option>
                     </select>
                 </div>
             </div>
@@ -1722,7 +1722,7 @@
                             <div class="listItemBodyText" style="font-weight: 500; display: flex; align-items: center; gap: 0.5em;">
                                 <span class="material-icons" style="font-size: 1.2em; transition: transform 0.2s;">chevron_right</span>
                                 <span>${library.Name}</span>
-                                <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="${prefix}_enabled_display">${libConfig.enabled !== false ? 'Enabled' : 'Disabled'}</span>, Order: <span class="${prefix}_order_display">${libConfig.order || 11}</span>)</span>
+                                <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="${prefix}_enabled_display">${libConfig.enabled !== false ? 'Activé' : 'Désactivé'}</span>, position : <span class="${prefix}_order_display">${libConfig.order || 11}</span>)</span>
                             </div>
                         </summary>
                         <div style="padding: 0 0.75em 0.75em 0.75em; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -1813,8 +1813,8 @@
                                 <summary class="recently-released-subsection-summary" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75em; cursor: pointer; list-style: none; user-select: none;">
                                     <div class="listItemBodyText" style="font-weight: 500; display: flex; align-items: center; gap: 0.5em;">
                                         <span class="material-icons" style="font-size: 1.2em; transition: transform 0.2s;">chevron_right</span>
-                                        <span>Recently Released Movies</span>
-                                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="recently-released-movies-enabled">${(recentlyReleased.movies || {}).enabled !== false ? 'Enabled' : 'Disabled'}</span>, Order: <span class="recently-released-movies-order">${(recentlyReleased.movies || {}).order || 30}</span>)</span>
+                                        <span>Films récemment sortis</span>
+                                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="recently-released-movies-enabled">${(recentlyReleased.movies || {}).enabled !== false ? 'Activé' : 'Désactivé'}</span>, position : <span class="recently-released-movies-order">${(recentlyReleased.movies || {}).order || 30}</span>)</span>
                                     </div>
                                 </summary>
                                 <div style="padding: 0 0.75em 0.75em 0.75em; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -1830,8 +1830,8 @@
                                 <summary class="recently-released-subsection-summary" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75em; cursor: pointer; list-style: none; user-select: none;">
                                     <div class="listItemBodyText" style="font-weight: 500; display: flex; align-items: center; gap: 0.5em;">
                                         <span class="material-icons" style="font-size: 1.2em; transition: transform 0.2s;">chevron_right</span>
-                                        <span>Recently Aired Episodes</span>
-                                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="recently-released-episodes-enabled">${(recentlyReleased.episodes || {}).enabled !== false ? 'Enabled' : 'Disabled'}</span>, Order: <span class="recently-released-episodes-order">${(recentlyReleased.episodes || {}).order || 31}</span>)</span>
+                                        <span>Épisodes récemment diffusés</span>
+                                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="recently-released-episodes-enabled">${(recentlyReleased.episodes || {}).enabled !== false ? 'Activé' : 'Désactivé'}</span>, position : <span class="recently-released-episodes-order">${(recentlyReleased.episodes || {}).order || 31}</span>)</span>
                                     </div>
                                 </summary>
                                 <div style="padding: 0 0.75em 0.75em 0.75em; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -1852,8 +1852,8 @@
             <details style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em; display: none;">
                 <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em; display: flex; align-items: center; gap: 0.5em; border-radius: 0px !important;">
                     ${buildJellyfinCheckbox('homeScreen_trending_enabled', trending.enabled === true, 'Trending Sections', { disabled: 'true' })}
-                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(Order: <span class="home-section-order" data-prefix="homeScreen_trending">${trending.order || 100}</span>)</span>
-                    <span class="listItemBodyText secondary" style="font-size: 0.85em; font-style: italic; opacity: 0.7;">Under development</span>
+                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(position : <span class="home-section-order" data-prefix="homeScreen_trending">${trending.order || 100}</span>)</span>
+                    <span class="listItemBodyText secondary" style="font-size: 0.85em; font-style: italic; opacity: 0.7;">En cours de développement</span>
                 </summary>
                 <div style="padding: 0.75em 0 0 0;">
                     <div id="homeScreen_trending_container">
@@ -1868,7 +1868,7 @@
             <details style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                 <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em; display: flex; align-items: center; gap: 0.5em; border-radius: 0px !important;">
                     ${buildJellyfinCheckbox('homeScreen_popularTVNetworks_enabled', popularTVNetworks.enabled === true, 'Popular TV Networks Sections')}
-                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(Order: <span class="home-section-order" data-prefix="homeScreen_popularTVNetworks">${popularTVNetworks.order || 100}</span>)</span>
+                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(position : <span class="home-section-order" data-prefix="homeScreen_popularTVNetworks">${popularTVNetworks.order || 100}</span>)</span>
                 </summary>
                 <div style="padding: 0.75em 0 0 0;">
                     <div id="homeScreen_popularTVNetworks_container">
@@ -1876,7 +1876,7 @@
                             ${createSectionConfiguration('homeScreen_popularTVNetworks', popularTVNetworks, { includeName: true, defaultName: 'Popular TV Networks' })}
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Minimum Shows for Network to Appear</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Nombre minimal de séries pour afficher une chaîne</div>
                                     <input type="number" id="homeScreen_popularTVNetworks_minimumShowsForNetwork" class="fld emby-input" value="${popularTVNetworks.minimumShowsForNetwork || 5}" min="1" style="width: 100%; max-width: 200px;">
                 </div>
             </div>
@@ -1889,7 +1889,7 @@
             <details style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                 <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em; display: flex; align-items: center; gap: 0.5em; border-radius: 0px !important;">
                     ${buildJellyfinCheckbox('homeScreen_watchlist_enabled', watchlist.enabled === true, 'Watchlist')}
-                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(Order: <span class="home-section-order" data-prefix="homeScreen_watchlist">${watchlist.order || 100}</span>)</span>
+                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(position : <span class="home-section-order" data-prefix="homeScreen_watchlist">${watchlist.order || 100}</span>)</span>
                 </summary>
                 <div style="padding: 0.75em 0 0 0;">
                     <div id="homeScreen_watchlist_container">
@@ -1904,7 +1904,7 @@
             <details style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                 <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em; display: flex; align-items: center; gap: 0.5em; border-radius: 0px !important;">
                     ${buildJellyfinCheckbox('homeScreen_upcoming_enabled', upcoming.enabled !== false, 'Upcoming')}
-                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(Order: <span class="home-section-order" data-prefix="homeScreen_upcoming">${upcoming.order || 100}</span>)</span>
+                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(position : <span class="home-section-order" data-prefix="homeScreen_upcoming">${upcoming.order || 100}</span>)</span>
                 </summary>
                 <div style="padding: 0.75em 0 0 0;">
                     <div id="homeScreen_upcoming_container">
@@ -1919,7 +1919,7 @@
             <details style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                 <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em; display: flex; align-items: center; gap: 0.5em; border-radius: 0px !important;">
                     ${buildJellyfinCheckbox('homeScreen_imdbTop250_enabled', imdbTop250.enabled !== false, 'IMDb Top 250')}
-                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(Order: <span class="home-section-order" data-prefix="homeScreen_imdbTop250">${imdbTop250.order || 100}</span>)</span>
+                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(position : <span class="home-section-order" data-prefix="homeScreen_imdbTop250">${imdbTop250.order || 100}</span>)</span>
                 </summary>
                 <div style="padding: 0.75em 0 0 0;">
                     <div id="homeScreen_imdbTop250_container">
@@ -1939,15 +1939,15 @@
                     <div id="homeScreen_seasonal_container">
                             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Enable Seasonal Animations</div>
-                                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Enable falling snow/leaves animations for seasonal themes</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Activer les animations saisonnières</div>
+                                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Active les animations de neige ou de feuilles.</div>
                                     ${buildJellyfinCheckbox('homeScreen_seasonal_enableSeasonalAnimations', seasonal.enableSeasonalAnimations !== false, 'Enabled')}
                                 </div>
                             </div>
                             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Enable Christmas Background</div>
-                                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Enable the festive background image for the Christmas theme</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Activer l’arrière-plan de Noël</div>
+                                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Active l’image d’arrière-plan festive du thème de Noël.</div>
                                     ${buildJellyfinCheckbox('homeScreen_seasonal_enableSeasonalBackground', seasonal.enableSeasonalBackground !== false, 'Enabled')}
                                 </div>
                             </div>
@@ -1955,7 +1955,7 @@
                             ${seasonalSectionsHtml}
                         </div>
                         <button class="emby-button raised" onclick="addNewSeasonalSeason()" style="padding: 0.75em 1.5em; margin-bottom: 1em;">
-                            <span>Add New Season</span>
+                            <span>Ajouter une période</span>
                         </button>
                     </div>
                 </div>
@@ -1965,7 +1965,7 @@
             <details style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
                 <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em; display: flex; align-items: center; gap: 0.5em; border-radius: 0px !important;">
                     ${buildJellyfinCheckbox('homeScreen_watchAgain_enabled', watchAgain.enabled === true, 'Watch Again')}
-                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(Order: <span class="home-section-order" data-prefix="homeScreen_watchAgain">${watchAgain.order || 100}</span>)</span>
+                    <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal; margin-left: auto;">(position : <span class="home-section-order" data-prefix="homeScreen_watchAgain">${watchAgain.order || 100}</span>)</span>
                 </summary>
                 <div style="padding: 0.75em 0 0 0;">
                     <div id="homeScreen_watchAgain_container">
@@ -1986,45 +1986,45 @@
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.75em; margin-bottom: 0.75em;">
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Infinite Scroll / Load More Button</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Défilement infini / bouton Charger plus</div>
                                     ${buildJellyfinCheckbox('homeScreen_discovery_infiniteScroll', discovery.infiniteScroll !== false, 'Infinite Scroll')}
                 </div>
             </div>
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Randomize Section Order</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Ordre aléatoire des sections</div>
                                     ${buildJellyfinCheckbox('homeScreen_discovery_randomizeOrder', discovery.randomizeOrder === true, 'Randomize Order')}
                 </div>
             </div>
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Minimum Appearances for Top People</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Nombre minimal d’apparitions des personnes</div>
                                     <input type="number" id="homeScreen_discovery_minPeopleAppearances" class="fld emby-input" value="${discovery.minPeopleAppearances || 10}" min="1" style="width: 100%; max-width: 200px;">
                 </div>
             </div>
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Minimum Movie count for Genres</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Nombre minimal de films par genre</div>
                                     <input type="number" id="homeScreen_discovery_minGenreMovieCount" class="fld emby-input" value="${discovery.minGenreMovieCount || 50}" min="1" style="width: 100%; max-width: 200px;">
                 </div>
             </div>
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
-                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Spotlight & Collection Spawn Chance</div>
+                                    <div class="listItemBodyText" style="margin-bottom: 0.5em;">Probabilité d’apparition des Spotlights et collections</div>
                                     <input type="number" id="homeScreen_discovery_spotlightDiscoveryChance" class="fld emby-input" value="${discovery.spotlightDiscoveryChance ?? 0.5}" min="0" max="1" step="0.01" style="width: 100%; max-width: 200px;">
-                                    <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-top: 0.25em;">0.0 = never, 1.0 = always</div>
+                                    <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-top: 0.25em;">0,0 = jamais, 1,0 = toujours</div>
                 </div>
             </div>
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; display: grid;">
                 ${buildJellyfinCheckbox('homeScreen_discovery_renderSpotlightAboveMatching', discovery.renderSpotlightAboveMatching === true, 'Spotlight Grouping')}
-                <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-top: 0.25em; margin-left: 2em;">Render Spotlight discovery sections alongside the corresponding discovery section (e.g. Action Spotlight above Action Movies).</div>
+                <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-top: 0.25em; margin-left: 2em;">Affiche les sections Spotlight avec leur section de découverte correspondante.</div>
             </div>
             ${createSectionConfiguration('homeScreen_discovery', discovery, { includeName: false, includeOrder: false, includeCardFormat: false, includeSortOrder: false, includeItemLimit: false })}
                         </div>
                         <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 0.75em;">
                             <div class="listItemContent">
-                                <div class="listItemBodyText" style="margin-bottom: 0.25em; font-weight: 500;">Discovery Sections</div>
-                                <div class="listItemBodyText secondary" style="font-size: 0.85em;">Section names support placeholders such as [Genre], [Director], [Writer], [Actor], [Movie], [Studio], [Collection Name]</div>
+                                <div class="listItemBodyText" style="margin-bottom: 0.25em; font-weight: 500;">Sections de découverte</div>
+                                <div class="listItemBodyText secondary" style="font-size: 0.85em;">Les noms acceptent les variables [Genre], [Director], [Writer], [Actor], [Movie], [Studio] et [Collection Name].</div>
                                 <div style="display: grid; gap: 0.75em; margin-top: 0.75em;">
                                     ${DISCOVERY_SECTION_DEFINITIONS.map(section => {
                                         const sectionConfig = normalizedDiscoverySections[section.key];
@@ -2034,7 +2034,7 @@
                                             ? `
                                                 <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                                                     <div class="listItemContent">
-                                                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Minimum Items</div>
+                                                        <div class="listItemBodyText" style="margin-bottom: 0.5em;">Nombre minimal d’éléments</div>
                                                         <input type="number" id="${prefix}_minimumItems" class="fld emby-input" value="${sectionConfig.minimumItems ?? section.extras.minimumItems}" min="1" style="width: 100%; max-width: 200px;">
                                                     </div>
                                                 </div>
@@ -2048,7 +2048,7 @@
                                                     <div class="listItemBodyText" style="font-weight: 500; display: flex; align-items: center; gap: 0.5em;">
                                                         <span class="material-icons" style="font-size: 1.2em; transition: transform 0.2s;">chevron_right</span>
                                                         <span>${section.label}</span>
-                                                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="discovery-section-type-enabled" data-section-key="${section.key}">${sectionConfig.enabled !== false ? 'Enabled' : 'Disabled'}</span>, Order: <span class="discovery-section-type-order" data-section-key="${section.key}">${discoveryOrder}</span>)</span>
+                                                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="discovery-section-type-enabled" data-section-key="${section.key}">${sectionConfig.enabled !== false ? 'Activé' : 'Désactivé'}</span>, position : <span class="discovery-section-type-order" data-section-key="${section.key}">${discoveryOrder}</span>)</span>
                                                     </div>
                                                 </summary>
                                                 <div style="padding: 0 0.75em 0.75em 0.75em; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -2072,7 +2072,7 @@
             
             <!-- Custom Sections -->
             <details style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em; margin-bottom: 1em;">
-                <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em;">Custom Sections</summary>
+                <summary class="listItemBodyText" style="font-weight: 500; cursor: pointer; margin-bottom: 0.5em;">Sections personnalisées</summary>
                 <div style="padding: 0.75em 0 0 0;">
                     <div class="listItemBodyText" style="font-weight: 500; margin-bottom: 0.5em;">Sections</div>
                     <div id="customSections_list" style="margin-bottom: 1em;">
@@ -2081,7 +2081,7 @@
                         }).join('')}
                     </div>
                     <button type="button" class="emby-button raised add-custom-section-btn" style="padding: 0.75em 1.5em; margin-bottom: 1em;">
-                        <span>Add Section</span>
+                        <span>Ajouter une section</span>
                     </button>
             </div>
             </details>
@@ -2121,7 +2121,7 @@
             <div class="listItem" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 0.75em;">
                 <div class="listItemContent">
                     <div class="listItemBodyText" style="margin-bottom: 0.5em;">Flatten Single Season Shows</div>
-                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">When enabled, hides the season container section when a series has only one season, since episodes are already displayed directly.</div>
+                    <div class="listItemBodyText secondary" style="margin-bottom: 0.75em; font-size: 0.9em;">Masque la section Saison lorsqu’une série n’en contient qu’une et que les épisodes sont déjà affichés directement.</div>
                     ${buildJellyfinCheckbox('flattenSingleSeasonShows_hideSingleSeasonContainer', hideSingleSeasonContainer, 'Enabled')}
                 </div>
             </div>
@@ -2961,12 +2961,12 @@
                 title: `Preview: ${sectionConfig.name || 'Custom Section'}`,
                 content: `
                     <div id="${contentId}" class="preview-section-container" style="min-height: 320px; display: flex; align-items: center; justify-content: center; padding: 1.5em;>
-                        <div style="opacity: 0.75;">Preparing preview...</div>
+                        <div style="opacity: 0.75;">Préparation de l’aperçu…</div>
                     </div>
                 `,
                 footer: `
                     <button class="emby-button raised" id="${modalId}_closeBtn" style="padding: 0.75em 2em; font-size: 1em;">
-                        <span>Close</span>
+                        <span>Fermer</span>
                     </button>
                 `,
                 closeOnBackdrop: true,
@@ -3109,7 +3109,7 @@
                     <div style="position: relative;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5em;">
                             <div class="listItemBodyText">${type}</div>
-                            <button type="button" class="badge-clear-all" data-section-index="${sectionIndex}" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.25em 0.5em; color: rgba(255,255,255,0.87); cursor: pointer; font-size: 0.85em;" title="Clear All">Clear All</button>
+                            <button type="button" class="badge-clear-all" data-section-index="${sectionIndex}" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.25em 0.5em; color: rgba(255,255,255,0.87); cursor: pointer; font-size: 0.85em;" title="Tout effacer">Tout effacer</button>
                         </div>
                         <div class="tag-badge-container" data-section-index="${sectionIndex}" data-prefix="${prefix}" data-type="${type}" style="min-height: 2.5em; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.5em; margin-bottom: 0.5em; background: rgba(0,0,0,0.2); display: flex; gap: 0.5em; align-items: flex-start; overflow: hidden;">
                             <input type="text" class="${prefix}_section_source fld emby-input autocomplete-input" data-section-index="${sectionIndex}" data-prefix="${prefix}" data-type="${type}" placeholder="Type to add ${type.toLowerCase()}..." autocomplete="off" style="flex: 0 0 auto; width: 120px; min-width: 200px; max-width: 120px; border: none; background: transparent; outline: none; color: rgba(255,255,255,0.87); padding: 0.25em;">
@@ -3695,17 +3695,17 @@
                     <summary class="seasonal-season-summary" data-season-index="${newIndex}" style="display: flex; justify-content: space-between; align-items: center; padding: 1em; cursor: pointer; list-style: none; user-select: none;">
                         <div class="listItemBodyText" style="font-weight: 500; display: flex; align-items: center; gap: 0.5em;">
                             <span class="material-icons" style="font-size: 1.2em; transition: transform 0.2s;">chevron_right</span>
-                        <span class="seasonal-season-name-display" data-season-index="${newIndex}">New Season</span>
-                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="seasonal-season-enabled-display" data-season-index="${newIndex}">Enabled</span>, Order: <span class="seasonal-season-order" data-season-index="${newIndex}">100</span>)</span>
+                        <span class="seasonal-season-name-display" data-season-index="${newIndex}">Nouvelle période</span>
+                        <span class="listItemBodyText secondary" style="font-size: 0.9em; font-weight: normal;">(<span class="seasonal-season-enabled-display" data-season-index="${newIndex}">Activé</span>, position : <span class="seasonal-season-order" data-season-index="${newIndex}">100</span>)</span>
                         </div>
                         <div style="display: flex; gap: 0.5em;">
-                            <button class="emby-button" onclick="deleteSeasonalSeason(${newIndex})" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Delete</button>
+                            <button class="emby-button" onclick="deleteSeasonalSeason(${newIndex})" style="padding: 0.5em 1em; font-size: 0.9em; background: rgba(255,0,0,0.2);">Supprimer</button>
                         </div>
                     </summary>
                     <div style="padding: 0 1em 1em 1em; border-top: 1px solid rgba(255,255,255,0.1);">
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75em; margin-bottom: 0.75em; margin-top: 0.75em;">
                             <div>
-                                <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Enabled</div>
+                                <div class="listItemBodyText secondary" style="font-size: 0.85em; margin-bottom: 0.25em;">Activé</div>
                                 ${buildJellyfinCheckbox(`seasonal-season-enabled-${newIndex}`, true, 'Enabled', { 'data-index': newIndex, 'class': 'seasonal-season-enabled' })}
                             </div>
                             <div>
@@ -3730,7 +3730,7 @@
                             <div class="seasonal_season_sections_list" data-season-index="${newIndex}">
                             </div>
                             <button type="button" class="emby-button raised add-section-to-seasonal-btn" data-season-index="${newIndex}" style="padding: 0.75em 1.5em; margin-top: 0.5em;">
-                                <span>Add Section</span>
+                                <span>Ajouter une section</span>
                             </button>
                         </div>
                     </div>
@@ -4060,7 +4060,7 @@
                     `,
                     footer: `
                         <button class="emby-button raised" id="collectionPickerForSectionClear" style="padding: 0.75em 2em; margin-right: 0.5em;">
-                            <span>Clear</span>
+                            <span>Effacer</span>
                         </button>
                         <button class="emby-button raised button-submit" id="collectionPickerForSectionConfirm" style="padding: 0.75em 2em;">
                             <span>Confirmer</span>
@@ -4198,7 +4198,7 @@
                     `,
                     footer: `
                         <button class="emby-button raised" id="playlistPickerForSectionClear" style="padding: 0.75em 2em; margin-right: 0.5em;">
-                            <span>Clear</span>
+                            <span>Effacer</span>
                         </button>
                         <button class="emby-button raised button-submit" id="playlistPickerForSectionConfirm" style="padding: 0.75em 2em;">
                             <span>Confirmer</span>
@@ -4546,10 +4546,10 @@
             `,
             footer: `
                 <button class="emby-button raised button-submit" id="confirmImportBtn" style="padding: 0.75em 2em; font-size: 1em; font-weight: 500; margin-right: 1em;">
-                    <span>Import</span>
+                    <span>Importer</span>
                 </button>
                 <button class="emby-button raised" id="cancelImportBtn" style="padding: 0.75em 2em; font-size: 1em;">
-                    <span>Cancel</span>
+                    <span>Annuler</span>
                 </button>
             `,
             closeOnBackdrop: true,
@@ -4643,7 +4643,7 @@
 
             const modal = window.ModalSystem.create({
                 id: 'importConfirmation',
-                title: 'Confirm Import',
+                title: 'Confirmer l’importation',
                 content: `
                     <div class="listItemBodyText" style="margin-bottom: 1em;">
                         This will completely overwrite your current configuration. All existing settings will be replaced with the imported configuration. This action cannot be undone.
@@ -4651,10 +4651,10 @@
                 `,
                 footer: `
                     <button class="emby-button raised button-submit" id="confirmImportConfirmBtn" style="padding: 0.75em 2em; font-size: 1em; font-weight: 500; margin-right: 1em;">
-                        <span>Continue</span>
+                        <span>Continuer</span>
                     </button>
                     <button class="emby-button raised" id="cancelImportConfirmBtn" style="padding: 0.75em 2em; font-size: 1em;">
-                        <span>Cancel</span>
+                        <span>Annuler</span>
                     </button>
                 `,
                 closeOnBackdrop: true,
@@ -5469,7 +5469,7 @@
             <div class="listItem">
                 <span class="material-icons listItemIcon listItemIcon-transparent build" aria-hidden="true"></span>
                 <div class="listItemBody">
-                    <div class="listItemBodyText">Configure KefinTweaks</div>
+                    <div class="listItemBodyText">Configurer KefinTweaks</div>
                 </div>
             </div>
         `;
