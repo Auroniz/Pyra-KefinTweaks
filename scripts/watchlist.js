@@ -135,7 +135,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		// Progress tab refresh button and sort button
 		const progressStats = watchlistSection.querySelector('.progress-header-stats-container');
 		if (progressStats) {
-			const refreshBtn = createRefreshButton('progress', 'Series Progress');
+			const refreshBtn = createRefreshButton('progress', 'la progression');
 			
 			// Add sort button next to refresh button
 			const sortBtn = createSortButton();
@@ -150,7 +150,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			const sortBtn = createMovieSortButton();
 			historyStats.appendChild(sortBtn);
 			
-			const refreshBtn = createRefreshButton('movies', 'Movie History');
+			const refreshBtn = createRefreshButton('movies', 'l’historique des films');
 			historyStats.appendChild(refreshBtn);
 		}
 
@@ -159,7 +159,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (watchlistHeaderRight) {
 			const importExportBtn = createImportExportButton();
 			watchlistHeaderRight.appendChild(importExportBtn);
-			const refreshBtn = createRefreshButton('watchlist', 'Watchlist');
+			const refreshBtn = createRefreshButton('watchlist', 'la liste');
 			watchlistHeaderRight.appendChild(refreshBtn);
 		}
 	}
@@ -169,7 +169,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		const refreshBtn = document.createElement('button');
 		refreshBtn.className = 'paper-icon-button-light emby-button ';
 		refreshBtn.innerHTML = '<span class="material-icons refresh"></span>';
-		refreshBtn.title = `Refresh ${label} data from server`;
+		refreshBtn.title = `Actualiser les données de ${label}`;
 		
 		refreshBtn.onclick = async () => {
 			refreshBtn.disabled = true;
@@ -234,7 +234,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		const btn = document.createElement('button');
 		btn.className = 'layout-toggle-btn';
 		btn.innerHTML = '<span class="material-icons import_export"></span>';
-		btn.title = 'Import/Export Watchlist';
+		btn.title = 'Importer ou exporter la liste';
 		
 		btn.onclick = () => {
 			showImportExportModal();
@@ -251,14 +251,14 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		
 		// Get current sort order
 		const currentSort = getCurrentSortOrder();
-		const currentLabel = SORT_OPTIONS[currentSort]?.label || 'Last Watched';
+		const currentLabel = SORT_OPTIONS[currentSort]?.label || 'Dernier visionnage';
 		
 		sortBtn.innerHTML = `
 			<span class="material-icons sort"></span>
 			<span class="sort-label">${currentLabel}</span>
 			<span class="material-icons arrow_drop_down"></span>
 		`;
-		sortBtn.title = 'Sort series by different criteria';
+		sortBtn.title = 'Trier les séries selon différents critères';
 		
 		sortBtn.onclick = (e) => {
 			e.preventDefault();
@@ -280,14 +280,14 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		
 		// Get current sort order
 		const currentSort = getCurrentMovieSortOrder();
-		const currentLabel = MOVIE_SORT_OPTIONS[currentSort]?.label || 'Last Watched';
+		const currentLabel = MOVIE_SORT_OPTIONS[currentSort]?.label || 'Dernier visionnage';
 		
 		sortBtn.innerHTML = `
 			<span class="material-icons sort"></span>
 			<span class="sort-label">${currentLabel}</span>
 			<span class="material-icons arrow_drop_down"></span>
 		`;
-		sortBtn.title = 'Sort movies by different criteria';
+		sortBtn.title = 'Trier les films selon différents critères';
 		
 		sortBtn.onclick = (e) => {
 			e.preventDefault();
@@ -305,7 +305,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 	function showSortModal() {
 		// Create modal content
 		const sortOptionsContent = `
-			<h2 style="margin: 0 0 .5em;">Sort By</h2>
+			<h2 style="margin: 0 0 .5em;">Trier par</h2>
 			<div>
 				${Object.entries(SORT_OPTIONS).map(([key, option]) => `
 					<label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
@@ -326,7 +326,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					</label>
 				`).join('')}
 			</div>
-			<h2 style="margin: 1em 0 .5em;">Sort Order</h2>
+			<h2 style="margin: 1em 0 .5em;">Ordre de tri</h2>
 			<div>
 				<label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
 					<input type="radio" is="emby-radio" name="sortDirection" value="asc" class="menuSortOrder mdl-radio__button" data-radio="true">
@@ -342,7 +342,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						</svg>
 						<div class="mdl-radio__focus-circle"></div>
 					</div>
-					<span class="radioButtonLabel mdl-radio__label">Ascending</span>
+					<span class="radioButtonLabel mdl-radio__label">Croissant</span>
 				</label>
 				<label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
 					<input type="radio" is="emby-radio" name="sortDirection" value="desc" class="menuSortOrder mdl-radio__button" checked="" data-radio="true">
@@ -358,7 +358,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						</svg>
 						<div class="mdl-radio__focus-circle"></div>
 					</div>
-					<span class="radioButtonLabel mdl-radio__label">Descending</span>
+					<span class="radioButtonLabel mdl-radio__label">Décroissant</span>
 				</label>
 			</div>
 		`;
@@ -427,7 +427,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 	function showMovieSortModal() {
 		// Create modal content
 		const movieSortOptionsContent = `
-			<h2 style="margin: 0 0 .5em;">Sort By</h2>
+			<h2 style="margin: 0 0 .5em;">Trier par</h2>
 			<div>
 				${Object.entries(MOVIE_SORT_OPTIONS).map(([key, option]) => `
 					<label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
@@ -448,7 +448,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					</label>
 				`).join('')}
 			</div>
-			<h2 style="margin: 1em 0 .5em;">Sort Order</h2>
+			<h2 style="margin: 1em 0 .5em;">Ordre de tri</h2>
 			<div>
 				<label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
 					<input type="radio" is="emby-radio" name="movieSortDirection" value="asc" class="menuSortOrder mdl-radio__button" data-radio="true">
@@ -464,7 +464,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						</svg>
 						<div class="mdl-radio__focus-circle"></div>
 					</div>
-					<span class="radioButtonLabel mdl-radio__label">Ascending</span>
+					<span class="radioButtonLabel mdl-radio__label">Croissant</span>
 				</label>
 				<label class="radio-label-block mdl-radio mdl-js-radio mdl-js-ripple-effect show-focus">
 					<input type="radio" is="emby-radio" name="movieSortDirection" value="desc" class="menuSortOrder mdl-radio__button" checked="" data-radio="true">
@@ -480,7 +480,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						</svg>
 						<div class="mdl-radio__focus-circle"></div>
 					</div>
-					<span class="radioButtonLabel mdl-radio__label">Descending</span>
+					<span class="radioButtonLabel mdl-radio__label">Décroissant</span>
 				</label>
 			</div>
 		`;
@@ -553,7 +553,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		const timeAgo = formatTimeAgo(new Date().toISOString());
 		const formattedDate = formatLastWatchedDate(new Date().toISOString());
 		const episodeInfoText = `${episodeInfo.season}x${episodeInfo.episode.toString().padStart(2, '0')} "${episodeInfo.title}"`;
-		lastWatchedElement.innerHTML = `Last watched <strong>${episodeInfoText}</strong> ${timeAgo} on ${formattedDate}.`;
+		lastWatchedElement.innerHTML = `Dernier visionnage : <strong>${episodeInfoText}</strong> ${timeAgo} le ${formattedDate}.`;
 	}
 
 	// Function to update last watched display after removing an episode from watched
@@ -628,12 +628,12 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		// using the seriesId, season, and episode information from episodeInfo
 
 		// Create modal content based on watched status
-		const episodeTitle = episodeInfo ? episodeInfo.title : 'Episode Title';
-		const episodeDetails = episodeInfo ? `Season ${episodeInfo.season}, Episode ${episodeInfo.episode}` : 'Season X, Episode Y';
+		const episodeTitle = episodeInfo ? episodeInfo.title : 'Titre de l’épisode';
+		const episodeDetails = episodeInfo ? `Saison ${episodeInfo.season}, épisode ${episodeInfo.episode}` : 'Saison X, épisode Y';
 		const message = isWatched 
-			? 'Are you sure you want to remove this episode from watched?'
-			: 'Are you sure you want to mark this episode as watched?';
-		const confirmButtonText = isWatched ? 'Remove from Watched' : 'Mark as Watched';
+			? 'Voulez-vous vraiment retirer cet épisode des éléments vus ?'
+			: 'Voulez-vous vraiment marquer cet épisode comme vu ?';
+		const confirmButtonText = isWatched ? 'Retirer des éléments vus' : 'Marquer comme vu';
 		const confirmButtonIcon = isWatched ? 'remove_circle' : 'check';
 		
 		const confirmationContent = `
@@ -649,7 +649,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			<div class="confirmation-actions">
 				<button class="view-episode-btn" id="view-episode-btn">
 					<span class="material-icons info"></span>
-					Go To Episode
+					Voir l’épisode
 				</button>
 				<button class="confirm-btn" id="confirm-episode-action">
 					<span class="material-icons ${confirmButtonIcon}"></span>
@@ -657,7 +657,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				</button>
 				<button class="cancel-btn" id="cancel-episode-action">
 					<span class="material-icons close"></span>
-					Cancel
+					Annuler
 				</button>
 			</div>
 		`;
@@ -665,7 +665,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		// Create modal using the generic modal system
 		const modal = window.ModalSystem.create({
 			id: 'episode-confirmation-modal',
-			title: isWatched ? 'Remove Episode from Watched' : 'Mark Episode as Watched',
+			title: isWatched ? 'Retirer l’épisode des éléments vus' : 'Marquer l’épisode comme vu',
 			content: confirmationContent,
 			onOpen: (modalInstance) => {
 				// Store the episode ID, element, and watched status for the confirmation
@@ -834,7 +834,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					// Check if no more episodes remain
 					const remainingEpisodes = unwatchedEpisodesList.querySelectorAll('.unwatched-episode-item');
 					if (remainingEpisodes.length === 0) {
-						unwatchedEpisodesList.innerHTML = '<div class="unwatched-empty">No unwatched episodes found</div>';
+						unwatchedEpisodesList.innerHTML = '<div class="unwatched-empty">Aucun épisode non vu</div>';
 					}
 				}, 300);
 			}
@@ -860,11 +860,11 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			<div class="confirmation-actions">
 				<button class="confirm-btn" id="confirm-mark-all-watched">
 					<span class="material-icons check_circle"></span>
-					Mark All as Watched
+					Tout marquer comme vu
 				</button>
 				<button class="cancel-btn" id="cancel-mark-all-watched">
 					<span class="material-icons close"></span>
-					Cancel
+					Annuler
 				</button>
 			</div>
 		`;
@@ -872,7 +872,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		// Create modal using the generic modal system
 		const modal = window.ModalSystem.create({
 			id: 'mark-all-confirmation-modal',
-			title: 'Mark All Episodes as Watched',
+			title: 'Tout marquer comme vu',
 			content: confirmationContent,
 			onOpen: (modalInstance) => {
 				// Store the series ID and button for the confirmation
@@ -926,7 +926,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		
 		let showsHtml = '';
 		if (allShows.length === 0) {
-			showsHtml = '<div class="no-shows-message">No shows watched yet</div>';
+			showsHtml = '<div class="no-shows-message">Aucune série regardée</div>';
 		} else {
 			showsHtml = allShows.map((show, index) => {
 				const rank = index + 1;
@@ -954,7 +954,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		// Create modal using the generic modal system
 		window.ModalSystem.create({
 			id: 'all-shows-modal',
-			title: 'All Watched Shows',
+			title: 'Toutes les séries regardées',
 			content: modalContent,
 			onOpen: (modalInstance) => {
 				// Modal is ready and content is populated
@@ -1524,8 +1524,8 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		const statsText = progressCard.querySelector('.progress-stats');
 		if (statsText) {
 			statsText.innerHTML = updatedProgress.percentage === 100 
-				? `Watched <strong>${updatedProgress.watchedCount} of ${updatedProgress.totalEpisodes}</strong> episodes - <strong>Series Complete!</strong>`
-				: `Watched <strong>${updatedProgress.watchedCount} of ${updatedProgress.totalEpisodes}</strong> episodes which leaves <strong>${updatedProgress.remainingCount} episodes</strong> left to watch.`;
+				? `<strong>${updatedProgress.watchedCount} épisode(s) sur ${updatedProgress.totalEpisodes}</strong> vus — <strong>Série terminée !</strong>`
+				: `<strong>${updatedProgress.watchedCount} épisode(s) sur ${updatedProgress.totalEpisodes}</strong> vus — <strong>${updatedProgress.remainingCount} épisode(s)</strong> restant(s).`;
 		}
 		
 		// Update completion badge
@@ -1536,7 +1536,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				if (titleElement) {
 					const badge = document.createElement('span');
 					badge.className = 'completion-badge';
-					badge.textContent = '✓ Complete';
+					badge.textContent = '✓ Terminé';
 					titleElement.appendChild(badge);
 				}
 			}
@@ -1791,28 +1791,28 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 	// Sorting configuration and functions
 	const SORT_OPTIONS = {
 		lastWatched: { 
-			label: 'Last Watched', 
+			label: 'Dernier visionnage', 
 			default: true,
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByLastWatched(a, b, direction)
 		},
 		name: { 
-			label: 'Name', 
+			label: 'Nom', 
 			defaultDirection: 'asc',
 			sortFn: (a, b, direction) => sortByName(a, b, direction)
 		},
 		progress: { 
-			label: 'Progress', 
+			label: 'Progression', 
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByProgress(a, b, direction)
 		},
 		episodeCount: { 
-			label: 'Episode Count', 
+			label: 'Nombre d’épisodes', 
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByEpisodeCount(a, b, direction)
 		},
 		releaseDate: { 
-			label: 'Release Date', 
+			label: 'Date de sortie', 
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortByReleaseDate(a, b, direction)
 		}
@@ -1821,23 +1821,23 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 	// Movie-specific sorting configuration
 	const MOVIE_SORT_OPTIONS = {
 		lastWatched: { 
-			label: 'Last Watched', 
+			label: 'Dernier visionnage', 
 			default: true,
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortMovieByLastWatched(a, b, direction)
 		},
 		name: { 
-			label: 'Name', 
+			label: 'Nom', 
 			defaultDirection: 'asc',
 			sortFn: (a, b, direction) => sortMovieByName(a, b, direction)
 		},
 		premiereDate: { 
-			label: 'Premiere Date', 
+			label: 'Date de première diffusion', 
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortMovieByPremiereDate(a, b, direction)
 		},
 		runtime: { 
-			label: 'Runtime', 
+			label: 'Durée', 
 			defaultDirection: 'desc',
 			sortFn: (a, b, direction) => sortMovieByRuntime(a, b, direction)
 		}
@@ -2840,7 +2840,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		if (!topShowsList) return;
 		
 		if (topShows.length === 0) {
-			topShowsList.innerHTML = '<div class="top-show-item"><div class="top-show-name">No shows watched yet</div></div>';
+			topShowsList.innerHTML = '<div class="top-show-item"><div class="top-show-name">Aucune série regardée</div></div>';
 			return;
 		}
 		
@@ -2882,8 +2882,8 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		});
 		
 		// Update the display
-		progressCountEl.textContent = `${inProgressCount} In Progress`;
-		completedCountEl.textContent = `${completedCount} Watched`;
+		progressCountEl.textContent = `${inProgressCount} en cours`;
+		completedCountEl.textContent = `${completedCount} vue(s)`;
 		
 		LOG(`Progress stats updated: ${inProgressCount} in progress, ${completedCount} completed (from full dataset)`);
 	}
@@ -2909,7 +2909,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Check if we're currently fetching data or data hasn't been fetched yet
 			if (tabStates.progress.isFetching || !tabStates.progress.isDataFetched) {
 				hideEmptyProgressMessage();
-				container.innerHTML = '<div class="loading-message"><div class="loading-spinner"></div><div>Loading progress data...</div></div>';
+				container.innerHTML = '<div class="loading-message"><div class="loading-spinner"></div><div>Chargement de la progression…</div></div>';
 				return;
 			}
 
@@ -3098,31 +3098,31 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		watchlistSection.innerHTML = `
 			<div class="watchlist-tabs">
-				<button data-tab="watchlist">Watchlist</button>
-				<button data-tab="progress">Series Progress</button>
-				<button data-tab="history">Movie History</button>
-				<button data-tab="statistics">Statistics</button>
+				<button data-tab="watchlist">Ma liste</button>
+				<button data-tab="progress">Progression des séries</button>
+				<button data-tab="history">Historique des films</button>
+				<button data-tab="statistics">Statistiques</button>
 			</div>
 			
 		<div data-tab="watchlist" data-layout="Default">
 			<div class="watchlist-header tab-header">
-				<h2>My Watchlist</h2>
+				<h2>Ma liste</h2>
 				<div class="watchlist-header-right">
 					<div class="watchlist-header-stats-container">
 						<div class="watchlist-header-stats" id="watchlist-stats-shows" style="display: none;">
-							<span id="watchlist-shows-count">0 Shows</span>
+							<span id="watchlist-shows-count">0 série</span>
 						</div>
 						<div class="watchlist-header-stats" id="watchlist-stats-seasons" style="display: none;">
-							<span id="watchlist-seasons-count">0 Seasons</span>
+							<span id="watchlist-seasons-count">0 saison</span>
 						</div>
 						<div class="watchlist-header-stats" id="watchlist-stats-episodes" style="display: none;">
-							<span id="watchlist-episodes-count">0 Episodes</span>
+							<span id="watchlist-episodes-count">0 épisode</span>
 						</div>
 						<div class="watchlist-header-stats" id="watchlist-stats-movies" style="display: none;">
-							<span id="watchlist-movies-count">0 Movies</span>
+							<span id="watchlist-movies-count">0 film</span>
 						</div>
 					</div>
-					<button class="layout-toggle-btn" id="watchlist-layout-toggle" title="Toggle layout">
+					<button class="layout-toggle-btn" id="watchlist-layout-toggle" title="Changer la disposition">
 						<span class="material-icons view_module"></span>
 					</button>
 				</div>
@@ -3138,27 +3138,27 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				<div class="empty-message-icon">
 					<span class="material-icons bookmark_border"></span>
 				</div>
-				<div class="empty-message-title">Your Watchlist is Empty</div>
-				<div class="empty-message-subtitle">Click the <span class="material-icons bookmark_border"></span> to add movies and shows to your watchlist</div>
+				<div class="empty-message-title">Votre liste est vide</div>
+				<div class="empty-message-subtitle">Cliquez sur <span class="material-icons bookmark_border"></span> pour ajouter des films et des séries à votre liste</div>
 			</div>
 		</div>
 			
 			<div data-tab="progress">
 				<div class="progress-tab-header tab-header">
-					<h2>Series Progress</h2>
+					<h2>Progression des séries</h2>
 					<div class="progress-header-stats-container">
 						<div class="progress-header-stats">
-							<span id="completed-count">0 Watched</span>
+							<span id="completed-count">0 vue</span>
 						</div>
 						<div class="progress-header-stats">
-							<span id="progress-count">0 In Progress</span>
+							<span id="progress-count">0 en cours</span>
 						</div>
 					</div>
 				</div>
 				<div class="search-container">
 					<div class="search-input-wrapper">
 						<span class="material-icons search-icon search"></span>
-						<input type="text" id="progress-search" class="search-input" placeholder="Search shows..." />
+						<input type="text" id="progress-search" class="search-input" placeholder="Rechercher des séries…" />
 						<button class="search-clear-btn" id="progress-search-clear" style="display: none;">
 							<span class="material-icons close"></span>
 						</button>
@@ -3171,14 +3171,14 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					<div class="empty-message-icon">
 						<span class="material-icons acute"></span>
 					</div>
-					<div class="empty-message-title">No Progress to Show</div>
-					<div class="empty-message-subtitle">Start watching some shows to track your progress here</div>
+					<div class="empty-message-title">Aucune progression à afficher</div>
+					<div class="empty-message-subtitle">Commencez une série pour suivre votre progression ici</div>
 				</div>
 			</div>
 			
 			<div data-tab="history">
 				<div class="movie-history-header tab-header">
-					<h2>Movie Watched History</h2>
+					<h2>Historique des films</h2>
 					<div class="movie-history-stats-container">
 						<div class="movie-history-stats">
 							<span id="movie-count">0 Watched</span>
@@ -3188,7 +3188,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				<div class="search-container">
 					<div class="search-input-wrapper">
 						<span class="material-icons search-icon search"></span>
-						<input type="text" id="movie-search" placeholder="Search movies..." class="search-input">
+						<input type="text" id="movie-search" placeholder="Rechercher des films…" class="search-input">
 						<button class="search-clear-btn" id="movie-search-clear" style="display: none;">
 							<span class="material-icons close"></span>
 						</button>
@@ -3203,8 +3203,8 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					<div class="empty-message-icon">
 						<span class="material-icons movie"></span>
 					</div>
-					<div class="empty-message-title">No Movies Watched</div>
-					<div class="empty-message-subtitle">Start watching some movies to see your history here</div>
+					<div class="empty-message-title">Aucun film regardé</div>
+					<div class="empty-message-subtitle">Regardez des films pour retrouver votre historique ici</div>
 				</div>
 			</div>
 			
@@ -3212,7 +3212,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				<div class="loading-container">
 					<div class="loading-message">
 						<div class="loading-spinner"></div>
-						<div>Loading statistics data...</div>
+						<div>Chargement des statistiques…</div>
 					</div>
 				</div>
 				<div class="progress-stats-container">
@@ -3223,7 +3223,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 							</div>
 							<div class="stat-content">
 								<div class="stat-value" id="stat-series-started">0</div>
-								<div class="stat-label">Series Started</div>
+								<div class="stat-label">Séries commencées</div>
 							</div>
 						</div>
 						<div class="stat-card">
@@ -3232,7 +3232,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 							</div>
 							<div class="stat-content">
 								<div class="stat-value" id="stat-series-watched">0</div>
-								<div class="stat-label">Series Watched</div>
+								<div class="stat-label">Séries terminées</div>
 							</div>
 						</div>
 						<div class="stat-card">
@@ -3241,7 +3241,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 							</div>
 							<div class="stat-content">
 								<div class="stat-value" id="stat-episodes-watched">0</div>
-								<div class="stat-label">Episodes Watched</div>
+								<div class="stat-label">Épisodes vus</div>
 							</div>
 						</div>
 						<div class="stat-card">
@@ -3250,17 +3250,17 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 							</div>
 							<div class="stat-content">
 								<div class="stat-value" id="stat-movies-watched">0</div>
-								<div class="stat-label">Movies Watched</div>
+								<div class="stat-label">Films vus</div>
 							</div>
 						</div>
 					</div>
 					<div class="top-shows-container">
 						<div class="top-shows-header">
 							<span class="material-icons star"></span>
-							<span>Top 5 Shows</span>
-							<button class="show-all-btn" id="show-all-shows-btn" title="View all watched shows">
+							<span>5 séries les plus regardées</span>
+							<button class="show-all-btn" id="show-all-shows-btn" title="Voir toutes les séries regardées">
 								<span class="material-icons list"></span>
-								<span>Show All</span>
+								<span>Tout afficher</span>
 							</button>
 						</div>
 						<div class="top-shows-list" id="top-shows-list">
@@ -3301,17 +3301,17 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const exportTabBtn = document.createElement('button');
 		exportTabBtn.className = 'import-export-tab active';
-		exportTabBtn.textContent = 'Export';
+		exportTabBtn.textContent = 'Exporter';
 		exportTabBtn.style.cssText = 'flex: 1; padding: 12px; background: transparent; border: none; border-bottom: 2px solid #00a4dc; color: rgba(255, 255, 255, 0.7); cursor: pointer; font-size: 14px; font-weight: 500;';
 		
 		const importTabBtn = document.createElement('button');
 		importTabBtn.className = 'import-export-tab';
-		importTabBtn.textContent = 'Import';
+		importTabBtn.textContent = 'Importer';
 		importTabBtn.style.cssText = 'flex: 1; padding: 12px; background: transparent; border: none; border-bottom: 2px solid transparent; color: rgba(255, 255, 255, 0.7); cursor: pointer; font-size: 14px; font-weight: 500;';
 
 		const syncTabBtn = document.createElement('button');
 		syncTabBtn.className = 'import-export-tab';
-		syncTabBtn.textContent = 'Playlist Sync';
+		syncTabBtn.textContent = 'Synchronisation de playlist';
 		syncTabBtn.style.cssText = 'flex: 1; padding: 12px; background: transparent; border: none; border-bottom: 2px solid transparent; color: rgba(255, 255, 255, 0.7); cursor: pointer; font-size: 14px; font-weight: 500;';
 
 		// Tab content container
@@ -3394,12 +3394,12 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const description = document.createElement('p');
 		description.style.cssText = 'color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: 14px; line-height: 1.5;';
-		description.textContent = 'Export your watchlist to a JSON file. The export includes item names and provider IDs (IMDb, TMDB, TVDB).';
+		description.textContent = 'Exportez votre liste dans un fichier JSON. L’export contient les noms et les identifiants de fournisseurs (IMDb, TMDB, TVDB).';
 		container.appendChild(description);
 
 		const exportBtn = document.createElement('button');
 		exportBtn.className = 'emby-button emby-button-raised button-submit';
-		exportBtn.textContent = 'Export Watchlist';
+		exportBtn.textContent = 'Exporter la liste';
 		exportBtn.style.cssText = 'margin-bottom: 20px;';
 		exportBtn.style.alignSelf = 'flex-start';
 		
@@ -3407,7 +3407,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		textarea.id = 'export-textarea';
 		textarea.readOnly = true;
 		textarea.style.cssText = 'width: 100%; min-height: 300px; padding: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #fff; font-family: monospace; font-size: 12px; resize: vertical; box-sizing: border-box;';
-		textarea.placeholder = 'Exported watchlist data will appear here...';
+		textarea.placeholder = 'Les données exportées apparaîtront ici…';
 		// Preserve saved data if switching tabs
 		if (savedData) {
 			textarea.value = savedData;
@@ -3420,7 +3420,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		
 		const copyBtn = document.createElement('button');
 		copyBtn.className = 'emby-button';
-		copyBtn.textContent = 'Copy to Clipboard';
+		copyBtn.textContent = 'Copier dans le presse-papiers';
 		copyBtn.style.cssText = 'padding: 8px 16px; background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; cursor: pointer; font-size: 14px;';
 		// Enable copy button if there's saved content
 		copyBtn.disabled = !savedData;
@@ -3428,13 +3428,13 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		copyBtn.onclick = async () => {
 			try {
 				await navigator.clipboard.writeText(textarea.value);
-				copyBtn.textContent = 'Copied!';
+				copyBtn.textContent = 'Copié !';
 				setTimeout(() => {
-					copyBtn.textContent = 'Copy to Clipboard';
+					copyBtn.textContent = 'Copier dans le presse-papiers';
 				}, 2000);
 			} catch (err) {
 				ERR('Failed to copy to clipboard:', err);
-				alert('Failed to copy to clipboard. Please copy manually.');
+				alert('Impossible de copier dans le presse-papiers. Veuillez effectuer la copie manuellement.');
 			}
 		};
 
@@ -3443,7 +3443,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		exportBtn.onclick = async () => {
 			exportBtn.disabled = true;
-			exportBtn.textContent = 'Exporting...';
+			exportBtn.textContent = 'Exportation…';
 			textarea.value = '';
 
 			try {
@@ -3456,7 +3456,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				}
 				copyBtn.disabled = false;
 				exportBtn.disabled = false;
-				exportBtn.textContent = 'Export Watchlist';
+				exportBtn.textContent = 'Exporter la liste';
 			} catch (err) {
 				ERR('Export failed:', err);
 				textarea.value = `Error exporting watchlist: ${err.message}`;
@@ -3465,7 +3465,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 					updateSavedData('');
 				}
 				exportBtn.disabled = false;
-				exportBtn.textContent = 'Export Watchlist';
+				exportBtn.textContent = 'Exporter la liste';
 			}
 		};
 	}
@@ -3476,13 +3476,13 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const description = document.createElement('p');
 		description.style.cssText = 'color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: 14px; line-height: 1.5;';
-		description.textContent = 'Paste your watchlist JSON data below. Each item must have at least one provider ID (IMDb, TMDB, or TVDB).';
+		description.textContent = 'Collez ci-dessous les données JSON de votre liste. Chaque élément doit contenir au moins un identifiant de fournisseur (IMDb, TMDB ou TVDB).';
 		container.appendChild(description);
 
 		const textarea = document.createElement('textarea');
 		textarea.id = 'import-textarea';
 		textarea.style.cssText = 'width: 100%; min-height: 200px; padding: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; color: #fff; font-family: monospace; font-size: 12px; resize: vertical; box-sizing: border-box; margin-bottom: 10px;';
-		textarea.placeholder = 'Paste your watchlist JSON data here...';
+		textarea.placeholder = 'Collez ici les données JSON de votre liste…';
 		container.appendChild(textarea);
 
 		const validationMsg = document.createElement('div');
@@ -3510,18 +3510,18 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const validateBtn = document.createElement('button');
 		validateBtn.className = 'emby-button';
-		validateBtn.textContent = 'Validate & Preview';
+		validateBtn.textContent = 'Valider et prévisualiser';
 		validateBtn.style.cssText = 'padding: 8px 16px; background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px; cursor: pointer; font-size: 14px;';
 
 		const importBtn = document.createElement('button');
 		importBtn.className = 'emby-button emby-button-raised button-submit';
-		importBtn.textContent = 'Import Watchlist';
+		importBtn.textContent = 'Importer la liste';
 		importBtn.disabled = true;
 		importBtn.style.display = 'none'; // Hide until validated
 
 		const clearBtn = document.createElement('button');
 		clearBtn.className = 'emby-button';
-		clearBtn.textContent = 'Clear Watchlist';
+		clearBtn.textContent = 'Vider la liste';
 		clearBtn.style.cssText = 'padding: 8px 16px; background: rgba(255, 0, 0, 0.2); color: #ff6b6b; border: 1px solid rgba(255, 0, 0, 0.3); border-radius: 4px; cursor: pointer; font-size: 14px; margin-left: auto;';
 
 		buttonContainer.appendChild(validateBtn);
@@ -3534,7 +3534,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		validateBtn.onclick = () => {
 			const jsonText = textarea.value.trim();
 			if (!jsonText) {
-				showValidationMessage(validationMsg, 'Please paste JSON data first.', 'error');
+				showValidationMessage(validationMsg, 'Veuillez d’abord coller des données JSON.', 'error');
 				return;
 			}
 
@@ -3561,7 +3561,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				}
 			} catch (err) {
 				validatedData = null;
-				showValidationMessage(validationMsg, `Invalid JSON: ${err.message}`, 'error');
+				showValidationMessage(validationMsg, `JSON invalide : ${err.message}`, 'error');
 				previewContainer.style.display = 'none';
 				importBtn.disabled = true;
 				importBtn.style.display = 'none'; // Hide button on parse error
@@ -3570,7 +3570,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		importBtn.onclick = async () => {
 			if (!validatedData) {
-				showValidationMessage(validationMsg, 'Please validate the data first.', 'error');
+				showValidationMessage(validationMsg, 'Veuillez d’abord valider les données.', 'error');
 				return;
 			}
 
@@ -3581,7 +3581,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			
 			// Show progress container immediately at 0/X items
 			progressContainer.style.display = 'block';
-			showImportProgress(progressContainer, 0, validatedData.length, 'Starting import...');
+			showImportProgress(progressContainer, 0, validatedData.length, 'Démarrage de l’importation…');
 
 			try {
 				const results = await importWatchlistData(validatedData, progressContainer);
@@ -3593,7 +3593,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				renderWatchlistContent();
 			} catch (err) {
 				ERR('Import failed:', err);
-				showValidationMessage(validationMsg, `Import failed: ${err.message}`, 'error');
+				showValidationMessage(validationMsg, `Échec de l’importation : ${err.message}`, 'error');
 			} finally {
 				importBtn.disabled = false;
 				validateBtn.disabled = false;
@@ -3602,20 +3602,20 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		};
 
 		clearBtn.onclick = async () => {
-			if (confirm('Are you sure you want to clear your entire watchlist? This action cannot be undone.')) {
-				if (confirm('This will remove ALL items from your watchlist. Are you absolutely sure?')) {
+			if (confirm('Voulez-vous vraiment vider entièrement votre liste ? Cette action est irréversible.')) {
+				if (confirm('TOUS les éléments seront retirés de votre liste. Confirmez-vous cette action ?')) {
 					clearBtn.disabled = true;
-					clearBtn.textContent = 'Clearing...';
+					clearBtn.textContent = 'Suppression…';
 					try {
 						await clearWatchlist();
 						// Close modal after clearing
 						window.ModalSystem.close('import-export-modal');
 					} catch (err) {
 						ERR('Failed to clear watchlist:', err);
-						alert('Failed to clear watchlist. Please try again.');
+						alert('Impossible de vider la liste. Veuillez réessayer.');
 					} finally {
 						clearBtn.disabled = false;
-						clearBtn.textContent = 'Clear Watchlist';
+						clearBtn.textContent = 'Vider la liste';
 					}
 				}
 			}
@@ -3630,14 +3630,14 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const description = document.createElement('p');
 		description.style.cssText = 'color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: 14px; line-height: 1.5;';
-		description.textContent = 'Sync your watchlist directly to a Jellyfin playlist. We will overwrite the playlist with the items currently on your watchlist.';
+		description.textContent = 'Synchronisez directement votre liste avec une playlist Jellyfin. Son contenu sera remplacé par les éléments présents dans votre liste.';
 		container.appendChild(description);
 
 		const selectGroup = document.createElement('div');
 		selectGroup.style.cssText = 'display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px;';
 
 		const selectLabel = document.createElement('label');
-		selectLabel.textContent = 'Choose Playlist';
+		selectLabel.textContent = 'Choisir une playlist';
 		selectLabel.style.cssText = 'font-weight: 600; color: #fff;';
 		selectGroup.appendChild(selectLabel);
 
@@ -3649,7 +3649,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const selectHint = document.createElement('div');
 		selectHint.style.cssText = 'font-size: 12px; color: rgba(255, 255, 255, 0.6);';
-		selectHint.textContent = 'Default: | Watchlist |. Choose "New..." to create a fresh playlist.';
+		selectHint.textContent = 'Par défaut : | Watchlist |. Choisissez « Nouvelle… » pour créer une playlist.';
 		selectGroup.appendChild(selectHint);
 
 		container.appendChild(selectGroup);
@@ -3659,12 +3659,12 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const syncBtn = document.createElement('button');
 		syncBtn.className = 'emby-button raised button-submit';
-		syncBtn.textContent = 'Sync Playlist';
+		syncBtn.textContent = 'Synchroniser la playlist';
 		syncBtn.disabled = true;
 
 		const refreshBtn = document.createElement('button');
 		refreshBtn.className = 'emby-button raised';
-		refreshBtn.textContent = 'Refresh List';
+		refreshBtn.textContent = 'Actualiser la liste';
 
 		buttonRow.appendChild(syncBtn);
 		buttonRow.appendChild(refreshBtn);
@@ -3708,7 +3708,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			playlistSelect.innerHTML = '';
 			const newOption = document.createElement('option');
 			newOption.value = '__new__';
-			newOption.textContent = 'New...';
+			newOption.textContent = 'Nouvelle…';
 			playlistSelect.appendChild(newOption);
 
 			playlists
@@ -3751,7 +3751,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				setStatus(`Failed to load playlists: ${err.message}`, 'error');
 				playlistSelect.innerHTML = '';
 				const loadingOption = document.createElement('option');
-				loadingOption.textContent = 'Unable to load playlists';
+				loadingOption.textContent = 'Impossible de charger les playlists';
 				playlistSelect.appendChild(loadingOption);
 				playlistSelect.disabled = true;
 				syncBtn.disabled = true;
@@ -3831,27 +3831,27 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		message.style.cssText = 'color: rgba(255, 255, 255, 0.8); line-height: 1.5;';
 
 		let nameInput = null;
-		let title = 'Sync Playlist';
+		let title = 'Synchroniser la playlist';
 
 		if (isNew) {
-			title = 'Create Playlist From Watchlist';
+			title = 'Créer une playlist depuis la liste';
 			message.textContent = 'A new playlist will be created containing the items currently on your watchlist.';
 
 			nameInput = document.createElement('input');
 			nameInput.type = 'text';
 			nameInput.className = 'emby-input';
-			nameInput.placeholder = 'Playlist name';
+			nameInput.placeholder = 'Nom de la playlist';
 			nameInput.value = PLAYLIST_SYNC_DEFAULT_NAME;
 			nameInput.style.cssText = 'padding: 10px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.3); color: #fff;';
 
 			modalContent.appendChild(message);
 			modalContent.appendChild(nameInput);
 		} else {
-			title = 'Sync Existing Playlist';
+			title = 'Synchroniser une playlist existante';
 			message.textContent = 'This will set the items in the playlist to be the items in your watchlist. Any items on this playlist which are not in your watchlist will be removed.';
 			const playlistInfo = document.createElement('div');
 			playlistInfo.style.cssText = 'padding: 10px; border-radius: 4px; background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.9);';
-			playlistInfo.textContent = `Playlist: ${playlist?.Name || 'Unknown'}`;
+			playlistInfo.textContent = `Playlist : ${playlist?.Name || 'Inconnue'}`;
 			modalContent.appendChild(message);
 			modalContent.appendChild(playlistInfo);
 		}
@@ -3893,13 +3893,13 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						try {
 							setError('');
 							confirmBtn.disabled = true;
-							confirmBtn.querySelector('span').textContent = 'Syncing...';
+							confirmBtn.querySelector('span').textContent = 'Synchronisation…';
 
 							const playlistName = isNew ? (nameInput?.value || '').trim() : playlist?.Name;
 							if (isNew && !playlistName) {
 								setError('Please provide a playlist name.');
 								confirmBtn.disabled = false;
-								confirmBtn.querySelector('span').textContent = 'Confirm';
+								confirmBtn.querySelector('span').textContent = 'Confirmer';
 								return;
 							}
 
@@ -3920,7 +3920,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 						} finally {
 							if (confirmBtn) {
 								confirmBtn.disabled = false;
-								confirmBtn.querySelector('span').textContent = 'Confirm';
+								confirmBtn.querySelector('span').textContent = 'Confirmer';
 							}
 						}
 					});
@@ -4135,7 +4135,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const previewTitle = document.createElement('div');
 		previewTitle.style.cssText = 'font-weight: 600; margin-bottom: 8px; color: #fff;';
-		previewTitle.textContent = `Preview: ${data.length} item(s) to import`;
+		previewTitle.textContent = `Aperçu : ${data.length} élément(s) à importer`;
 		container.appendChild(previewTitle);
 
 		const previewList = document.createElement('div');
@@ -4189,7 +4189,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 
 		const summaryTitle = document.createElement('div');
 		summaryTitle.style.cssText = 'font-weight: 600; margin-bottom: 8px; color: #fff; font-size: 14px;';
-		summaryTitle.textContent = 'Import Summary';
+		summaryTitle.textContent = 'Résumé de l’importation';
 		container.appendChild(summaryTitle);
 
 		const summaryList = document.createElement('div');
@@ -4575,7 +4575,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		await initWatchlistTab();
 		renderWatchlistContent();
 
-		alert(`Watchlist cleared: ${cleared} item(s) removed.`);
+		alert(`Liste vidée : ${cleared} élément(s) retiré(s).`);
 	}
 
 	// Update watchlist cache when an item is toggled
@@ -5378,7 +5378,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			// Check if we're currently fetching data or data hasn't been fetched yet
 			if (tabStates.history.isFetching || !tabStates.history.isDataFetched) {
 				hideEmptyHistoryMessage();
-				container.innerHTML = '<div class="loading-message"><div class="loading-spinner"></div><div>Loading movie history...</div></div>';
+				container.innerHTML = '<div class="loading-message"><div class="loading-spinner"></div><div>Chargement de l’historique des films…</div></div>';
 				return;
 			}
 
@@ -5435,7 +5435,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			
 			// Update movie count
 			if (movieCount) {
-				movieCount.textContent = `${totalMovies} Watched`;
+				movieCount.textContent = `${totalMovies} vu(s)`;
 			}
 			
 			if (totalMovies === 0) {
@@ -5633,7 +5633,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		// Update page info
 		const pageInfo = paginationElement.querySelector('.pagination-info');
 		if (pageInfo) {
-			pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+			pageInfo.textContent = `Page ${currentPage} sur ${totalPages}`;
 		}
 
 		// Update button states
@@ -6066,7 +6066,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 		const listContainer = container.querySelector('.unwatched-episodes-list');
 		
 		// Show loading state
-		listContainer.innerHTML = '<div class="unwatched-loading">Loading unwatched episodes...</div>';
+		listContainer.innerHTML = '<div class="unwatched-loading">Chargement des épisodes non vus…</div>';
 		
 		try {
 			// Fetch episodes on-demand from API
@@ -6079,7 +6079,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			);
 			
 			if (unwatchedEpisodes.length === 0) {
-				listContainer.innerHTML = '<div class="unwatched-empty">No unwatched episodes found</div>';
+				listContainer.innerHTML = '<div class="unwatched-empty">Aucun épisode non vu</div>';
 				return;
 			}
 			
@@ -6403,7 +6403,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			ERR('Error marking all episodes as watched:', err);
 			// Re-enable button on error
 			buttonElement.disabled = false;
-			buttonElement.textContent = '+ Mark All As Watched';
+			buttonElement.textContent = '+ Tout marquer comme vu';
 		}
 	}
 
@@ -6768,7 +6768,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 				const container = watchlistSection.querySelector('.watchlist-movies');
 				
 				if (container) {
-					container.innerHTML = '<div class="loading-message"><div class="loading-spinner"></div><div>Loading watchlist...</div></div>';
+					container.innerHTML = '<div class="loading-message"><div class="loading-spinner"></div><div>Chargement de la liste…</div></div>';
 					container.style.display = '';
 				}
 				return;
@@ -7075,8 +7075,8 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			const title = emptyMessage.querySelector('.empty-message-title');
 			const subtitle = emptyMessage.querySelector('.empty-message-subtitle');
 			
-			if (title) title.textContent = 'No Series Found';
-			if (subtitle) subtitle.textContent = `No series match "${progressCache.searchTerm}". Try a different search term.`;
+			if (title) title.textContent = 'Aucune série trouvée';
+			if (subtitle) subtitle.textContent = `Aucune série ne correspond à « ${progressCache.searchTerm} ». Essayez une autre recherche.`;
 			
 			emptyMessage.style.display = 'block';
 		}
@@ -7089,7 +7089,7 @@ In the Custom Tabs plugin, add a new tab with the following HTML content:
 			const title = emptyMessage.querySelector('.empty-message-title');
 			const subtitle = emptyMessage.querySelector('.empty-message-subtitle');
 			
-			if (title) title.textContent = 'No Progress to Show';
+			if (title) title.textContent = 'Aucune progression à afficher';
 			if (subtitle) subtitle.textContent = 'Start watching some shows to track your progress here';
 			
 			emptyMessage.style.display = 'none';
